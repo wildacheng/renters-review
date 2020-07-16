@@ -7,15 +7,17 @@ import store from "./store";
 import App from "./App";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
+import { ThemeProvider } from '@material-ui/core/styles'
+import theme from "./themeUtils"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+      <Provider store={store}>
       <Router history={history}>
+        <ThemeProvider theme={theme}>
         <App />
+        </ThemeProvider>
       </Router>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById("root")
 );
 
