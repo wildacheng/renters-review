@@ -34,8 +34,10 @@ const useStyles = makeStyles((theme) => ({
   input: {
     marginLeft: theme.spacing(1),
     flex: 1,
+    fontSize: "large"
   },
 }));
+
 
 const HomePage = () => {
   const classes = useStyles();
@@ -56,7 +58,8 @@ const HomePage = () => {
           <InputBase
             className={classes.input}
             placeholder="Enter an address, neighborhood, city or ZIP code"
-            inputProps={{ "aria-label": "search google maps" }}
+            fontFamily="Century Gothic Std"
+            // inputProps={{ "aria-label": "search google maps" }}
           />
           <IconButton
             type="submit"

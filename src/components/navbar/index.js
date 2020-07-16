@@ -67,6 +67,7 @@ const Navbar = () => {
                 variant="h5"
                 component={RouterLink}
                 to="/home"
+                underline="none"
               >
                 Renter's Review
               </Link>
