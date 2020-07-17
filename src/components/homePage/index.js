@@ -1,4 +1,5 @@
 import React from "react";
+import FeatureBlog from "../featureBlog";
 import "./style.css";
 
 //material.ui
@@ -11,6 +12,7 @@ import {
   IconButton,
   InputBase,
 } from "@material-ui/core";
+//
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -34,10 +36,10 @@ const useStyles = makeStyles((theme) => ({
   input: {
     marginLeft: theme.spacing(1),
     flex: 1,
-    fontSize: "large"
+    fontSize: "large",
   },
 }));
-
+//
 
 const HomePage = () => {
   const classes = useStyles();
@@ -50,8 +52,8 @@ const HomePage = () => {
       />
       <div className="search-container">
         <Typography className={classes.logo} component="div">
-          <Box fontWeight="fontWeightBold" fontSize="h4.fontSize">
-            Real Reviews To Help You Find The Perfect Home
+          <Box fontWeight="fontWeightBold" fontSize="h3.fontSize">
+            Real reviews to help you find the perfect home.
           </Box>
         </Typography>
         <div className={classes.search}>
@@ -59,7 +61,6 @@ const HomePage = () => {
             className={classes.input}
             placeholder="Enter an address, neighborhood, city or ZIP code"
             fontFamily="Century Gothic Std"
-            // inputProps={{ "aria-label": "search google maps" }}
           />
           <IconButton
             type="submit"
@@ -70,6 +71,7 @@ const HomePage = () => {
           </IconButton>
         </div>
       </div>
+        <FeatureBlog />
     </div>
   );
 };
