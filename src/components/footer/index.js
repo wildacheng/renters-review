@@ -8,7 +8,7 @@ const Footer = () => {
       <div>
         <div id="menu-container">
         <div className="menu">
-          <h3> OUR COMPANY</h3>
+          <h3>Our Company</h3>
           <ul>
             <li>
               <a>
@@ -28,7 +28,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="menu">
-          <h3>ADVERTISE WITH US</h3>
+          <h3>Advertise With Us</h3>
           <ul>
           <li>
               <a>
@@ -38,7 +38,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="menu">
-          <h3>LET US HELP</h3>
+          <h3>Let Us Help</h3>
           <ul>
           <li>
               <a>
@@ -53,6 +53,12 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+      </div>
+      <div style={{paddingTop:40, paddingBottom: 40}}>
+        Social Media Icons
+      </div>
+      <div style={{paddingTop:40, paddingBottom: 40}}>
+        Equal Housing Icon
       </div>
     </div>
   );

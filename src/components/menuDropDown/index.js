@@ -1,6 +1,14 @@
 import React from "react";
 //material.ui
-import { Menu, MenuItem, withStyles, makeStyles, IconButton, ListItemText, Divider} from "@material-ui/core";
+import {
+  Menu,
+  MenuItem,
+  withStyles,
+  makeStyles,
+  IconButton,
+  ListItemText,
+  Divider,
+} from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 //styling for ClassName
@@ -8,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  divider: {
+    width: "100%",
+    orientation: "horizontal"
+  }
 }));
 //
 
@@ -40,13 +52,14 @@ const StyledMenuItem = withStyles((theme) => ({
         color: theme.palette.common.white,
       },
     },
+    width: "-webkit-fill-available"
   },
 }))(MenuItem);
 //
 
 //component
 const MenuDropDown = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -78,15 +91,15 @@ const MenuDropDown = () => {
         <StyledMenuItem>
           <ListItemText primary="Apartments for Rent" />
         </StyledMenuItem>
-        <Divider />
+        <Divider  className={classes.divider} />
         <StyledMenuItem>
           <ListItemText primary="Houses for Rent" />
         </StyledMenuItem>
-        <Divider />
+        <Divider className={classes.divider} />
         <StyledMenuItem>
           <ListItemText primary="Write a Review" />
         </StyledMenuItem>
-        <Divider />
+        <Divider className={classes.divider} />
         <StyledMenuItem>
           <ListItemText primary="Blog" />
         </StyledMenuItem>
