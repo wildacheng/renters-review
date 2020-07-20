@@ -1,5 +1,6 @@
 import React from "react";
-import FeatureBlog from "../featureBlog";
+import BlogCarousel from "../blogCarousel";
+import Footer from "../footer"
 import "./style.css";
 
 //material.ui
@@ -71,7 +72,8 @@ const HomePage = () => {
           </IconButton>
         </div>
       </div>
-        <FeatureBlog />
+      <BlogCarousel />
+      <Footer />
     </div>
   );
 };

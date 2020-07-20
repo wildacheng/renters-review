@@ -2,26 +2,20 @@ import React from "react";
 // import {connect} from 'react-redux'
 import { MemoryRouter as Router } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
+import MenuDropDown from '../menuDropDown'
 
 //material.ui
 import {
   Box,
   Link,
-  Menu,
   AppBar,
   Toolbar,
   Divider,
-  MenuItem,
-  withStyles,
   makeStyles,
   Typography,
-  IconButton,
-  ListItemText,
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
 
 // import {logout} from '../store'
-// import theme from "../../themeUtils"
 // import "./style.css";
 
 //styling for ClassName
@@ -30,12 +24,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     width: "100%",
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 1,
     textAlign: "left",
+
   },
   hover: {
     "&:hover": {
@@ -51,88 +43,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 //
 
-//menu drop down
-const StyledMenu = withStyles({
-  paper: {
-    border: "1px solid #d3d4d5",
-  },
-})((props) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center",
-    }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    "&:focus": {
-      backgroundColor: theme.palette.primary.main,
-      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white,
-      },
-    },
-  },
-}))(MenuItem);
-//
-
 const Navbar = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <Router>
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-              onClick={handleClick}
-            >
-              <MenuIcon />
-            </IconButton>
-            <StyledMenu
-              id="customized-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <StyledMenuItem>
-                <ListItemText primary="Apartments for Rent" />
-              </StyledMenuItem>
-              <Divider />
-              <StyledMenuItem>
-                <ListItemText primary="Houses for Rent" />
-              </StyledMenuItem>
-              <Divider />
-              <StyledMenuItem>
-                <ListItemText primary="Write a Review" />
-              </StyledMenuItem>
-              <Divider />
-              <StyledMenuItem>
-                <ListItemText primary="Blog" />
-              </StyledMenuItem>
-            </StyledMenu>
+            <MenuDropDown />
             <Typography className={classes.title}>
               <Link
                 color="inherit"
