@@ -25,6 +25,15 @@
   transition: 300ms;
   cursor: pointer;
 }
+
+/* responsive css for banner.media.mediacaption*/
+@media screen and (max-width: 1200px) {
+  .Banner .Media .MediaCaption {
+    height: 15%;
+  }
+}
+
+
 .Banner .Media .MediaCaption:hover {
   opacity: 0.8;
 }
@@ -42,10 +51,12 @@
   padding: 30px;
   transition: 300ms;
 }
-.Banner .Content:hover, .Banner .Content:active {
+.Banner .Content:hover,
+.Banner .Content:active {
   background-color: #718792;
 }
-.Banner .Content:hover .ViewButton, .Banner .Content:active .ViewButton {
+.Banner .Content:hover .ViewButton,
+.Banner .Content:active .ViewButton {
   background-color: rgb(241, 241, 241);
   color: #718792;
 }
