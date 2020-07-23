@@ -2,7 +2,6 @@ import React from "react";
 //material.ui
 import { makeStyles, Modal, Divider, Button } from "@material-ui/core";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import "./style.css";
 
 //position of the modal
 function getModalStyle() {
@@ -54,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 //
 
+
 function AuthFormModal(props) {
   const { open, handleClose, isRegister } = props;
   //react hooks to set state
@@ -88,6 +88,12 @@ function AuthFormModal(props) {
     }, 5000);
   };
 
+  const resetFormData = () => {
+    // const newForm = { ...formData }
+    setFormData(initialFormData);
+    handleClose()
+  };
+
   let body;
   if (isRegister) {
     body = (
@@ -96,52 +102,55 @@ function AuthFormModal(props) {
         <Divider className={classes.divider} orientation="horizontal" />
         <ValidatorForm onSubmit={handleSubmit}>
           <div className={classes.textField}>
-          <TextValidator
-            label="First Name"
-            onChange={handleChange}
-            name="firstName"
-            value={formData.firstName}
-            validators={["required"]}
-            errorMessages={["Please enter a first name."]}
-            variant="outlined"
-            fullWidth="true"
-          />
+            <TextValidator
+              label="First Name"
+              onChange={handleChange}
+              name="firstName"
+              value={formData.firstName}
+              validators={["required"]}
+              errorMessages={["Please enter a first name."]}
+              variant="outlined"
+              fullWidth="true"
+            />
           </div>
           <div className={classes.textField}>
-          <TextValidator
-            label="Last Name"
-            onChange={handleChange}
-            name="lastName"
-            value={formData.lastName}
-            validators={["required"]}
-            errorMessages={["Please enter a last name."]}
-            variant="outlined"
-            fullWidth="true"
-          />
+            <TextValidator
+              label="Last Name"
+              onChange={handleChange}
+              name="lastName"
+              value={formData.lastName}
+              validators={["required"]}
+              errorMessages={["Please enter a last name."]}
+              variant="outlined"
+              fullWidth="true"
+            />
           </div>
           <div className={classes.textField}>
-          <TextValidator
-            label="Email"
-            onChange={handleChange}
-            name="email"
-            value={formData.email}
-            validators={["required", "isEmail"]}
-            errorMessages={["Please enter a valid email address.", "Please enter a valid email address."]}
-            variant="outlined"
-            fullWidth="true"
-          />
+            <TextValidator
+              label="Email"
+              onChange={handleChange}
+              name="email"
+              value={formData.email}
+              validators={["required", "isEmail"]}
+              errorMessages={[
+                "Please enter a valid email address.",
+                "Please enter a valid email address.",
+              ]}
+              variant="outlined"
+              fullWidth="true"
+            />
           </div>
           <div className={classes.textField}>
-          <TextValidator
-            label="Password"
-            onChange={handleChange}
-            name="password"
-            value={formData.password}
-            validators={["required"]}
-            errorMessages={["Please enter a password."]}
-            variant="outlined"
-            fullWidth="true"
-          />
+            <TextValidator
+              label="Password"
+              onChange={handleChange}
+              name="password"
+              value={formData.password}
+              validators={["required"]}
+              errorMessages={["Please enter a password."]}
+              variant="outlined"
+              fullWidth="true"
+            />
           </div>
           <Button
             type="submit"
@@ -161,29 +170,32 @@ function AuthFormModal(props) {
         <div className={classes.title}>Log In To Your Account</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <ValidatorForm onSubmit={handleSubmit}>
-        <div className={classes.textField}>
-          <TextValidator
-            label="Email"
-            onChange={handleChange}
-            name="email"
-            value={formData.email}
-            validators={["required", "isEmail"]}
-            errorMessages={["Please enter a valid email address.", "Please enter a valid email address."]}
-            variant="outlined"
-            fullWidth="true"
-          />
+          <div className={classes.textField}>
+            <TextValidator
+              label="Email"
+              onChange={handleChange}
+              name="email"
+              value={formData.email}
+              validators={["required", "isEmail"]}
+              errorMessages={[
+                "Please enter a valid email address.",
+                "Please enter a valid email address.",
+              ]}
+              variant="outlined"
+              fullWidth="true"
+            />
           </div>
           <div className={classes.textField}>
-          <TextValidator
-            label="Password"
-            onChange={handleChange}
-            name="password"
-            value={formData.password}
-            validators={["required"]}
-            errorMessages={["Please enter a password."]}
-            variant="outlined"
-            fullWidth="true"
-          />
+            <TextValidator
+              label="Password"
+              onChange={handleChange}
+              name="password"
+              value={formData.password}
+              validators={["required"]}
+              errorMessages={["Please enter a password."]}
+              variant="outlined"
+              fullWidth="true"
+            />
           </div>
           <Button
             type="submit"
@@ -201,7 +213,7 @@ function AuthFormModal(props) {
 
   return (
     <div>
-      <Modal open={open} onClose={handleClose}>
+      <Modal open={open} onClose={resetFormData}>
         {body}
       </Modal>
     </div>
