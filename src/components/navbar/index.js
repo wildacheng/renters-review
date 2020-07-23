@@ -2,7 +2,8 @@ import React from "react";
 // import {connect} from 'react-redux'
 import { MemoryRouter as Router } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
-import MenuDropDown from '../menuDropDown'
+import MenuDropDown from "../menuDropDown";
+import AuthFormModal from "../authFormModal";
 
 //material.ui
 import {
@@ -14,9 +15,7 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-
 // import {logout} from '../store'
-// import "./style.css";
 
 //styling for ClassName
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     textAlign: "left",
-
   },
   hover: {
     "&:hover": {
@@ -45,6 +43,23 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [isRegister, setIsRegister] = React.useState(false);
+
+  //onClick for register/sign in modal
+  const handleClick = (action) => () => {
+    //
+    if (action === "register") {
+      setIsRegister(true);
+    }
+
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setIsRegister(false)
+  };
 
   return (
     <Router>
@@ -91,6 +106,7 @@ const Navbar = () => {
               fontSize="h5.fontSize"
               fontFamily="Century Gothic Std"
               className={classes.hover}
+              onClick={handleClick("register")}
             >
               Register
             </Box>
@@ -100,12 +116,18 @@ const Navbar = () => {
               fontSize="h5.fontSize"
               fontFamily="Century Gothic Std"
               className={classes.hover}
+              onClick={handleClick()}
             >
               Sign In
             </Box>
           </Toolbar>
         </AppBar>
       </div>
+      <AuthFormModal
+        open={open}
+        handleClose={handleClose}
+        isRegister={isRegister}
+      />
     </Router>
   );
 };
