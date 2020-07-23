@@ -43,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [isRegister, setIsRegister] = React.useState(false);
+  const [ open, setOpen ] = React.useState(false);
+  const [ isRegister, setIsRegister ] = React.useState(false);
 
   //onClick for register/sign in modal
   const handleClick = (action) => () => {
@@ -58,7 +58,7 @@ const Navbar = () => {
 
   const handleClose = () => {
     setOpen(false);
-    setIsRegister(false)
+    setIsRegister(false);
   };
 
   return (

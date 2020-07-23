@@ -1,12 +1,7 @@
 import React from "react";
 //material.ui
-import {
-  makeStyles,
-  Modal,
-  TextField,
-  Divider,
-  Button,
-} from "@material-ui/core";
+import { makeStyles, Modal, Divider, Button } from "@material-ui/core";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import "./style.css";
 
 //position of the modal
@@ -15,7 +10,7 @@ function getModalStyle() {
     top: "50%",
     left: "50%",
     transform: `translate(-50%, -50%)`,
-    borderRadius: '5px'
+    borderRadius: "5px",
   };
 }
 //
@@ -61,55 +56,145 @@ const useStyles = makeStyles((theme) => ({
 
 function AuthFormModal(props) {
   const { open, handleClose, isRegister } = props;
-  const classes = useStyles();
+  //react hooks to set state
+  const initialFormData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    submitted: false,
+  };
+
+  const [formData, setFormData] = React.useState(initialFormData);
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
+  const classes = useStyles();
 
-  const registerInput = ["First Name", "Last Name", "Email", "Password"];
-  const signInInput = ["Email Address", "Address"];
+  const handleChange = (event) => {
+    const newForm = { ...formData };
+    newForm[event.target.name] = event.target.value;
+    setFormData(newForm);
+  };
+
+  const handleSubmit = () => {
+    const newForm = { ...formData };
+    newForm.submitted = true;
+    setFormData(newForm);
+
+    setTimeout(() => {
+      const newForm = { ...formData };
+      newForm.submitted = false;
+      setFormData(newForm);
+    }, 5000);
+  };
 
   let body;
-
   if (isRegister) {
     body = (
-      <form noValidate autoComplete="off">
-        <div style={modalStyle} className={classes.paper}>
-          <div className={classes.title}>Create Your Account</div>
-          <Divider className={classes.divider} orientation="horizontal" />
-          {registerInput.map((input) => {
-            return (
-              <TextField
-                className={classes.textField}
-                label={input}
-                id="outlined-size-normal"
-                variant="outlined"
-              />
-            );
-          })}
-          <Button variant="contained" size="large" className={classes.button}>
+      <div style={modalStyle} className={classes.paper}>
+        <div className={classes.title}>Create Your Account</div>
+        <Divider className={classes.divider} orientation="horizontal" />
+        <ValidatorForm onSubmit={handleSubmit}>
+          <div className={classes.textField}>
+          <TextValidator
+            label="First Name"
+            onChange={handleChange}
+            name="firstName"
+            value={formData.firstName}
+            validators={["required"]}
+            errorMessages={["Please enter a first name."]}
+            variant="outlined"
+            fullWidth="true"
+          />
+          </div>
+          <div className={classes.textField}>
+          <TextValidator
+            label="Last Name"
+            onChange={handleChange}
+            name="lastName"
+            value={formData.lastName}
+            validators={["required"]}
+            errorMessages={["Please enter a last name."]}
+            variant="outlined"
+            fullWidth="true"
+          />
+          </div>
+          <div className={classes.textField}>
+          <TextValidator
+            label="Email"
+            onChange={handleChange}
+            name="email"
+            value={formData.email}
+            validators={["required", "isEmail"]}
+            errorMessages={["Please enter a valid email address.", "Please enter a valid email address."]}
+            variant="outlined"
+            fullWidth="true"
+          />
+          </div>
+          <div className={classes.textField}>
+          <TextValidator
+            label="Password"
+            onChange={handleChange}
+            name="password"
+            value={formData.password}
+            validators={["required"]}
+            errorMessages={["Please enter a password."]}
+            variant="outlined"
+            fullWidth="true"
+          />
+          </div>
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            className={classes.button}
+            fullWidth="true"
+          >
             Sign Up
           </Button>
-        </div>
-      </form>
+        </ValidatorForm>
+      </div>
     );
   } else {
     body = (
       <div style={modalStyle} className={classes.paper}>
         <div className={classes.title}>Log In To Your Account</div>
         <Divider className={classes.divider} orientation="horizontal" />
-        {signInInput.map((input) => {
-          return (
-            <TextField
-              className={classes.textField}
-              label={input}
-              id="outlined-size-normal"
-              variant="outlined"
-            />
-          );
-        })}
-        <Button variant="contained" size="large" className={classes.button}>
-          Log In
-        </Button>
+        <ValidatorForm onSubmit={handleSubmit}>
+        <div className={classes.textField}>
+          <TextValidator
+            label="Email"
+            onChange={handleChange}
+            name="email"
+            value={formData.email}
+            validators={["required", "isEmail"]}
+            errorMessages={["Please enter a valid email address.", "Please enter a valid email address."]}
+            variant="outlined"
+            fullWidth="true"
+          />
+          </div>
+          <div className={classes.textField}>
+          <TextValidator
+            label="Password"
+            onChange={handleChange}
+            name="password"
+            value={formData.password}
+            validators={["required"]}
+            errorMessages={["Please enter a password."]}
+            variant="outlined"
+            fullWidth="true"
+          />
+          </div>
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            className={classes.button}
+            fullWidth="true"
+          >
+            Sign Up
+          </Button>
+        </ValidatorForm>
       </div>
     );
   }
