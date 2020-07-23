@@ -23,7 +23,7 @@ const setNewUser = newUser => ({type: ADD_NEW_USER, newUser})
  * THUNK CREATORS
  */
 
-export const me = () => async dispatch => {
+export const getMe = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
     dispatch(getUser(res.data || defaultUser))
