@@ -29,9 +29,6 @@ const useStyles = makeStyles({
     paddingLeft: "15px",
     alignItems: "flex-end",
   },
-  blogTitle: {
-    width: "100%",
-  },
   row: {
     display: "flex",
     width: "100%",
@@ -47,7 +44,7 @@ const Blog = () => {
     <div style={{marginTop: "50px"}}>
       <BlogCarousel />
       <div className={classes.container}>
-        <h2 className={classes.blogTitle}>Apartment Hunting</h2>
+      <Typography variant="h2">Apartment Hunting</Typography>
         <div className={classes.row}>
           <Card className={classes.root}>
             <CardActionArea>
@@ -130,7 +127,7 @@ const Blog = () => {
             </CardActions>
           </Card>
         </div>
-        <h2 className={classes.blogTitle}>Apartment Living</h2>
+        <Typography variant="h2">Apartment Living</Typography>
         <div className={classes.row}>
           <Card className={classes.root}>
             <CardActionArea>
