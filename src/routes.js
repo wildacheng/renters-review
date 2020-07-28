@@ -5,7 +5,7 @@ import { withRouter, Route, Switch } from "react-router-dom";
 
 // import HomePage from "./components";
 // import ReviewForm from './components'
-import { Blog, HomePage } from './components'
+import { Blog, HomePage } from "./components";
 
 class Routes extends React.Component {
   render() {
@@ -20,4 +20,4 @@ class Routes extends React.Component {
   }
 }
 
-export default withRouter(Routes);
+export default Routes;
