@@ -16,6 +16,16 @@ const theme = createMuiTheme({
     }
   },
   typography: {
+    h2: {
+      color: "#1c313a",
+      fontFamily: "Barlow Semi Condensed,sans-serif",
+    fontWeight: 550,
+    textTransform: "uppercase",
+    fontSize: "1.5rem",
+    lineHeight: "3rem",
+    margin: 0,
+    width: "100%"
+    },
     fontFamily: [
       'Century Gothic Std'
     ].join(',',)

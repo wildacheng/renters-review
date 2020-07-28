@@ -92,7 +92,7 @@ class BlogCarousel extends React.Component {
   render() {
     return (
       <div style={{ padding: "15px", fontFamily: "xBarlow Semi Condensed"}} >
-        <h2>Featured Blogs</h2>
+        <Typography variant="h2">Featured Blogs</Typography>
 
         <Carousel
           className="Example"
