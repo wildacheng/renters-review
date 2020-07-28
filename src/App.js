@@ -1,6 +1,6 @@
 import React from 'react';
-import { Navbar, HomePage } from './components'
-// import Routes from './routes'
+import { Navbar } from './components'
+import Routes from './routes'
 // import './App.css';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Navbar />
-        <HomePage />
+        <Routes />
       </header>
     </div>
   );
