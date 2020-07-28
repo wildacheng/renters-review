@@ -89,14 +89,14 @@ const Navbar = () => {
               </Link>
             </Box>
             <Box ml={1} mr={1.5}>
-              <Link
-                color="inherit"
-                variant="h5"
-                component={RouterLink}
+              <RouterLink
+                // color="inherit"
+                // variant="h5"
+                // component={RouterLink}
                 to="/blog"
               >
                 Blog
-              </Link>
+              </RouterLink>
             </Box>
             <Divider className={classes.divider} orientation="vertical" />
             <Box

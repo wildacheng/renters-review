@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, HomePage } from './components'
+import { Navbar } from './components'
 import Routes from './routes'
 // import './App.css';
 
