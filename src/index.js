@@ -1,23 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { Router } from "react-router-dom";
-import history from "./history";
-import store from "./store";
-import App from "./App";
-import "./index.css";
+import { BrowserRouter as Router} from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
-import { ThemeProvider } from '@material-ui/core/styles'
-import theme from "./themeUtils"
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "./themeUtils";
+import "./index.css";
+import store from "./store";
+import App from "./App"
 
 ReactDOM.render(
-      <Provider store={store}>
-      <Router history={history}>
-        <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <Router>
         <App />
-        </ThemeProvider>
       </Router>
-    </Provider>,
+    </Provider>
+  </ThemeProvider>,
   document.getElementById("root")
 );
 

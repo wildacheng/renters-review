@@ -1,6 +1,5 @@
 import React from "react";
 // import {connect} from 'react-redux'
-import { MemoryRouter as Router } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
 import MenuDropDown from "../menuDropDown";
 import AuthFormModal from "../authFormModal";
@@ -26,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     textAlign: "left",
+    fontWeight: "700",
+    fontSize: "1.5rem",
+    lineHeight: "1.334"
   },
   hover: {
     "&:hover": {
@@ -37,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     height: 28,
     width: 2,
     margin: 4,
+    backgroundColor: "#ffffff"
   },
 }));
 //
@@ -62,7 +65,7 @@ const Navbar = () => {
   };
 
   return (
-    <Router>
+    <React.Fragment>
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
@@ -70,9 +73,9 @@ const Navbar = () => {
             <Typography className={classes.title}>
               <Link
                 color="inherit"
-                variant="h5"
+                // variant="h4"
                 component={RouterLink}
-                to="/home"
+                to="/"
                 underline="none"
               >
                 Renter's Review
@@ -89,14 +92,14 @@ const Navbar = () => {
               </Link>
             </Box>
             <Box ml={1} mr={1.5}>
-              <RouterLink
-                // color="inherit"
-                // variant="h5"
-                // component={RouterLink}
+              <Link
+                color="inherit"
+                variant="h5"
+                component={RouterLink}
                 to="/blog"
               >
                 Blog
-              </RouterLink>
+              </Link>
             </Box>
             <Divider className={classes.divider} orientation="vertical" />
             <Box
@@ -128,7 +131,7 @@ const Navbar = () => {
         handleClose={handleClose}
         isRegister={isRegister}
       />
-    </Router>
+    </React.Fragment>
   );
 };
 
