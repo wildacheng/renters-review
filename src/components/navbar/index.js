@@ -73,7 +73,6 @@ const Navbar = () => {
             <Typography className={classes.title}>
               <Link
                 color="inherit"
-                // variant="h4"
                 component={RouterLink}
                 to="/"
                 underline="none"
@@ -91,7 +90,7 @@ const Navbar = () => {
                 Write a Review
               </Link>
             </Box>
-            <Box ml={1} mr={1.5}>
+            <Box ml={2} mr={2}>
               <Link
                 color="inherit"
                 variant="h5"
@@ -104,8 +103,8 @@ const Navbar = () => {
             <Divider className={classes.divider} orientation="vertical" />
             <Box
               component="span"
-              ml={1.5}
-              mr={1}
+              ml={2}
+              mr={2}
               fontSize="h5.fontSize"
               fontFamily="Century Gothic Std"
               className={classes.hover}
