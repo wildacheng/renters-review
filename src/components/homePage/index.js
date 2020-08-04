@@ -1,17 +1,15 @@
 import React from "react";
+import SearchBar from "../searchBar";
 import BlogCarousel from "../blogCarousel";
 import Footer from "../footer"
 import "./style.css";
 
 //material.ui
-import SearchIcon from "@material-ui/icons/Search";
 import {
   makeStyles,
   Typography,
   Box,
   fade,
-  IconButton,
-  InputBase,
 } from "@material-ui/core";
 //
 
@@ -21,24 +19,7 @@ const useStyles = makeStyles((theme) => ({
     top: "35%",
     color: "#ffffff",
     backgroundColor: fade(theme.palette.common.black, 0.65),
-  },
-  search: {
-    position: "absolute",
-    display: "flex",
-    zIndex: 1,
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 1),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.85),
-    },
-    width: "50ch",
-    top: "45%",
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
-    fontSize: "large",
-  },
+  }
 }));
 //
 
@@ -57,20 +38,7 @@ const HomePage = () => {
             Real reviews to help you find the perfect home.
           </Box>
         </Typography>
-        <div className={classes.search}>
-          <InputBase
-            className={classes.input}
-            placeholder="Enter an address, neighborhood, city or ZIP code"
-            fontFamily="Century Gothic Std"
-          />
-          <IconButton
-            type="submit"
-            className={classes.iconButton}
-            aria-label="search"
-          >
-            <SearchIcon />
-          </IconButton>
-        </div>
+        <SearchBar />
       </div>
       <BlogCarousel />
       <Footer />

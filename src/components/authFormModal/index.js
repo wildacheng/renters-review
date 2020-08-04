@@ -65,9 +65,9 @@ function AuthFormModal(props) {
     submitted: false,
   };
 
-  const [formData, setFormData] = React.useState(initialFormData);
+  const [ formData, setFormData ] = React.useState(initialFormData);
   // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
+  const [ modalStyle ] = React.useState(getModalStyle);
   const classes = useStyles();
 
   const handleChange = (event) => {

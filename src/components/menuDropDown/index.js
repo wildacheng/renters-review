@@ -89,14 +89,6 @@ const MenuDropDown = () => {
         onClose={handleClose}
       >
         <StyledMenuItem>
-          <ListItemText primary="Apartments for Rent" />
-        </StyledMenuItem>
-        <Divider  className={classes.divider} />
-        <StyledMenuItem>
-          <ListItemText primary="Houses for Rent" />
-        </StyledMenuItem>
-        <Divider className={classes.divider} />
-        <StyledMenuItem>
           <ListItemText primary="Write a Review" />
         </StyledMenuItem>
         <Divider className={classes.divider} />
