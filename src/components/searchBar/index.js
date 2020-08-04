@@ -44,7 +44,7 @@ const SearchBar = () => {
   // const handleClick = async () => {
   //   try {
   //     const res = await axios.get(
-  //       `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${searchData}&key=${process.env.REACT_APP_GOOGLE_STATIC_MAP}`
+  //       `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${searchData}&key=${REACT_APP_GOOGLE_STATIC_MAP}`
   //     );
   //     console.log(res, "IM RESPOND");
   //   } catch (error) {

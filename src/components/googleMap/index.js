@@ -44,7 +44,7 @@ const loader = new Loader("AIzaSyDcm3kaMrc3tR8jPVUA-Tlf4DBvgWDGMKI", options);
         // Important! Always set the container height explicitly
         // <div style={{ height: '100vh', width: '100%' }}>
         //   <GoogleMapReact
-        //     bootstrapURLKeys={{ key: "AIzaSyDcm3kaMrc3tR8jPVUA-Tlf4DBvgWDGMKI" }}
+        //     bootstrapURLKeys={{ key: "YOUR API KEY" }}
         //     defaultCenter={this.props.center}
         //     defaultZoom={this.props.zoom}
         //   >

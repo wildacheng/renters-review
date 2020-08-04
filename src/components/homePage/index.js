@@ -27,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = () => {
   const classes = useStyles();
 
-  // const googleMapsApiKey = AIzaSyDcm3kaMrc3tR8jPVUA-Tlf4DBvgWDGMKI
-
   return (
     <div>
       <img
