@@ -38,9 +38,8 @@ const SearchBar = () => {
     setSearchData(event.target.value);
   };
 
-  const handleClick = async() => {
-    const searchStr = searchData.split(" ").join("&")
 
+  const handleClick = async() => {
         try {
         const res = await axios.get(`https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${searchData}&key=${process.env.REACT_APP_GOOGLE_STATIC_MAP}`)
         console.log(res, "IM RESPOND")

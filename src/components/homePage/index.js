@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "../searchBar";
 import BlogCarousel from "../blogCarousel";
 import Footer from "../footer"
+import GoogleMap from "../googleMap"
 import "./style.css";
 
 //material.ui
@@ -26,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = () => {
   const classes = useStyles();
 
+  // const googleMapsApiKey = AIzaSyDcm3kaMrc3tR8jPVUA-Tlf4DBvgWDGMKI
+
   return (
     <div>
       <img
@@ -39,6 +42,7 @@ const HomePage = () => {
           </Box>
         </Typography>
         <SearchBar />
+        <GoogleMap />
       </div>
       <BlogCarousel />
       <Footer />
