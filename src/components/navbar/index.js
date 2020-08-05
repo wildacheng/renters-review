@@ -83,7 +83,7 @@ const Navbar = () => {
             <Box mx={1}>
               <Link
                 color="inherit"
-                variant="h5"
+                variant="h6"
                 component={RouterLink}
                 to="/writeareview"
               >
@@ -93,7 +93,7 @@ const Navbar = () => {
             <Box ml={2} mr={2}>
               <Link
                 color="inherit"
-                variant="h5"
+                variant="h6"
                 component={RouterLink}
                 to="/blog"
               >
@@ -105,7 +105,7 @@ const Navbar = () => {
               component="span"
               ml={2}
               mr={2}
-              fontSize="h5.fontSize"
+              fontSize="h6.fontSize"
               fontFamily="Century Gothic Std"
               className={classes.hover}
               onClick={handleClick("register")}
@@ -115,7 +115,7 @@ const Navbar = () => {
             <Box
               component="span"
               mx={1}
-              fontSize="h5.fontSize"
+              fontSize="h6.fontSize"
               fontFamily="Century Gothic Std"
               className={classes.hover}
               onClick={handleClick()}
