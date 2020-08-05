@@ -12,10 +12,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles, fade, IconButton, InputBase } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  search: {
+  container: {
     position: "absolute",
     display: "flex",
-    zIndex: 1,
+    justifyContent: "flex-end",
+    // zIndex: 1,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 1),
     "&:hover": {
@@ -23,6 +24,11 @@ const useStyles = makeStyles((theme) => ({
     },
     width: "50ch",
     top: "45%",
+  },
+  search: {
+    flexDirection: "column",
+    display: "flex",
+    width: "50ch",
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -33,13 +39,22 @@ const useStyles = makeStyles((theme) => ({
 
 const SearchBar = () => {
   const [address, setAddress] = React.useState("");
+  const [coordinates, setCoordinates] = React.useState({
+    lat: null,
+    lng: null,
+  });
   const classes = useStyles();
 
   // const handleChange = (event) => {
   //   setSearchData(event.target.value);
   // };
 
-  const handleSelect = async (value) => {};
+  const handleSelect = async value => {
+    const results = await geocodeByAddress(value)
+    const latLng = await getLatLng(results[0])
+    setAddress(value)
+    setCoordinates(latLng)
+  };
 
   // const handleClick = async () => {
   //   try {
@@ -53,7 +68,7 @@ const SearchBar = () => {
   // };
 
   return (
-    <div className={classes.search}>
+    <div className={classes.container}>
       <PlacesAutocomplete
         value={address}
         onChange={setAddress}
@@ -62,13 +77,30 @@ const SearchBar = () => {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className={classes.search}>
             <InputBase
-              {...getInputProps({ placeholder: "Type address"})}
-              // onChange={handleChange}
               className={classes.input}
+              {...getInputProps()}
+              // onChange={handleChange}
               placeholder="Enter an address, neighborhood, city or ZIP code"
               fontFamily="Century Gothic Std"
             />
-            <IconButton
+            <div>
+              {loading ? <div>...loading</div> : null}
+              {suggestions.map((suggestion) => {
+                const style = {
+                  backgroundColor: suggestion.active ? "#455a64" : "#fff",
+                };
+
+                return (
+                  <div {...getSuggestionItemProps(suggestion, { style })}>
+                    {suggestion.description}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </PlacesAutocomplete>
+      <IconButton
               // onClick={handleClick}
               type="submit"
               className={classes.iconButton}
@@ -76,33 +108,6 @@ const SearchBar = () => {
             >
               <SearchIcon />
             </IconButton>
-            <div>
-              {loading ? <div>...loading</div> : null}
-              {suggestions.map(suggestion => {
-                const style = {
-                  backgroundColor: suggestion.active ? "#001871" : "#fff"
-                }
-
-                return (<div {...getSuggestionItemProps(suggestion, { style })}>{suggestion.description}</div>);
-              })}
-            </div>
-          </div>
-        )}
-      </PlacesAutocomplete>
-      {/* <InputBase
-        onChange={handleChange}
-        className={classes.input}
-        placeholder="Enter an address, neighborhood, city or ZIP code"
-        fontFamily="Century Gothic Std"
-      /> */}
-      {/* <IconButton
-        // onClick={handleClick}
-        type="submit"
-        className={classes.iconButton}
-        aria-label="search"
-      >
-        <SearchIcon />
-      </IconButton> */}
     </div>
   );
 };
