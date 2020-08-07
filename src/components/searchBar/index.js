@@ -1,7 +1,7 @@
 import React from "react";
-// import axios from "axios";
+import { withRouter } from "react-router-dom";
 
-//react google autocomplete
+//react google places autocomplete
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     display: "flex",
     justifyContent: "flex-end",
-    // zIndex: 1,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 1),
     "&:hover": {
@@ -35,60 +34,73 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     fontSize: "large",
   },
+  blkButton: {
+    color: "black"
+  },
+  redButton: {
+    color: "red"
+  }
 }));
 
-const SearchBar = () => {
+const SearchBar = ({ history }) => {
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     lat: null,
-    lng: null,
+    lng: null
   });
+  const [selected, setSelected] = React.useState(false)
+
   const classes = useStyles();
 
-  // const handleChange = (event) => {
-  //   setSearchData(event.target.value);
-  // };
-
-  const handleSelect = async value => {
-    const results = await geocodeByAddress(value)
-    const latLng = await getLatLng(results[0])
-    setAddress(value)
-    setCoordinates(latLng)
+  const handleChange = (address) => {
+    setSelected(false)
+    setAddress(address)
   };
 
-  // const handleClick = async () => {
-  //   try {
-  //     const res = await axios.get(
-  //       `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${searchData}&key=${REACT_APP_GOOGLE_STATIC_MAP}`
-  //     );
-  //     console.log(res, "IM RESPOND");
-  //   } catch (error) {
-  //     console.log(error, "Incorrect Input");
-  //   }
-  // };
+  const handleSelect = async address => {
+    try {
+      const results = await geocodeByAddress(address);
+      const latLng = await getLatLng(results[0]);
+      setAddress(address);
+      setCoordinates(latLng);
+      setSelected(true)
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+
+  const handleClick = () => {
+    history.push({
+      pathname: "/reviews",
+      state: {
+        lat: coordinates.lat,
+        lng: coordinates.lng
+      },
+    });
+  };
 
   return (
     <div className={classes.container}>
       <PlacesAutocomplete
         value={address}
-        onChange={setAddress}
+        onChange={handleChange}
         onSelect={handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className={classes.search}>
             <InputBase
               className={classes.input}
-              {...getInputProps()}
-              // onChange={handleChange}
+              onChange={(handleChange)}
               placeholder="Enter an address, neighborhood, city or ZIP code"
               fontFamily="Century Gothic Std"
+              {...getInputProps()}
             />
             <div>
-              {loading ? <div>...loading</div> : null}
+              {loading ? <div>Loading...</div> : null}
               {suggestions.map((suggestion) => {
-                const style = {
-                  backgroundColor: suggestion.active ? "#455a64" : "#fff",
-                };
+                const style = suggestion.active
+                  ? { backgroundColor: "#455a64", cursor: "pointer" }
+                  : { backgroundColor: "#ffffff", cursor: "pointer" };
 
                 return (
                   <div {...getSuggestionItemProps(suggestion, { style })}>
@@ -101,15 +113,16 @@ const SearchBar = () => {
         )}
       </PlacesAutocomplete>
       <IconButton
-              // onClick={handleClick}
-              type="submit"
-              className={classes.iconButton}
-              aria-label="search"
-            >
-              <SearchIcon />
-            </IconButton>
+        //since onkeydown/press conflicts with the street view library getInputProps method- change icon color instead
+        className={selected? classes.redButton : classes.blkButton}
+        onClick={handleClick}
+        type="submit"
+        aria-label="search"
+      >
+        <SearchIcon />
+      </IconButton>
     </div>
   );
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);

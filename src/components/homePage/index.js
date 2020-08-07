@@ -2,7 +2,6 @@ import React from "react";
 import SearchBar from "../searchBar";
 import BlogCarousel from "../blogCarousel";
 import Footer from "../footer"
-import GoogleMap from "../googleMap"
 import "./style.css";
 
 //material.ui
@@ -40,7 +39,6 @@ const HomePage = () => {
           </Box>
         </Typography>
         <SearchBar />
-        <GoogleMap />
       </div>
       <BlogCarousel />
       <Footer />
