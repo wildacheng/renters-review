@@ -1,4 +1,5 @@
 import React from "react";
+import {withRouter} from "react-router-dom"
 // import axios from "axios";
 
 //react google places autocomplete
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchBar = () => {
+const SearchBar = ({ history }) => {
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     lat: null,
@@ -45,20 +46,26 @@ const SearchBar = () => {
   });
   const classes = useStyles();
 
+  const handleChange = (address) => {
+    setAddress(address);
+  };
 
-  const handleSelect = async address => {
+  const handleSelect = async (address) => {
     try {
-      const results = await geocodeByAddress(address)
-      const latLng = await getLatLng(results[0])
-      setCoordinates(latLng)
-      setAddress(address)
-    } catch(error) {
-      console.log("Error", error)
+      const results = await geocodeByAddress(address);
+      const latLng = await getLatLng(results[0]);
+      setCoordinates(latLng);
+      setAddress(address);
+    } catch (error) {
+      console.log("Error", error);
     }
   };
 
-  const handleChange = (address) => {
-    setAddress(address)
+  const handleEnter = (event) => {
+    if (event.keyCode === 13) {
+      history.push("/reviews");
+      event.preventDefault();
+    }
   };
 
   return (
@@ -73,6 +80,7 @@ const SearchBar = () => {
             <InputBase
               className={classes.input}
               onChange={handleChange}
+              onKeyDown={handleEnter}
               {...getInputProps()}
               placeholder="Enter an address, neighborhood, city or ZIP code"
               fontFamily="Century Gothic Std"
@@ -80,10 +88,9 @@ const SearchBar = () => {
             <div>
               {loading ? <div>Loading...</div> : null}
               {suggestions.map((suggestion) => {
-                const style =
-                suggestion.active
-                  ? { backgroundColor: '#455a64', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' }
+                const style = suggestion.active
+                  ? { backgroundColor: "#455a64", cursor: "pointer" }
+                  : { backgroundColor: "#ffffff", cursor: "pointer" };
 
                 return (
                   <div {...getSuggestionItemProps(suggestion, { style })}>
@@ -96,15 +103,15 @@ const SearchBar = () => {
         )}
       </PlacesAutocomplete>
       <IconButton
-              // onClick={handleClick}
-              type="submit"
-              className={classes.iconButton}
-              aria-label="search"
-            >
-              <SearchIcon />
-            </IconButton>
+        // onClick={handleClick}
+        type="submit"
+        className={classes.iconButton}
+        aria-label="search"
+      >
+        <SearchIcon />
+      </IconButton>
     </div>
   );
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);

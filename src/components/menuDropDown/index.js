@@ -18,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
   },
   divider: {
     width: "100%",
-    orientation: "horizontal"
-  }
+    orientation: "horizontal",
+  },
 }));
 //
 
@@ -52,7 +52,7 @@ const StyledMenuItem = withStyles((theme) => ({
         color: theme.palette.common.white,
       },
     },
-    width: "-webkit-fill-available"
+    width: "-webkit-fill-available",
   },
 }))(MenuItem);
 //

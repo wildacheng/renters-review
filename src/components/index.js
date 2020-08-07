@@ -5,6 +5,7 @@
  */
 export {default as Navbar} from './navbar'
 export {default as HomePage} from './homePage'
+export {default as GoogleMap} from './googleMap'
 export {default as Blog} from './blog'
 // export {default as UserHome} from './user-home'
 // export {Login, Signup} from './auth-form'
