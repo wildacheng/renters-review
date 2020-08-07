@@ -1,6 +1,5 @@
 import React from "react";
-import {withRouter} from "react-router-dom"
-// import axios from "axios";
+import { withRouter } from "react-router-dom";
 
 //react google places autocomplete
 import PlacesAutocomplete, {
@@ -17,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     display: "flex",
     justifyContent: "flex-end",
-    // zIndex: 1,
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 1),
     "&:hover": {
@@ -36,36 +34,49 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     fontSize: "large",
   },
+  blkButton: {
+    color: "black"
+  },
+  redButton: {
+    color: "red"
+  }
 }));
 
 const SearchBar = ({ history }) => {
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     lat: null,
-    lng: null,
+    lng: null
   });
+  const [selected, setSelected] = React.useState(false)
+
   const classes = useStyles();
 
   const handleChange = (address) => {
-    setAddress(address);
+    setSelected(false)
+    setAddress(address)
   };
 
-  const handleSelect = async (address) => {
+  const handleSelect = async address => {
     try {
       const results = await geocodeByAddress(address);
       const latLng = await getLatLng(results[0]);
-      setCoordinates(latLng);
       setAddress(address);
+      setCoordinates(latLng);
+      setSelected(true)
     } catch (error) {
       console.log("Error", error);
     }
   };
 
-  const handleEnter = (event) => {
-    if (event.keyCode === 13) {
-      history.push("/reviews");
-      event.preventDefault();
-    }
+  const handleClick = () => {
+    history.push({
+      pathname: "/reviews",
+      state: {
+        lat: coordinates.lat,
+        lng: coordinates.lng
+      },
+    });
   };
 
   return (
@@ -79,11 +90,10 @@ const SearchBar = ({ history }) => {
           <div className={classes.search}>
             <InputBase
               className={classes.input}
-              onChange={handleChange}
-              onKeyDown={handleEnter}
-              {...getInputProps()}
+              onChange={(handleChange)}
               placeholder="Enter an address, neighborhood, city or ZIP code"
               fontFamily="Century Gothic Std"
+              {...getInputProps()}
             />
             <div>
               {loading ? <div>Loading...</div> : null}
@@ -103,9 +113,10 @@ const SearchBar = ({ history }) => {
         )}
       </PlacesAutocomplete>
       <IconButton
-        // onClick={handleClick}
+        //since onkeydown/press conflicts with the street view library getInputProps method- change icon color instead
+        className={selected? classes.redButton : classes.blkButton}
+        onClick={handleClick}
         type="submit"
-        className={classes.iconButton}
         aria-label="search"
       >
         <SearchIcon />

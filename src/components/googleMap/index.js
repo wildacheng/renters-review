@@ -1,13 +1,15 @@
 import React from "react";
 import ReactStreetview from "react-streetview";
 
-const GoogleMap = () => {
+const GoogleMap = (props) => {
+
   // see https://developers.google.com/maps/documentation/javascript
-  const googleMapsApiKey = process.env.REACT_APP_GOOGLE_STATIC_MAP;
+  // const googleMapsApiKey = "none"
+  // process.env.REACT_APP_GOOGLE_STATIC_MAP;
 
   // see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions
   const streetViewPanoramaOptions = {
-    position: { lat: 46.9171876, lng: 17.8951832 },
+    position: { lat: props.location.state.lat, lng: props.location.state.lng },
     pov: { heading: 100, pitch: 0 },
     zoom: 1,
   };
@@ -21,7 +23,7 @@ const GoogleMap = () => {
       }}
     >
       <ReactStreetview
-        apiKey={googleMapsApiKey}
+        // apiKey={googleMapsApiKey}
         streetViewPanoramaOptions={streetViewPanoramaOptions}
       />
     </div>
