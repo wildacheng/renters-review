@@ -4,8 +4,7 @@ import ReactStreetview from "react-streetview";
 const GoogleMap = (props) => {
 
   // see https://developers.google.com/maps/documentation/javascript
-  // const googleMapsApiKey = "none"
-  // process.env.REACT_APP_GOOGLE_STATIC_MAP;
+  const googleMapsApiKey = process.env.REACT_APP_GOOGLE_STATIC_MAP;
 
   // see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions
   const streetViewPanoramaOptions = {
@@ -23,7 +22,7 @@ const GoogleMap = (props) => {
       }}
     >
       <ReactStreetview
-        // apiKey={googleMapsApiKey}
+        apiKey={googleMapsApiKey}
         streetViewPanoramaOptions={streetViewPanoramaOptions}
       />
     </div>
