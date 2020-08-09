@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar } from './components'
 import Routes from './routes'
-// import './App.css';
+import scriptLoader from 'react-async-script-loader';
 
 function App() {
   return (
@@ -14,4 +14,4 @@ function App() {
   );
 }
 
-export default App;
+export default scriptLoader([`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_STATIC_MAP}`])(App);
