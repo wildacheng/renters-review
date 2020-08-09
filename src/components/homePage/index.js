@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 //
 
-console.log("I LOVE U")
 const HomePage = () => {
   const classes = useStyles();
 
