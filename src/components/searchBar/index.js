@@ -9,6 +9,7 @@ import PlacesAutocomplete, {
 
 //material.ui
 import SearchIcon from "@material-ui/icons/Search";
+import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import { makeStyles, fade, IconButton, InputBase } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
     width: "50ch",
     top: "45%",
+    height: "50px"
   },
   search: {
     flexDirection: "column",
@@ -30,15 +32,18 @@ const useStyles = makeStyles((theme) => ({
     width: "50ch",
   },
   input: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(2),
     flex: 1,
     fontSize: "large",
   },
   blkButton: {
-    color: "black"
+    color: "black",
   },
   redButton: {
-    color: "red"
+    color: "red",
+  },
+  button: {
+    position: "absolute",
   }
 }));
 
@@ -46,24 +51,24 @@ const SearchBar = ({ history }) => {
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     lat: null,
-    lng: null
+    lng: null,
   });
-  const [selected, setSelected] = React.useState(false)
+  const [selected, setSelected] = React.useState(false);
 
   const classes = useStyles();
 
   const handleChange = (address) => {
-    setSelected(false)
-    setAddress(address)
+    setSelected(false);
+    setAddress(address);
   };
 
-  const handleSelect = async address => {
+  const handleSelect = async (address) => {
     try {
       const results = await geocodeByAddress(address);
       const latLng = await getLatLng(results[0]);
       setAddress(address);
       setCoordinates(latLng);
-      setSelected(true)
+      setSelected(true);
     } catch (error) {
       console.log("Error", error);
     }
@@ -74,13 +79,14 @@ const SearchBar = ({ history }) => {
       pathname: "/reviews",
       state: {
         lat: coordinates.lat,
-        lng: coordinates.lng
+        lng: coordinates.lng,
       },
     });
   };
 
   return (
     <div className={classes.container}>
+    {/* <div> */}
       <PlacesAutocomplete
         value={address}
         onChange={handleChange}
@@ -90,7 +96,7 @@ const SearchBar = ({ history }) => {
           <div className={classes.search}>
             <InputBase
               className={classes.input}
-              onChange={(handleChange)}
+              onChange={handleChange}
               placeholder="Enter an address, neighborhood, city or ZIP code"
               fontFamily="Century Gothic Std"
               {...getInputProps()}
@@ -99,28 +105,32 @@ const SearchBar = ({ history }) => {
               {loading ? <div>Loading...</div> : null}
               {suggestions.map((suggestion) => {
                 const style = suggestion.active
-                  ? { backgroundColor: "#455a64", cursor: "pointer" }
-                  : { backgroundColor: "#ffffff", cursor: "pointer" };
+                  ? { backgroundColor: "#455a64", cursor: "pointer", display: "flex", alignItems: "center", lineHeight:"2.5", borderBottom: "1px solid grey" }
+                  : { backgroundColor: "#ffffff", cursor: "pointer", display: "flex", alignItems: "center", lineHeight:"2.5", borderBottom: "1px solid grey" };
 
                 return (
-                  <div {...getSuggestionItemProps(suggestion, { style })}>
-                    {suggestion.description}
-                  </div>
+                    <div {...getSuggestionItemProps(suggestion, { style })}>
+                      <LocationOnOutlinedIcon />
+                      {suggestion.description}
+                    </div>
                 );
               })}
             </div>
           </div>
         )}
       </PlacesAutocomplete>
+      {/* </div> */}
+      <div className={classes.button}>
       <IconButton
         //since onkeydown/press conflicts with the street view library getInputProps method- change icon color instead
-        className={selected? classes.redButton : classes.blkButton}
+        className={selected ? classes.redButton : classes.blkButton}
         onClick={handleClick}
         type="submit"
         aria-label="search"
       >
         <SearchIcon />
       </IconButton>
+    </div>
     </div>
   );
 };
