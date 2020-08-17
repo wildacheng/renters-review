@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
     width: "50ch",
     top: "45%",
-    height: "50px"
+    height: "48px"
   },
   search: {
     flexDirection: "column",
