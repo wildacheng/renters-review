@@ -1,5 +1,6 @@
 {
   "name": "renters-review",
+  "homepage": "https://wildacheng.github.io/renters-review/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
