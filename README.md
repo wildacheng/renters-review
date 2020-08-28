@@ -1,11 +1,10 @@
 # Renter's Review
-Rental property review and blog application 
+Rental property review and blog application
 
-## Tech Stack 
+## Tech Stack
 - React.js
 - Node.js
 - Express.js
 
-## Additional Technologies 
+## Additional Technologies
 - Google Maps API
-- Stripe API
