@@ -7,4 +7,6 @@ Rental property review and blog application
 - Express.js
 
 ## Additional Technologies
+- Material.UI
 - Google Maps API
+
