@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     fontWeight: "700",
     fontSize: "1.5rem",
-    lineHeight: "1.334"
+    lineHeight: "1.334",
   },
   hover: {
     "&:hover": {
@@ -39,15 +39,15 @@ const useStyles = makeStyles((theme) => ({
     height: 28,
     width: 2,
     margin: 4,
-    backgroundColor: "#ffffff"
+    backgroundColor: "#ffffff",
   },
 }));
 //
 
 const Navbar = () => {
   const classes = useStyles();
-  const [ open, setOpen ] = React.useState(false);
-  const [ isRegister, setIsRegister ] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [isRegister, setIsRegister] = React.useState(false);
 
   //onClick for register/sign in modal
   const handleClick = (action) => () => {
@@ -69,7 +69,7 @@ const Navbar = () => {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <MenuDropDown />
+            <MenuDropDown handleSelect={handleClick} />
             <Typography className={classes.title}>
               <Link
                 color="inherit"

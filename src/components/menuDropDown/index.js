@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 //material.ui
 import {
   Menu,
@@ -58,9 +59,10 @@ const StyledMenuItem = withStyles((theme) => ({
 //
 
 //component
-const MenuDropDown = () => {
+const MenuDropDown = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -70,7 +72,23 @@ const MenuDropDown = () => {
     setAnchorEl(null);
   };
 
-  const menuOptions = ["Register", "Sign In", "Write a Review", "Blog"];
+  const menuOptions = [
+    { title: "Register", action: props.handleSelect("register") },
+    { title: "Sign In", action: props.handleSelect() },
+    {
+      title: "Write a Review",
+      action: () => {
+        props.history.push("/reviewform");
+      },
+    },
+    {
+      title: "Blog",
+      action: () => {
+        props.history.push("/blog");
+      },
+    },
+  ];
+
 
   return (
     <React.Fragment>
@@ -92,8 +110,8 @@ const MenuDropDown = () => {
       >
         {menuOptions.map((option, i) => (
           <React.Fragment>
-            <StyledMenuItem>
-              <ListItemText primary={option} />
+            <StyledMenuItem onClick={option.action}>
+              <ListItemText primary={option.title} />
             </StyledMenuItem>
             {i < menuOptions.length - 1 && (
               <Divider className={classes.divider} />
@@ -105,4 +123,4 @@ const MenuDropDown = () => {
   );
 };
 
-export default MenuDropDown;
+export default withRouter(MenuDropDown);
