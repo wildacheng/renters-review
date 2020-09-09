@@ -3,7 +3,7 @@ import { MemoryRouter as Router } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
 import "./style.css";
 //material.ui
-import { Link, makeStyles } from "@material-ui/core";
+import { Link, Grid, makeStyles } from "@material-ui/core";
 //react-fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -14,6 +14,15 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: "#007c91",
     },
+  },
+  box: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  menuContainer: {
+    display: "flex",
+    paddingLeft: "20%",
+    paddingRight: "20%",
   },
 }));
 
@@ -26,10 +35,10 @@ const Footer = () => {
 
   return (
     <Router>
-      <div id="footer">
+      <Grid container justify="center" id="footer">
         <div id="footer-logo">Renter's Review</div>
-        <div>
-          <div id="menu-container">
+        <Grid container className={classes.menuContainer}>
+          <Grid item xs={12} sm={12} md={4} className={classes.box}>
             <div className="menu">
               <h3>Our Company</h3>
               <div className="menu-link">
@@ -62,6 +71,8 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} className={classes.box}>
             <div className="menu">
               <h3>Advertise With Us</h3>
               <div className="menu-link">
@@ -76,6 +87,8 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} className={classes.box}>
             <div className="menu">
               <h3>Let Us Help</h3>
               <div className="menu-link">
@@ -99,8 +112,8 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
+          </Grid>
+        </Grid>
         <div id="social-media">
           <FontAwesomeIcon
             className={classes.hover}
@@ -118,7 +131,7 @@ const Footer = () => {
             onClick={handleIcon("https://www.linkedin.com/in/wilda-cheng/")}
           />
         </div>
-      </div>
+      </Grid>
     </Router>
   );
 };

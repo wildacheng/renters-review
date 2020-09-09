@@ -32,10 +32,6 @@ function Banner(props) {
         <Typography className="Title">{props.item.Name}</Typography>
 
         <Typography className="Caption">{props.item.Caption}</Typography>
-
-        {/* <Button variant="outlined" className="ViewButton">
-          View Now
-        </Button> */}
       </CardContent>
     </Grid>
   );

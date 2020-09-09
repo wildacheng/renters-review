@@ -16,17 +16,6 @@
   font-weight: bolder;
 }
 
-#menu-container {
-  display: flex;
-  justify-content: space-evenly;
-  padding-left: 200px;
-  padding-right: 200px;
-}
-
-.menu {
-  padding-right: 15px;
-  padding-left: 15px;
-}
 
 .menu-link {
   display: flex;

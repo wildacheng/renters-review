@@ -70,6 +70,8 @@ const MenuDropDown = () => {
     setAnchorEl(null);
   };
 
+  const menuOptions = ["Register", "Sign In", "Write a Review", "Blog"];
+
   return (
     <React.Fragment>
       <IconButton
@@ -88,13 +90,16 @@ const MenuDropDown = () => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
-          <ListItemText primary="Write a Review" />
-        </StyledMenuItem>
-        <Divider className={classes.divider} />
-        <StyledMenuItem>
-          <ListItemText primary="Blog" />
-        </StyledMenuItem>
+        {menuOptions.map((option, i) => (
+          <React.Fragment>
+            <StyledMenuItem>
+              <ListItemText primary={option} />
+            </StyledMenuItem>
+            {i < menuOptions.length - 1 && (
+              <Divider className={classes.divider} />
+            )}
+          </React.Fragment>
+        ))}
       </StyledMenu>
     </React.Fragment>
   );
