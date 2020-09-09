@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import {
   Card,
+  Grid,
   Button,
   CardMedia,
   makeStyles,
@@ -11,42 +12,37 @@ import {
   CardActionArea,
 } from "@material-ui/core";
 import BlogCarousel from "../blogCarousel";
+import Footer from "../footer"
 
-const useStyles = makeStyles({
-  root: {
-    width: 550,
-    marginRight: "25px",
-  },
+const useStyles = makeStyles((theme) => ({
+  // root: {
+  //   flexGrow: 1,
+  // },
   media: {
     height: 300,
   },
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    paddingTop: "50px",
-    paddingBottom: "50px",
-    paddingLeft: "15px",
-    alignItems: "flex-end",
+  card: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
   },
-  row: {
-    display: "flex",
-    width: "100%",
-    justifyContent: "space-around",
-    marginBottom: "75px",
-  },
-});
+}));
 
 const Blog = () => {
   const classes = useStyles();
 
   return (
-    <div style={{marginTop: "50px"}}>
-      <BlogCarousel />
-      <div className={classes.container}>
-      <Typography variant="h2">Apartment Hunting</Typography>
-        <div className={classes.row}>
-          <Card className={classes.root}>
+    // <div className={classes.root}>
+      <Grid container spacing={5} alignItems="center"
+      justify="center"
+      >
+        <Grid item xs={12}>
+          <div style={{ marginTop: "50px" }}>
+            <BlogCarousel />
+          </div>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4} lg={4} xl={3}>
+          <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
@@ -73,7 +69,10 @@ const Blog = () => {
               </Button>
             </CardActions>
           </Card>
-          <Card className={classes.root}>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4} lg={4} xl={3}>
+          <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
@@ -100,62 +99,10 @@ const Blog = () => {
               </Button>
             </CardActions>
           </Card>
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image="https://i.pinimg.com/originals/22/30/54/22305418269cbc153015646ab1b2e54d.jpg"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Lizard
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Share
-              </Button>
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-            </CardActions>
-          </Card>
-        </div>
-        <Typography variant="h2">Apartment Living</Typography>
-        <div className={classes.row}>
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image="https://i.pinimg.com/originals/22/30/54/22305418269cbc153015646ab1b2e54d.jpg"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Lizard
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Share
-              </Button>
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-            </CardActions>
-          </Card>
-          <Card className={classes.root}>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4} lg={4} xl={3}>
+          <Card className={classes.card}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
@@ -182,35 +129,9 @@ const Blog = () => {
               </Button>
             </CardActions>
           </Card>
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image="https://i.pinimg.com/originals/22/30/54/22305418269cbc153015646ab1b2e54d.jpg"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Lizard
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary">
-                Share
-              </Button>
-              <Button size="small" color="primary">
-                Learn More
-              </Button>
-            </CardActions>
-          </Card>
-        </div>
-      </div>
-    </div>
+        </Grid>
+        <Footer />
+      </Grid>
   );
 };
 

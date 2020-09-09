@@ -7,10 +7,8 @@ function App({ isScriptLoaded, isScriptLoadSucceed }) {
   if (isScriptLoaded && isScriptLoadSucceed) {
     return (
       <div>
-        <header>
           <Navbar />
           <Routes />
-        </header>
       </div>
     );
   } else {
