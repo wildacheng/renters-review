@@ -1,5 +1,4 @@
 import React from "react";
-// import {connect} from 'react-redux'
 import { Link as RouterLink } from "react-router-dom";
 import MenuDropDown from "../menuDropDown";
 import AuthFormModal from "../authFormModal";
@@ -44,10 +43,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 //
 
+
 const Navbar = () => {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [isDesktop, setDesktop] = React.useState(window.innerWidth > 680);
   const [isRegister, setIsRegister] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  const classes = useStyles();
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 680);
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
 
   //onClick for register/sign in modal
   const handleClick = (action) => () => {
@@ -58,6 +69,7 @@ const Navbar = () => {
 
     setOpen(true);
   };
+
 
   const handleClose = () => {
     setOpen(false);
@@ -80,48 +92,52 @@ const Navbar = () => {
                 Renter's Review
               </Link>
             </Typography>
-            <Box mx={1}>
-              <Link
-                color="inherit"
-                variant="h6"
-                component={RouterLink}
-                to="/writeareview"
-              >
-                Write a Review
-              </Link>
-            </Box>
-            <Box ml={2} mr={2}>
-              <Link
-                color="inherit"
-                variant="h6"
-                component={RouterLink}
-                to="/blog"
-              >
-                Blog
-              </Link>
-            </Box>
-            <Divider className={classes.divider} orientation="vertical" />
-            <Box
-              component="span"
-              ml={2}
-              mr={2}
-              fontSize="h6.fontSize"
-              fontFamily="Century Gothic Std"
-              className={classes.hover}
-              onClick={handleClick("register")}
-            >
-              Register
-            </Box>
-            <Box
-              component="span"
-              mx={1}
-              fontSize="h6.fontSize"
-              fontFamily="Century Gothic Std"
-              className={classes.hover}
-              onClick={handleClick()}
-            >
-              Sign In
-            </Box>
+            {isDesktop && (
+              <React.Fragment>
+                <Box mx={1}>
+                  <Link
+                    color="inherit"
+                    variant="h6"
+                    component={RouterLink}
+                    to="/writeareview"
+                  >
+                    Write a Review
+                  </Link>
+                </Box>
+                <Box ml={2} mr={2}>
+                  <Link
+                    color="inherit"
+                    variant="h6"
+                    component={RouterLink}
+                    to="/blog"
+                  >
+                    Blog
+                  </Link>
+                </Box>
+                <Divider className={classes.divider} orientation="vertical" />
+                <Box
+                  component="span"
+                  ml={2}
+                  mr={2}
+                  fontSize="h6.fontSize"
+                  fontFamily="Century Gothic Std"
+                  className={classes.hover}
+                  onClick={handleClick("register")}
+                >
+                  Register
+                </Box>
+                <Box
+                  component="span"
+                  mx={1}
+                  fontSize="h6.fontSize"
+                  fontFamily="Century Gothic Std"
+                  className={classes.hover}
+                  onClick={handleClick()}
+                >
+                  Sign In
+                </Box>
+              </React.Fragment>
+            )}
           </Toolbar>
         </AppBar>
       </div>
