@@ -21,8 +21,6 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.85),
     },
-    // width: "50ch",
-    // height: "48px"
   },
   search: {
     flexDirection: "column",
@@ -91,7 +89,7 @@ const SearchBar = ({ history }) => {
             <InputBase
               className={classes.input}
               onChange={handleChange}
-              placeholder="Enter an address, neighborhood, city or ZIP code"
+              placeholder="Enter an address, city or zip code"
               fontFamily="Century Gothic Std"
               {...getInputProps()}
             />

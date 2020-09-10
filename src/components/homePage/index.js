@@ -5,17 +5,10 @@ import Footer from "../footer";
 import "./style.css";
 
 //material.ui
-import { makeStyles, Typography, Grid, Box, fade } from "@material-ui/core";
+import { makeStyles, Typography, Grid } from "@material-ui/core";
 //
 
 const useStyles = makeStyles((theme) => ({
-  title: {
-    color: "#ffffff",
-    fontFamily: "Century Gothic Std",
-    fontWeight: "600",
-    fontSize: "xxx-large",
-    textShadow: "4px 4px 4px #000000",
-  },
   grid: {
     width: "100%",
     height: "100%",
@@ -25,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
     width: "auto",
     justifyContent: "center",
   },
-  titleContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginBottom: "20px",
-  },
+  // titleContainer: {
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   alignItems: "center",
+  //   marginBottom: "20px",
+  // },
   searchContainer: {
     display: "flex",
     justifyContent: "center",
@@ -51,16 +44,16 @@ const HomePage = () => {
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <div className="backgroundImage">
             <div className={classes.searchContainer}>
-              <div className={classes.titleContainer}>
-                <Typography className={classes.title}>
+              <div className="titleContainer">
+                <div>
                   Real reviews to help you
-                </Typography>
-                <Typography className={classes.title}>
+                </div>
+                <div >
                   find the perfect home.
-                </Typography>
+                </div>
               </div>
               <Grid container className={classes.searchGrid}>
-                <Grid item xs={6} sm={8} md={12} lg={12}>
+                <Grid item xs={7} sm={8} md={12} lg={12}>
                   <SearchBar />
                 </Grid>
               </Grid>
