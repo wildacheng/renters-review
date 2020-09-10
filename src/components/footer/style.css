@@ -11,8 +11,8 @@
   display: flex;
   justify-content: center;
   font-family: "Century Gothic Std";
-  letter-spacing: -0.5px;
-  font-size: 22px;
+  letter-spacing: 1px;
+  font-size: 23px;
   font-weight: bolder;
 }
 
@@ -47,6 +47,7 @@ h3 {
   line-height: 1.7;
   font-family: "Barlow Semi Condensed", sans-serif;
   font-weight: 400;
+  font-weight: bolder;
   font-size: 14px;
   text-transform: uppercase;
 }

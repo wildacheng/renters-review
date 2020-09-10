@@ -34,9 +34,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const HomePage = () => {
+  const [isDesktop, setDesktop] = React.useState(window.innerWidth > 650);
+
   const classes = useStyles();
+
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 650);
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
 
   return (
     <React.Fragment>
@@ -45,12 +55,8 @@ const HomePage = () => {
           <div className="backgroundImage">
             <div className={classes.searchContainer}>
               <div className="titleContainer">
-                <div>
-                  Real reviews to help you
-                </div>
-                <div >
-                  find the perfect home.
-                </div>
+                <div>Real reviews to help you</div>
+                <div>find the perfect home.</div>
               </div>
               <Grid container className={classes.searchGrid}>
                 <Grid item xs={7} sm={8} md={12} lg={12}>
@@ -61,7 +67,7 @@ const HomePage = () => {
           </div>
         </Grid>
       </Grid>
-      <BlogCarousel />
+      {isDesktop && <BlogCarousel />}
       <Footer />
     </React.Fragment>
   );

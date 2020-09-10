@@ -24,19 +24,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Blog = () => {
+  const [isDesktop, setDesktop] = React.useState(window.innerWidth > 650);
+
   const classes = useStyles();
 
+  const updateMedia = () => {
+    setDesktop(window.innerWidth > 650);
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  });
+
   const handleClick = (pageUrl) => () => {
-    window.open(pageUrl, 'blank')
+    window.open(pageUrl, "blank");
   };
 
   return (
     <Grid container justify="center">
-      <Grid item xs={12}>
-        <div style={{ marginTop: "50px" }}>
-          <BlogCarousel />
-        </div>
-      </Grid>
+      {isDesktop && (
+        <Grid item xs={12}>
+          <div style={{ marginTop: "50px" }}>
+            <BlogCarousel />
+          </div>
+        </Grid>
+      )}
       {Articles.map((article) => (
         <Grid
           item
@@ -70,7 +83,11 @@ const Blog = () => {
               <Button size="small" color="primary">
                 Share
               </Button>
-              <Button size="small" color="primary" onClick={handleClick(article.URL)}>
+              <Button
+                size="small"
+                color="primary"
+                onClick={handleClick(article.URL)}
+              >
                 Learn More
               </Button>
             </CardActions>
