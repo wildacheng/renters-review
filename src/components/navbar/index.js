@@ -45,14 +45,15 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Navbar = () => {
-  const [isDesktop, setDesktop] = React.useState(window.innerWidth > 680);
+  const [isDesktop, setDesktop] = React.useState(window.innerWidth > 700);
   const [isRegister, setIsRegister] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
   const classes = useStyles();
 
+  //Navbar -> hamburger menu when window's width is less than 680
   const updateMedia = () => {
-    setDesktop(window.innerWidth > 680);
+    setDesktop(window.innerWidth > 700);
   };
 
   React.useEffect(() => {
@@ -62,11 +63,9 @@ const Navbar = () => {
 
   //onClick for register/sign in modal
   const handleClick = (action) => () => {
-    //
     if (action === "register") {
       setIsRegister(true);
     }
-
     setOpen(true);
   };
 

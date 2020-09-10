@@ -6,7 +6,7 @@ import scriptLoader from "react-async-script-loader";
 function App({ isScriptLoaded, isScriptLoadSucceed }) {
   if (isScriptLoaded && isScriptLoadSucceed) {
     return (
-      <div>
+      <div id="app">
           <Navbar />
           <Routes />
       </div>

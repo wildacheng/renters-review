@@ -14,7 +14,6 @@ import { makeStyles, fade, IconButton, InputBase } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    position: "absolute",
     display: "flex",
     justifyContent: "flex-end",
     borderRadius: theme.shape.borderRadius,
@@ -22,9 +21,8 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.85),
     },
-    width: "50ch",
-    top: "45%",
-    height: "48px"
+    // width: "50ch",
+    // height: "48px"
   },
   search: {
     flexDirection: "column",
@@ -42,9 +40,6 @@ const useStyles = makeStyles((theme) => ({
   redButton: {
     color: "red",
   },
-  button: {
-    position: "absolute",
-  }
 }));
 
 const SearchBar = ({ history }) => {
@@ -86,7 +81,6 @@ const SearchBar = ({ history }) => {
 
   return (
     <div className={classes.container}>
-    {/* <div> */}
       <PlacesAutocomplete
         value={address}
         onChange={handleChange}
@@ -119,8 +113,7 @@ const SearchBar = ({ history }) => {
           </div>
         )}
       </PlacesAutocomplete>
-      {/* </div> */}
-      <div className={classes.button}>
+      <div>
       <IconButton
         //since onkeydown/press conflicts with the street view library getInputProps method- change icon color instead
         className={selected ? classes.redButton : classes.blkButton}
