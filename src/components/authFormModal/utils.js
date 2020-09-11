@@ -12,7 +12,7 @@ export const RegisterForm = [
     errorMessages: ["Please enter your last name."],
   },
   {
-    label: "Emai",
+    label: "Email",
     name: "email",
     validators: ["required", "isEmail"],
     errorMessages: [
@@ -30,7 +30,7 @@ export const RegisterForm = [
 
 export const SignInForm = [
   {
-    label: "Emai",
+    label: "Email",
     name: "email",
     validators: ["required", "isEmail"],
     errorMessages: [
