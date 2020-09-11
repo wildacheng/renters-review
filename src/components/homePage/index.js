@@ -5,7 +5,7 @@ import Footer from "../footer";
 import "./style.css";
 
 //material.ui
-import { makeStyles, Typography, Grid } from "@material-ui/core";
+import { makeStyles, Grid } from "@material-ui/core";
 //
 
 const useStyles = makeStyles((theme) => ({
@@ -18,19 +18,13 @@ const useStyles = makeStyles((theme) => ({
     width: "auto",
     justifyContent: "center",
   },
-  // titleContainer: {
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   alignItems: "center",
-  //   marginBottom: "20px",
-  // },
   searchContainer: {
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
-    height: "70%",
+    height: "75%",
   },
 }));
 

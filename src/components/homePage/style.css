@@ -20,7 +20,7 @@
   }
 }
 
-/* title font */
+/* title font for mobile screen */
 .titleContainer {
   color: #ffffff;
   font-family: Century Gothic Std;
@@ -33,7 +33,7 @@
   margin-bottom: 20px;
 }
 
-
+/* title font for regular screen */
 @media only screen and (min-width: 900px) {
   .titleContainer {
     color: #ffffff;
