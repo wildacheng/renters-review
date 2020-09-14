@@ -48,15 +48,9 @@ const ReviewForm = () => {
 
   const handleSubmit = () => {
     setFormData({...formData, submitted: true});
-    // const newForm = { ...formData };
-    // newForm.submitted = true;
-    // setFormData(newForm);
 
     setTimeout(() => {
       setFormData({...formData, submitted: false});
-      // const newForm = { ...formData };
-      // newForm.submitted = false;
-      // setFormData(newForm);
     }, 5000);
   };
 
@@ -85,7 +79,6 @@ const ReviewForm = () => {
                 multiline
                 rows={value.rows}
                 variant="outlined"
-
               />
             ))}
 

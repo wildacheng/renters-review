@@ -23,13 +23,13 @@ export const RegisterForm = [
     ],
     type: "input"
   },
-  {
-    label: "Password",
-    name: "password",
-    validators: ["required"],
-    errorMessages: ["Please enter a password."],
-    type: "password"
-  },
+  // {
+  //   label: "Password",
+  //   name: "password",
+  //   validators: ["required"],
+  //   errorMessages: ["Please enter a password."],
+  //   type: "password"
+  // },
 ];
 
 export const SignInForm = [
@@ -43,11 +43,11 @@ export const SignInForm = [
     ],
     type: "input"
   },
-  {
-    label: "Password",
-    name: "password",
-    validators: ["required"],
-    errorMessages: ["Please enter a password."],
-    type: "password"
-  },
+  // {
+  //   label: "Password",
+  //   name: "password",
+  //   validators: ["required"],
+  //   errorMessages: ["Please enter a password."],
+  //   type: 'password'
+  // },
 ];

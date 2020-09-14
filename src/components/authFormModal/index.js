@@ -1,6 +1,17 @@
 import React from "react";
 //material.ui
-import { makeStyles, Modal, Divider, Button } from "@material-ui/core";
+import {
+  makeStyles,
+  Modal,
+  Divider,
+  Button,
+  FormControl,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  IconButton,
+} from "@material-ui/core";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 //utils
 import { RegisterForm, SignInForm } from "./utils";
@@ -30,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     outline: 0,
   },
   textField: {
+    width: "100%",
     marginBottom: theme.spacing(3),
   },
   divider: {
@@ -46,8 +58,8 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "1px",
     color: "white",
     backgroundColor: "red",
-    width:"200px",
-    borderRadius: "50px"
+    width: "200px",
+    borderRadius: "50px",
   },
 }));
 //
@@ -61,6 +73,7 @@ function AuthFormModal(props) {
     email: "",
     password: "",
     submitted: false,
+    showPassword: false,
   };
 
   const [formData, setFormData] = React.useState(initialFormData);
@@ -73,22 +86,24 @@ function AuthFormModal(props) {
   };
 
   const handleSubmit = () => {
-    setFormData({...formData, submitted: true});
-    // const newForm = { ...formData };
-    // newForm.submitted = true;
-    // setFormData(newForm);
+    setFormData({ ...formData, submitted: true });
 
     setTimeout(() => {
-      setFormData({...formData, submitted: false});
-      // const newForm = { ...formData };
-      // newForm.submitted = false;
-      // setFormData(newForm);
+      setFormData({ ...formData, submitted: false });
     }, 5000);
   };
 
   const resetFormData = () => {
     setFormData(initialFormData);
     handleClose();
+  };
+
+  const handleClickShowPassword = () => {
+    setFormData({ ...formData, showPassword: !formData.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   let body;
@@ -109,20 +124,47 @@ function AuthFormModal(props) {
                 errorMessages={value.errorMessages}
                 variant="outlined"
                 fullWidth="true"
-                type={value.type}
               />
             </div>
           ))}
-          <div className={classes.buttonField}>
-          <Button
-            type="submit"
-            variant="contained"
-            size="large"
-            className={classes.button}
-            fullWidth="true"
+          <FormControl
+            error={true}
+            className={classes.textField}
+            variant="outlined"
           >
-            Sign Up
-          </Button>
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type={formData.showPassword ? "text" : "password"}
+              value={formData.password}
+              onChange={handleChange("password")}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              labelWidth={70}
+            />
+          </FormControl>
+          <div className={classes.buttonField}>
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              className={classes.button}
+              fullWidth="true"
+            >
+              Sign Up
+            </Button>
           </div>
         </ValidatorForm>
       </div>
@@ -148,16 +190,39 @@ function AuthFormModal(props) {
               />
             </div>
           ))}
+          <FormControl className={classes.textField} variant="outlined">
+            <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type={formData.showPassword ? "text" : "password"}
+              value={formData.password}
+              onChange={handleChange("password")}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              labelWidth={70}
+            />
+          </FormControl>
           <div className={classes.buttonField}>
-          <Button
-            type="submit"
-            variant="contained"
-            size="large"
-            className={classes.button}
-
-          >
-            Sign In
-          </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              className={classes.button}
+            >
+              Sign In
+            </Button>
           </div>
         </ValidatorForm>
       </div>
