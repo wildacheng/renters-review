@@ -9,6 +9,7 @@ import "./style.css";
 //position of the modal
 function getModalStyle() {
   return {
+    color: "#000000",
     top: "50%",
     left: "50%",
     transform: `translate(-50%, -50%)`,
@@ -35,12 +36,18 @@ const useStyles = makeStyles((theme) => ({
     height: 2,
     marginBottom: 30,
   },
+  buttonField: {
+    display: "flex",
+    justifyContent: "center",
+  },
   button: {
     fontFamily: "Barlow Semi Condensed,sans-serif",
     fontWeight: 800,
     letterSpacing: "1px",
-    backgroundColor: "red",
     color: "white",
+    backgroundColor: "red",
+    width:"200px",
+    borderRadius: "50px"
   },
 }));
 //
@@ -105,6 +112,7 @@ function AuthFormModal(props) {
               />
             </div>
           ))}
+          <div className={classes.buttonField}>
           <Button
             type="submit"
             variant="contained"
@@ -114,6 +122,7 @@ function AuthFormModal(props) {
           >
             Sign Up
           </Button>
+          </div>
         </ValidatorForm>
       </div>
     );
@@ -137,6 +146,7 @@ function AuthFormModal(props) {
               />
             </div>
           ))}
+          <div className={classes.buttonField}>
           <Button
             type="submit"
             variant="contained"
@@ -146,6 +156,7 @@ function AuthFormModal(props) {
           >
             Sign In
           </Button>
+          </div>
         </ValidatorForm>
       </div>
     );

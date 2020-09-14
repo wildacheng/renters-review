@@ -8,7 +8,7 @@ import "./style.css";
 import { makeStyles, Grid } from "@material-ui/core";
 //
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   grid: {
     width: "100%",
     height: "100%",
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "75%",
   },
-}));
+})
 
 const HomePage = () => {
   const [isDesktop, setDesktop] = React.useState(window.innerWidth > 650);

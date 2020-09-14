@@ -89,7 +89,7 @@ const SearchBar = ({ history }) => {
             <InputBase
               className={classes.input}
               onChange={handleChange}
-              placeholder="Enter an address, city or zip code"
+              placeholder="Enter a full address"
               fontFamily="Century Gothic Std"
               {...getInputProps()}
             />
@@ -97,14 +97,28 @@ const SearchBar = ({ history }) => {
               {loading ? <div>Loading...</div> : null}
               {suggestions.map((suggestion) => {
                 const style = suggestion.active
-                  ? { backgroundColor: "#455a64", cursor: "pointer", display: "flex", alignItems: "center", lineHeight:"2.5", borderBottom: "1px solid grey" }
-                  : { backgroundColor: "#ffffff", cursor: "pointer", display: "flex", alignItems: "center", lineHeight:"2.5", borderBottom: "1px solid grey" };
+                  ? {
+                      backgroundColor: "#455a64",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      lineHeight: "2.5",
+                      borderBottom: "1px solid grey",
+                    }
+                  : {
+                      backgroundColor: "#ffffff",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      lineHeight: "2.5",
+                      borderBottom: "1px solid grey",
+                    };
 
                 return (
-                    <div {...getSuggestionItemProps(suggestion, { style })}>
-                      <LocationOnOutlinedIcon />
-                      {suggestion.description}
-                    </div>
+                  <div {...getSuggestionItemProps(suggestion, { style })}>
+                    <LocationOnOutlinedIcon />
+                    {suggestion.description}
+                  </div>
                 );
               })}
             </div>
@@ -112,16 +126,16 @@ const SearchBar = ({ history }) => {
         )}
       </PlacesAutocomplete>
       <div>
-      <IconButton
-        //since onkeydown/press conflicts with the street view library getInputProps method- change icon color instead
-        className={selected ? classes.redButton : classes.blkButton}
-        onClick={handleClick}
-        type="submit"
-        aria-label="search"
-      >
-        <SearchIcon />
-      </IconButton>
-    </div>
+        <IconButton
+          //since onkeydown/press conflicts with the street view library getInputProps method- change icon color instead
+          className={selected ? classes.redButton : classes.blkButton}
+          onClick={handleClick}
+          type="submit"
+          aria-label="search"
+        >
+          <SearchIcon />
+        </IconButton>
+      </div>
     </div>
   );
 };

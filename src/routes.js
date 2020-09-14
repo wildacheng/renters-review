@@ -11,7 +11,7 @@ class Routes extends React.Component {
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={HomePage} />
         <Route exact path="/reviews" component={GoogleMap} />
-        <Route exact path="/reviewform" component={ReviewForm} />
+        <Route exact path="/writeareview" component={ReviewForm} />
         <Route exact path="/blog" component={Blog} />
       </Switch>
     );
