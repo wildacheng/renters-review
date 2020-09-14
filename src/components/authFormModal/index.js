@@ -68,21 +68,21 @@ function AuthFormModal(props) {
   const [modalStyle] = React.useState(getModalStyle);
   const classes = useStyles();
 
-  const handleChange = (event) => {
-    const newForm = { ...formData };
-    newForm[event.target.name] = event.target.value;
-    setFormData(newForm);
+  const handleChange = (prop) => (event) => {
+    setFormData({ ...formData, [prop]: event.target.value });
   };
 
   const handleSubmit = () => {
-    const newForm = { ...formData };
-    newForm.submitted = true;
-    setFormData(newForm);
+    setFormData({...formData, submitted: true});
+    // const newForm = { ...formData };
+    // newForm.submitted = true;
+    // setFormData(newForm);
 
     setTimeout(() => {
-      const newForm = { ...formData };
-      newForm.submitted = false;
-      setFormData(newForm);
+      setFormData({...formData, submitted: false});
+      // const newForm = { ...formData };
+      // newForm.submitted = false;
+      // setFormData(newForm);
     }, 5000);
   };
 
@@ -98,17 +98,18 @@ function AuthFormModal(props) {
         <div className="title">Create Your Account</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <ValidatorForm onSubmit={handleSubmit}>
-          {RegisterForm.map((input) => (
+          {RegisterForm.map((value) => (
             <div className={classes.textField}>
               <TextValidator
-                label={input.label}
-                onChange={handleChange}
-                name={input.name}
-                value={formData[input.name]}
-                validators={input.validators}
-                errorMessages={input.errorMessages}
+                label={value.label}
+                onChange={handleChange(value.name)}
+                name={value.name}
+                value={formData[value.name]}
+                validators={value.validators}
+                errorMessages={value.errorMessages}
                 variant="outlined"
                 fullWidth="true"
+                type={value.type}
               />
             </div>
           ))}
@@ -136,13 +137,14 @@ function AuthFormModal(props) {
             <div className={classes.textField}>
               <TextValidator
                 label={value.label}
-                onChange={handleChange}
+                onChange={handleChange(value.name)}
                 name={value.name}
                 value={formData[value.name]}
                 validators={value.validators}
                 errorMessages={value.errorMessages}
                 variant="outlined"
                 fullWidth="true"
+                type={value.type}
               />
             </div>
           ))}
@@ -152,7 +154,7 @@ function AuthFormModal(props) {
             variant="contained"
             size="large"
             className={classes.button}
-            fullWidth="true"
+
           >
             Sign In
           </Button>
