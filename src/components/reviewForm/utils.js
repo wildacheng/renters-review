@@ -23,6 +23,10 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
   },
+  rating: {
+    display: "flex",
+    justifyContent: "center"
+  },
   button: {
     fontFamily: "Barlow Semi Condensed,sans-serif",
     fontWeight: 800,
