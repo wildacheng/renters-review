@@ -15,35 +15,9 @@
   font-family: Barlow Semi Condensed,sans-serif;
   font-weight: 800;
   text-transform: uppercase;
-  font-size: .6rem;
+  font-size: 1rem;
   line-height: 3rem;
   margin: 0;
-}
-
-@media only screen and (min-width: 380px) {
-  .title {
-    display: flex;
-    justify-content: center;
-    font-family: "Barlow Semi Condensed,sans-serif";
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: .7rem;
-    line-height: 3rem;
-    margin: 0;
-  }
-}
-
-@media only screen and (min-width: 500px) {
-  .title {
-    display: flex;
-    justify-content: center;
-    font-family: "Barlow Semi Condensed,sans-serif";
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 1rem;
-    line-height: 3rem;
-    margin: 0;
-  }
 }
 
 /* title font for regular screen */

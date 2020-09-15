@@ -77,7 +77,7 @@ const MenuDropDown = (props) => {
     {
       title: "Write a Review",
       action: () => {
-        props.history.push("/reviewform");
+        props.history.push("/writeareview");
       },
     },
     {

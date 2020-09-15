@@ -89,7 +89,7 @@ function AuthFormModal(props) {
   if (isRegister) {
     body = (
       <div style={modalStyle} className={classes.paper}>
-        <div className="title">Create Your Account</div>
+        <div className="title">Create your Account</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <form onSubmit={handleSubmit}>
           {RegisterForm.map((value) => (
@@ -154,7 +154,7 @@ function AuthFormModal(props) {
   } else {
     body = (
       <div style={modalStyle} className={classes.paper}>
-        <div className="title">Log In To Your Account</div>
+        <div className="title">My Account</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <form onSubmit={handleSubmit}>
           {SignInForm.map((value) => (
@@ -166,7 +166,7 @@ function AuthFormModal(props) {
                 error={errorState[value.name]}
                 helperText={errorState[value.name] ? "This field is required" : ""}
                 variant="outlined"
-                fullWidth="true"
+                fullWidth={true}
               />
             </div>
           ))}

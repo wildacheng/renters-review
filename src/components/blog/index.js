@@ -60,8 +60,8 @@ const Blog = () => {
           xl={3}
           style={{ maxWidth: "700px" }}
         >
-          <Card className={classes.card}>
-            <CardActionArea>
+          <Card className={classes.card} >
+            <CardActionArea key={article.name}>
               <CardMedia
                 component="img"
                 alt="blog article"
