@@ -2,31 +2,11 @@ import React from "react";
 import SearchBar from "../searchBar";
 import BlogCarousel from "../blogCarousel";
 import Footer from "../footer";
+import { useStyles } from "./utils";
 import "./style.css";
 
 //material.ui
-import { makeStyles, Grid } from "@material-ui/core";
-//
-
-const useStyles = makeStyles({
-  grid: {
-    width: "100%",
-    height: "100%",
-    margin: "0px",
-  },
-  searchGrid: {
-    width: "auto",
-    justifyContent: "center",
-  },
-  searchContainer: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    height: "75%",
-  },
-})
+import { Grid } from "@material-ui/core";
 
 const HomePage = () => {
   const [isDesktop, setDesktop] = React.useState(window.innerWidth > 650);

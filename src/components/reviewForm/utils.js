@@ -12,8 +12,16 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: 1000,
+      width: "40%",
     },
+  },
+  titleContainer: {
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "100%",
+    height: "100%",
   },
   button: {
     fontFamily: "Barlow Semi Condensed,sans-serif",

@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Button, TextField } from "@material-ui/core";
+import { Grid, Button, TextField, Typography } from "@material-ui/core";
 import { useStyles, Form } from "./utils";
 import Footer from "../footer";
 
@@ -46,16 +46,19 @@ const ReviewForm = () => {
   return (
     <React.Fragment>
       <Grid container className={classes.grid}>
-        <Grid item xs={6} sm={12} md={12} lg={12}>
-          <div className="titleContainer">
-            <div>write a review for</div>
-            <div>location</div>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <div className={classes.titleContainer}>
+            <Typography variant="h3">Write a Review for</Typography>
+            <Typography variant="h3">Fill in location</Typography>
           </div>
         </Grid>
-        <Grid item xs={6} sm={12} md={12} lg={12}>
+        <Grid container>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <div>STARS REVIEW</div>
         </Grid>
-        <Grid item xs={6} sm={12} md={12} lg={12}>
+        </Grid>
+        <Grid container>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <form onSubmit={handleSubmit} className={classes.root}>
             {Form.map((value) => (
               <TextField
@@ -81,6 +84,7 @@ const ReviewForm = () => {
               Submit
             </Button>
           </form>
+        </Grid>
         </Grid>
       </Grid>
       <Footer />
