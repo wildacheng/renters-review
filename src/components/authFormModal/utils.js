@@ -52,6 +52,5 @@ export const SignInForm = [
   {
     label: "Email",
     name: "email",
-    validators: ["required", "isEmail"],
   },
 ];

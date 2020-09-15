@@ -1,59 +1,48 @@
 import React from "react";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { makeStyles, Grid, Button } from "@material-ui/core";
-
-import { Form } from "./utils";
+import { Grid, Button, TextField } from "@material-ui/core";
+import { useStyles, Form } from "./utils";
 import Footer from "../footer";
 
-const useStyles = makeStyles((theme) => ({
-  grid: {
-    width: "100%",
-    height: "100%",
-    margin: "0px",
-  },
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: 1000,
-    },
-  },
-  button: {
-    fontFamily: "Barlow Semi Condensed,sans-serif",
-    fontWeight: 800,
-    letterSpacing: "1px",
-    color: "white",
-    backgroundColor: "red",
-    width:"300px",
-    borderRadius: "50px"
-  },
-}));
 
 const ReviewForm = () => {
   const initialFormData = {
-    title: "",
-    review: "",
-    name: "",
-    submitted: false,
+    title: {
+      value: "",
+      error: false,
+    },
+    review: {
+      value: "",
+      error: false,
+    },
+    name: {
+      value: "",
+      error: false,
+    },
   };
 
-  const [formData, setFormData] = React.useState(initialFormData);
+  const [formData, setformData] = React.useState(initialFormData);
   const classes = useStyles();
 
+  //onClick handlers
   const handleChange = (prop) => (event) => {
-    setFormData({...formData, [prop]: event.target.value});
+    setformData({
+      ...formData,
+      [prop]: { value: event.target.value, error: false },
+    });
   };
 
-  const handleSubmit = () => {
-    setFormData({...formData, submitted: true});
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    setTimeout(() => {
-      setFormData({...formData, submitted: false});
-    }, 5000);
+    let updateFormData = { ...formData };
+    Object.entries(formData).forEach(([key, value]) => {
+      updateFormData[key].error = !value.value;
+    });
+
+    setformData(updateFormData);
   };
 
+  //
   return (
     <React.Fragment>
       <Grid container className={classes.grid}>
@@ -67,32 +56,31 @@ const ReviewForm = () => {
           <div>STARS REVIEW</div>
         </Grid>
         <Grid item xs={6} sm={12} md={12} lg={12}>
-          <ValidatorForm onSubmit={handleSubmit} className={classes.root}>
+          <form onSubmit={handleSubmit} className={classes.root}>
             {Form.map((value) => (
-              <TextValidator
+              <TextField
                 key={value.label}
                 label={value.label}
                 onChange={handleChange(value.name)}
                 name={value.name}
-                value={formData[value.name]}
-                validators={value.validators}
-                errorMessages={value.errorMessages}
+                error={formData[value.name].error}
+                helperText={
+                  formData[value.name].error ? "This field is required" : ""
+                }
                 multiline
                 rows={value.rows}
                 variant="outlined"
               />
             ))}
-
             <Button
               type="submit"
               variant="contained"
               size="large"
               className={classes.button}
-
             >
               Submit
             </Button>
-          </ValidatorForm>
+          </form>
         </Grid>
       </Grid>
       <Footer />
