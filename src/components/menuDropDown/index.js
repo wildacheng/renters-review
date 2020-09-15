@@ -63,7 +63,6 @@ const MenuDropDown = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -89,7 +88,6 @@ const MenuDropDown = (props) => {
     },
   ];
 
-
   return (
     <React.Fragment>
       <IconButton
@@ -109,14 +107,14 @@ const MenuDropDown = (props) => {
         onClose={handleClose}
       >
         {menuOptions.map((option, i) => (
-          <React.Fragment>
+          <div key={i}>
             <StyledMenuItem onClick={option.action}>
               <ListItemText primary={option.title} />
             </StyledMenuItem>
             {i < menuOptions.length - 1 && (
               <Divider className={classes.divider} />
             )}
-          </React.Fragment>
+          </div>
         ))}
       </StyledMenu>
     </React.Fragment>

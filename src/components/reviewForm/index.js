@@ -70,6 +70,7 @@ const ReviewForm = () => {
           <ValidatorForm onSubmit={handleSubmit} className={classes.root}>
             {Form.map((value) => (
               <TextValidator
+                key={value.label}
                 label={value.label}
                 onChange={handleChange(value.name)}
                 name={value.name}

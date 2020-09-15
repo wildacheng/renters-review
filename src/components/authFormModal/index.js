@@ -1,20 +1,22 @@
 import React from "react";
 //material.ui
 import {
-  makeStyles,
   Modal,
   Divider,
   Button,
   FormControl,
+  FormHelperText,
   InputAdornment,
   InputLabel,
   OutlinedInput,
   IconButton,
+  TextField,
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+// import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+
 //utils
-import { RegisterForm, SignInForm } from "./utils";
+import { useStyles, RegisterForm, SignInForm } from "./utils";
 import "./style.css";
 
 //position of the modal
@@ -27,79 +29,56 @@ function getModalStyle() {
     borderRadius: "5px",
   };
 }
-//
-
-//styling for ClassName
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 3, 2),
-    outline: 0,
-  },
-  textField: {
-    width: "100%",
-    marginBottom: theme.spacing(3),
-  },
-  divider: {
-    height: 2,
-    marginBottom: 30,
-  },
-  buttonField: {
-    display: "flex",
-    justifyContent: "center",
-  },
-  button: {
-    fontFamily: "Barlow Semi Condensed,sans-serif",
-    fontWeight: 800,
-    letterSpacing: "1px",
-    color: "white",
-    backgroundColor: "red",
-    width: "200px",
-    borderRadius: "50px",
-  },
-}));
-//
 
 function AuthFormModal(props) {
   const { open, handleClose, isRegister } = props;
-  //react hooks to set state
+
   const initialFormData = {
     firstName: "",
     lastName: "",
     email: "",
     password: "",
-    submitted: false,
-    showPassword: false,
+  };
+
+  const initialErrorState = {
+    firstName: false,
+    lastName: false,
+    email: false,
+    password: false,
   };
 
   const [formData, setFormData] = React.useState(initialFormData);
+  const [errorState, setErrorState] = React.useState(initialErrorState);
+  const [showPassword, setShowPassword] = React.useState(false);
+
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const classes = useStyles();
 
   const handleChange = (prop) => (event) => {
     setFormData({ ...formData, [prop]: event.target.value });
+    setErrorState({...errorState, [prop]: false})
   };
 
-  const handleSubmit = () => {
-    setFormData({ ...formData, submitted: true });
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    setTimeout(() => {
-      setFormData({ ...formData, submitted: false });
-    }, 5000);
+    let updateErrorState = {};
+    Object.entries(formData).forEach(([key, value]) => {
+      updateErrorState[key] = !value;
+    });
+
+    setErrorState(updateErrorState);
   };
 
   const resetFormData = () => {
     setFormData(initialFormData);
+    setErrorState(initialErrorState)
     handleClose();
   };
 
   const handleClickShowPassword = () => {
-    setFormData({ ...formData, showPassword: !formData.showPassword });
+    setShowPassword(!showPassword);
   };
 
   const handleMouseDownPassword = (event) => {
@@ -112,23 +91,22 @@ function AuthFormModal(props) {
       <div style={modalStyle} className={classes.paper}>
         <div className="title">Create Your Account</div>
         <Divider className={classes.divider} orientation="horizontal" />
-        <ValidatorForm onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           {RegisterForm.map((value) => (
-            <div className={classes.textField}>
-              <TextValidator
-                label={value.label}
+            <div className={classes.textField} key={value.label}>
+              <TextField
                 onChange={handleChange(value.name)}
+                label={value.label}
                 name={value.name}
-                value={formData[value.name]}
-                validators={value.validators}
-                errorMessages={value.errorMessages}
+                error={errorState[value.name]}
+                helperText={errorState[value.name] ? "This field is required" : ""}
                 variant="outlined"
-                fullWidth="true"
+                fullWidth={true}
               />
             </div>
           ))}
           <FormControl
-            error={true}
+            error={errorState.password}
             className={classes.textField}
             variant="outlined"
           >
@@ -137,7 +115,7 @@ function AuthFormModal(props) {
             </InputLabel>
             <OutlinedInput
               id="outlined-adornment-password"
-              type={formData.showPassword ? "text" : "password"}
+              type={showPassword ? "text" : "password"}
               value={formData.password}
               onChange={handleChange("password")}
               endAdornment={
@@ -148,12 +126,17 @@ function AuthFormModal(props) {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
               }
               labelWidth={70}
             />
+            {errorState.password && (
+              <FormHelperText id="my-helper-text">
+                This field is required.
+              </FormHelperText>
+            )}
           </FormControl>
           <div className={classes.buttonField}>
             <Button
@@ -161,12 +144,11 @@ function AuthFormModal(props) {
               variant="contained"
               size="large"
               className={classes.button}
-              fullWidth="true"
             >
               Sign Up
             </Button>
           </div>
-        </ValidatorForm>
+        </form>
       </div>
     );
   } else {
@@ -174,29 +156,31 @@ function AuthFormModal(props) {
       <div style={modalStyle} className={classes.paper}>
         <div className="title">Log In To Your Account</div>
         <Divider className={classes.divider} orientation="horizontal" />
-        <ValidatorForm onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           {SignInForm.map((value) => (
-            <div className={classes.textField}>
-              <TextValidator
-                label={value.label}
+            <div className={classes.textField} key={value.label}>
+              <TextField
                 onChange={handleChange(value.name)}
                 name={value.name}
-                value={formData[value.name]}
-                validators={value.validators}
-                errorMessages={value.errorMessages}
+                label={value.label}
+                error={errorState[value.name]}
+                helperText={errorState[value.name] ? "This field is required" : ""}
                 variant="outlined"
                 fullWidth="true"
-                type={value.type}
               />
             </div>
           ))}
-          <FormControl className={classes.textField} variant="outlined">
+          <FormControl
+            error={errorState.password}
+            className={classes.textField}
+            variant="outlined"
+          >
             <InputLabel htmlFor="outlined-adornment-password">
               Password
             </InputLabel>
             <OutlinedInput
               id="outlined-adornment-password"
-              type={formData.showPassword ? "text" : "password"}
+              type={showPassword ? "text" : "password"}
               value={formData.password}
               onChange={handleChange("password")}
               endAdornment={
@@ -207,12 +191,17 @@ function AuthFormModal(props) {
                     onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >
-                    {formData.showPassword ? <Visibility /> : <VisibilityOff />}
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
                 </InputAdornment>
               }
               labelWidth={70}
             />
+            {errorState.password && (
+              <FormHelperText id="my-helper-text">
+                This field is required.
+              </FormHelperText>
+            )}
           </FormControl>
           <div className={classes.buttonField}>
             <Button
@@ -224,7 +213,7 @@ function AuthFormModal(props) {
               Sign In
             </Button>
           </div>
-        </ValidatorForm>
+        </form>
       </div>
     );
   }
