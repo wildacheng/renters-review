@@ -74,6 +74,10 @@ export const initialFormData = {
     value: "",
     error: false,
   },
+  connection: {
+    value: "",
+    error: false,
+  }
 };
 
 export const labels = {

@@ -8,6 +8,7 @@ import {
   InputLabel,
   MenuItem,
   FormControl,
+  FormHelperText,
   Select,
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
@@ -18,7 +19,6 @@ const ReviewForm = () => {
   const [formData, setformData] = React.useState(initialFormData);
   const [value, setValue] = React.useState(3);
   const [hover, setHover] = React.useState(-1);
-  const [connection, setConnection] = React.useState("");
   const classes = useStyles();
 
   //onClick handlers
@@ -40,11 +40,6 @@ const ReviewForm = () => {
     setformData(updateFormData);
   };
 
-  const handleSelect = (event) => {
-    setConnection(event.target.value);
-  };
-
-  //
   return (
     <Grid container className={classes.grid}>
       <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -93,18 +88,27 @@ const ReviewForm = () => {
                 fullWidth={true}
               />
             ))}
-            <FormControl className={classes.connectionControl}>
+            <FormControl
+              error={formData.connection.error}
+              className={classes.connectionControl}
+            >
               <InputLabel>How are you connected to this apartment?</InputLabel>
-              <Select value={connection} onChange={handleSelect}>
+              <Select
+                value={formData.connection.value}
+                onChange={handleChange("connection")}
+              >
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={10}>Former Resident</MenuItem>
-                <MenuItem value={20}>Current Resident</MenuItem>
+                <MenuItem value={10}>Current Resident</MenuItem>
+                <MenuItem value={20}>Former Resident</MenuItem>
                 <MenuItem value={30}>Nereby Resident</MenuItem>
                 <MenuItem value={40}>Work Here</MenuItem>
                 <MenuItem value={50}>Visitor</MenuItem>
               </Select>
+              {formData.connection.error && (
+                <FormHelperText>This field is required.</FormHelperText>
+              )}
             </FormControl>
             <Button
               type="submit"
