@@ -18,6 +18,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    flexDirection: "column",
     fontFamily: "Century Gothic Std",
   },
   formInput: {

@@ -18,9 +18,9 @@ const theme = createMuiTheme({
   typography: {
     h3: {
       color: "#1c313a",
-      fontWeight: 800,
+      fontWeight: 600,
       textTransform: "none",
-      fontSize: "3rem",
+      fontSize: "2.5rem",
       lineHeight: "3rem",
       margin: 0,
     },

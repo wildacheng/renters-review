@@ -41,15 +41,15 @@ const ReviewForm = () => {
   };
 
   return (
-    <Grid container className={classes.grid}>
-      <Grid item xs={12} sm={12} md={12} lg={12}>
+    <Grid container className={classes.grid} justify="center">
+      <Grid item xs={8} sm={12} md={12} lg={12}>
         <div className={classes.titleContainer}>
-          <Typography variant="h3">Write a Review for</Typography>
+          <Typography variant="h3">Write a review for</Typography>
           <Typography variant="h3">location</Typography>
         </div>
       </Grid>
-      <Grid container>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
+      <Grid container justify="center">
+        <Grid item xs={6} sm={12} md={12} lg={12}>
           <div className={classes.rating}>
             <Rating
               name="hover-feedback"
