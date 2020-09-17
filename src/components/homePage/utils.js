@@ -10,12 +10,4 @@ export const useStyles = makeStyles({
     width: "auto",
     justifyContent: "center",
   },
-  searchContainer: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
-    width: "100%",
-    height: "75%",
-  },
 })

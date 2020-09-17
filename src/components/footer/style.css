@@ -1,11 +1,11 @@
 #footer {
   width: 100%;
-  background-color: #1c313a;
-  color: white;
+  background-color: whitesmoke;
+  color: black;
 }
 
 #footer-logo {
-  color: white;
+  color: black;
   padding-top: 50px;
   padding-bottom: 20px;
   display: flex;

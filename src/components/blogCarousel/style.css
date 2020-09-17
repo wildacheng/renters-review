@@ -33,7 +33,6 @@
   }
 }
 
-
 .Banner .Media .MediaCaption:hover {
   opacity: 0.8;
 }
@@ -45,20 +44,10 @@
 }
 .Banner .Content {
   color: white;
-  background-color: #455a64;
+  background-color: #83A5CA;
   height: 100%;
-  cursor: pointer;
   padding: 30px;
   transition: 300ms;
-}
-.Banner .Content:hover,
-.Banner .Content:active {
-  background-color: #718792;
-}
-.Banner .Content:hover .ViewButton,
-.Banner .Content:active .ViewButton {
-  background-color: rgb(241, 241, 241);
-  color: #718792;
 }
 .Banner .Content .Title {
   font-size: 40px;
@@ -68,19 +57,11 @@
   margin-top: 10px;
   font-size: 21px;
 }
-.Banner .Content .ViewButton {
-  margin-top: 40px;
-  color: white;
-  font-size: 25px;
-  border: 3px solid white;
-  text-transform: capitalize;
-  transition: 200ms;
-}
 
 h2 {
-  font-family: "Barlow Semi Condensed",sans-serif;;
+  font-family: "Barlow Semi Condensed", sans-serif;
   font-weight: 400;
   font-size: 1.5rem;
   line-height: 3rem;
-  margin: 0
+  margin: 0;
 }

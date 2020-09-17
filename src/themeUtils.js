@@ -3,20 +3,14 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: "#455a64",
-      main: "#1c313a",
-      dark: "#000914",
-      contrastText: "#ffffff",
-    },
-    secondary: {
-      light: "#5ddef4",
-      main: "#00acc1",
-      dark: "#007c91",
+      light: "#c0c0c0",
+      main: "#F5F5F5",
+      dark: "#a7a7a7",
       contrastText: "#000000",
     },
   },
   typography: {
-    fontFamily: ["Century Gothic Std"].join(","),
+    fontFamily: "Times New Roman,serif",
   },
 });
 

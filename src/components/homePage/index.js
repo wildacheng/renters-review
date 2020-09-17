@@ -27,7 +27,7 @@ const HomePage = () => {
       <Grid container className={classes.grid}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <div className="backgroundImage">
-            <div className={classes.searchContainer}>
+            <div className="searchContainer">
               <div className="titleContainer">
                 <div>Real reviews to help you</div>
                 <div>find the perfect home.</div>

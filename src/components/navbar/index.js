@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     textAlign: "left",
-    fontWeight: "700",
+    fontWeight: "550",
     fontSize: "1.5rem",
     lineHeight: "1.334",
   },
@@ -38,11 +38,10 @@ const useStyles = makeStyles((theme) => ({
     height: 28,
     width: 2,
     margin: 4,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#A9A9A9",
   },
 }));
 //
-
 
 const Navbar = () => {
   const [isDesktop, setDesktop] = React.useState(window.innerWidth > 700);
@@ -69,7 +68,6 @@ const Navbar = () => {
     setOpen(true);
   };
 
-
   const handleClose = () => {
     setOpen(false);
     setIsRegister(false);
@@ -80,7 +78,7 @@ const Navbar = () => {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <MenuDropDown handleSelect={handleClick} />
+            {!isDesktop && <MenuDropDown handleSelect={handleClick} />}
             <Typography className={classes.title}>
               <Link
                 color="inherit"
@@ -119,7 +117,7 @@ const Navbar = () => {
                   ml={2}
                   mr={2}
                   fontSize="h6.fontSize"
-                  fontFamily="Century Gothic Std"
+                  fontFamily="Times New Roman,serif"
                   className={classes.hover}
                   onClick={handleClick("register")}
                 >
@@ -129,7 +127,7 @@ const Navbar = () => {
                   component="span"
                   mx={1}
                   fontSize="h6.fontSize"
-                  fontFamily="Century Gothic Std"
+                  fontFamily="Times New Roman,serif"
                   className={classes.hover}
                   onClick={handleClick()}
                 >

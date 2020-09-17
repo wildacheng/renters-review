@@ -6,6 +6,10 @@ export const useStyles = makeStyles((theme) => ({
     height: "100%",
     margin: "0px",
   },
+  searchGrid: {
+    width: "auto",
+    justifyContent: "center",
+  },
   titleContainer: {
     display: "flex",
     justifyContent: "center",
@@ -15,6 +19,9 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "600",
     fontSize: "xx-large",
     fontFamily: "Century Gothic Std"
+  },
+  subTitle: {
+    fontSize: "large",
   },
   rating: {
     height: "100px",
@@ -79,16 +86,11 @@ export const initialFormData = {
 };
 
 export const labels = {
-  0.5: "Severly Lacking",
-  1: "Severly Lacking",
-  1.5: "Has some issues",
-  2: "Has some issues",
-  2.5: "Not a bad place to live",
-  3: "Not a bad place to live",
-  3.5: "Highly recommend",
-  4: "Highly recommend",
-  4.5: "Love this place",
-  5: "Love this place",
+  1: "I would not recommend living here.",
+  2: "There are better places to live.",
+  3: "Not a bad place to live.",
+  4: "This is a great place to live!",
+  5: "Excellent, highly recommended!",
 };
 
 export const form = [
@@ -106,3 +108,11 @@ export const form = [
     name: "name",
   },
 ];
+
+export const menuItems = [
+  {value: 10, name: "Current Resident"},
+  {value: 20, name: "Former Resident"},
+  {value: 30, name: "Nereby Resident"},
+  {value: 40, name: "Work Here"},
+  {value: 50, name: "Visitor"}
+]
