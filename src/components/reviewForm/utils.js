@@ -11,7 +11,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
-    height: "200px",
+    height: "150px",
     fontWeight: "600",
     fontSize: "xx-large",
     fontFamily: "Century Gothic Std"
@@ -38,7 +38,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   formGrid: {
-    marginBottom: "20px",
+    marginBottom: "50px",
   },
   connectionControl: {
     minWidth: "150px",
