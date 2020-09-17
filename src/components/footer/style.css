@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   font-family: "Century Gothic Std";
-  letter-spacing: 1px;
+  letter-spacing: .5px;
   font-size: 23px;
   font-weight: bolder;
 }

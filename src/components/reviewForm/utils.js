@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme) => ({
     height: "150px",
     fontWeight: "600",
     fontSize: "xx-large",
-    fontFamily: "Century Gothic Std"
+    fontFamily: "Century Gothic Std",
   },
   subTitle: {
     fontSize: "large",

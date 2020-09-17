@@ -14,6 +14,7 @@ import Rating from "@material-ui/lab/Rating";
 import { useStyles, initialFormData, labels, form, menuItems } from "./utils";
 import SearchBar from "../searchBar";
 import Footer from "../footer";
+import "./style.css";
 
 const ReviewForm = () => {
   const [user, setUser] = React.useState(true);
@@ -47,18 +48,20 @@ const ReviewForm = () => {
   return (
     <Grid container className={classes.grid} justify="center">
       {user && !select.isTrue ? (
-        <div className="searchContainer">
-          <div className={classes.titleContainer}>
-            <div>Begin your review</div>
-            <div className={classes.subTitle}>
-              Search for an address and share your experience
+        <div className="reviewBackgroundImage">
+          <div className="searchContainer">
+            <div className={classes.titleContainer}>
+              <div>Begin your review</div>
+              <div className={classes.subTitle}>
+                Search for an address and share your experience
+              </div>
             </div>
-          </div>
-          <Grid container className={classes.searchGrid}>
-            <Grid item xs={7} sm={8} md={12} lg={12}>
-              <SearchBar />
+            <Grid container className={classes.searchGrid}>
+              <Grid item xs={7} sm={8} md={12} lg={12}>
+                <SearchBar />
+              </Grid>
             </Grid>
-          </Grid>
+          </div>
         </div>
       ) : (
         <Grid container className={classes.grid} justify="center">
