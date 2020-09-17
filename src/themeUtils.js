@@ -16,14 +16,6 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    h3: {
-      color: "#1c313a",
-      fontWeight: 600,
-      textTransform: "none",
-      fontSize: "2.5rem",
-      lineHeight: "3rem",
-      margin: 0,
-    },
     fontFamily: ["Century Gothic Std"].join(","),
   },
 });

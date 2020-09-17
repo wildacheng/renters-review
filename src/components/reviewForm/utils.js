@@ -12,6 +12,9 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     height: "200px",
+    fontWeight: "600",
+    fontSize: "xx-large",
+    fontFamily: "Century Gothic Std"
   },
   rating: {
     height: "100px",
@@ -22,7 +25,6 @@ export const useStyles = makeStyles((theme) => ({
     fontFamily: "Century Gothic Std",
   },
   formInput: {
-    width: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -36,15 +38,10 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   formGrid: {
-    display: "flex",
-    width: "100%",
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
     marginBottom: "20px",
   },
   connectionControl: {
-    minWidth: 350,
+    minWidth: "150px",
     "& .MuiFormLabel-root": {
       fontSize: "1.2rem",
       fontWeight: "500",

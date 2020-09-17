@@ -4,7 +4,6 @@ import {
   Button,
   Box,
   TextField,
-  Typography,
   InputLabel,
   MenuItem,
   FormControl,
@@ -42,11 +41,8 @@ const ReviewForm = () => {
 
   return (
     <Grid container className={classes.grid} justify="center">
-      <Grid item xs={8} sm={12} md={12} lg={12}>
-        <div className={classes.titleContainer}>
-          <Typography variant="h3">Write a review for</Typography>
-          <Typography variant="h3">location</Typography>
-        </div>
+      <Grid item xs={8} sm={6} md={6} lg={6}>
+        <div className={classes.titleContainer}>Write a review for</div>
       </Grid>
       <Grid container justify="center">
         <Grid item xs={6} sm={12} md={12} lg={12}>
@@ -69,8 +65,16 @@ const ReviewForm = () => {
           </div>
         </Grid>
       </Grid>
-      <Grid container>
-        <Grid item xs={12} sm={12} md={12} lg={12} className={classes.formGrid}>
+      <Grid container justify="center">
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={8}
+          xl={6}
+          className={classes.formGrid}
+        >
           <form onSubmit={handleSubmit} className={classes.formInput}>
             {form.map((value) => (
               <TextField
@@ -92,7 +96,7 @@ const ReviewForm = () => {
               error={formData.connection.error}
               className={classes.connectionControl}
             >
-              <InputLabel>How are you connected to this apartment?</InputLabel>
+              <InputLabel>I am a...</InputLabel>
               <Select
                 value={formData.connection.value}
                 onChange={handleChange("connection")}
