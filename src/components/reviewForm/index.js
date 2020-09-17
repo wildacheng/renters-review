@@ -41,7 +41,7 @@ const ReviewForm = () => {
 
   return (
     <Grid container className={classes.grid} justify="center">
-      <Grid item xs={8} sm={6} md={6} lg={6}>
+      <Grid item xs={12} sm={12} md={12} lg={12}>
         <div className={classes.titleContainer}>Write a review for</div>
       </Grid>
       <Grid container justify="center">

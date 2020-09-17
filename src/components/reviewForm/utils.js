@@ -50,7 +50,7 @@ export const useStyles = makeStyles((theme) => ({
   button: {
     color: "white",
     width: "200px",
-    marginTop: "20px",
+    marginTop: "30px",
     fontWeight: 800,
     letterSpacing: "1px",
     borderRadius: "50px",
