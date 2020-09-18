@@ -1,7 +1,8 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, withRouter } from "react-router-dom";
 import MenuDropDown from "../menuDropDown";
 import AuthFormModal from "../authFormModal";
+import DialogModal from "../dialogModal";
 
 //material.ui
 import {
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "1.334",
   },
   hover: {
+    cursor: "pointer",
     "&:hover": {
       "text-decoration": "underline",
       "text-decoration-color": "white",
@@ -43,10 +45,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 //
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const {history} = props
+  const [user, setUser] = React.useState(false);
   const [isDesktop, setDesktop] = React.useState(window.innerWidth > 700);
   const [isRegister, setIsRegister] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [openDialog, setOpenDialog] = React.useState(false);
 
   const classes = useStyles();
 
@@ -62,13 +67,21 @@ const Navbar = () => {
 
   //onClick for register/sign in modal
   const handleClick = (action) => () => {
-    if (action === "register") {
+    if (action === "dialog") {
+      setOpenDialog(true);
+    } else if (action === "reviewForm") {
+        history.push("/writeareview")
+    } else if (action === "register") {
       setIsRegister(true);
+      setOpen(true);
+    } else if (action === "signIn") {
+      setIsRegister(false);
+      setOpen(true);
     }
-    setOpen(true);
   };
 
   const handleClose = () => {
+    setOpenDialog(false);
     setOpen(false);
     setIsRegister(false);
   };
@@ -91,15 +104,17 @@ const Navbar = () => {
             </Typography>
             {isDesktop && (
               <React.Fragment>
-                <Box mx={1}>
-                  <Link
-                    color="inherit"
-                    variant="h6"
-                    component={RouterLink}
-                    to="/writeareview"
-                  >
-                    Write a Review
-                  </Link>
+                <Box
+                  component="span"
+                  mx={1}
+                  fontSize="h6.fontSize"
+                  fontFamily="Times New Roman,serif"
+                  className={classes.hover}
+                  onClick={
+                    user ? handleClick("reviewForm") : handleClick("dialog")
+                  }
+                >
+                  Write a Review
                 </Box>
                 <Box ml={2} mr={2}>
                   <Link
@@ -129,7 +144,7 @@ const Navbar = () => {
                   fontSize="h6.fontSize"
                   fontFamily="Times New Roman,serif"
                   className={classes.hover}
-                  onClick={handleClick()}
+                  onClick={handleClick("signIn")}
                 >
                   Sign In
                 </Box>
@@ -138,6 +153,7 @@ const Navbar = () => {
           </Toolbar>
         </AppBar>
       </div>
+      <DialogModal open={openDialog} onClose={handleClose} />
       <AuthFormModal
         open={open}
         handleClose={handleClose}
@@ -147,5 +163,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
-// connect(mapState, mapDispatch)(Navbar)
+export default withRouter(Navbar);

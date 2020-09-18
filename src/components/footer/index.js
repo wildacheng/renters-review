@@ -12,7 +12,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 const useStyles = makeStyles((theme) => ({
   hover: {
     "&:hover": {
-      color: "#007c91",
+      color: "#83A5CA",
     },
   },
   box: {

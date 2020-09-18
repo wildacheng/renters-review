@@ -60,8 +60,9 @@ const StyledMenuItem = withStyles((theme) => ({
 
 //component
 const MenuDropDown = (props) => {
-  const classes = useStyles();
+  const {handleSelect, history} = props
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const classes = useStyles();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -72,18 +73,18 @@ const MenuDropDown = (props) => {
   };
 
   const menuOptions = [
-    { title: "Register", action: props.handleSelect("register") },
-    { title: "Sign In", action: props.handleSelect() },
+    { title: "Register", action: handleSelect("register") },
+    { title: "Sign In", action: handleSelect("signIn") },
     {
       title: "Write a Review",
       action: () => {
-        props.history.push("/writeareview");
+        history.push("/writeareview");
       },
     },
     {
       title: "Blog",
       action: () => {
-        props.history.push("/blog");
+        history.push("/blog");
       },
     },
   ];

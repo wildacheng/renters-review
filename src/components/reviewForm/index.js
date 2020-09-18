@@ -18,9 +18,10 @@ import "./style.css";
 
 const ReviewForm = () => {
   const [user, setUser] = React.useState(true);
-  const [select, setSelect] = React.useState([
-    { isTrue: true, value: "location" },
-  ]);
+  const [select, setSelect] = React.useState({
+    isTrue: false,
+    value: "location",
+  });
   const [formData, setformData] = React.useState(initialFormData);
   const [value, setValue] = React.useState(3);
   const [hover, setHover] = React.useState(-1);
@@ -45,7 +46,10 @@ const ReviewForm = () => {
     setformData(updateFormData);
   };
 
+  console.log(select.isTrue, "IM VALUE");
+
   return (
+    //Shows if user didn't select an address
     <Grid container className={classes.grid} justify="center">
       {user && !select.isTrue ? (
         <div className="reviewBackgroundImage">
@@ -64,6 +68,7 @@ const ReviewForm = () => {
           </div>
         </div>
       ) : (
+        //Shows if user selected an address
         <Grid container className={classes.grid} justify="center">
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <div className={classes.titleContainer}>Write a review for</div>
