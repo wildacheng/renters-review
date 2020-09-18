@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     textAlign: "left",
-    fontWeight: "550",
-    fontSize: "1.5rem",
-    lineHeight: "1.334",
+    fontSize: "23px",
+    fontWeight: "bolder",
+    letterSpacing: ".5px"
   },
   hover: {
     cursor: "pointer",
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = (props) => {
   const {history} = props
-  const [user, setUser] = React.useState(false);
+  const [user, setUser] = React.useState(true);
   const [isDesktop, setDesktop] = React.useState(window.innerWidth > 700);
   const [isRegister, setIsRegister] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -91,7 +91,7 @@ const Navbar = (props) => {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            {!isDesktop && <MenuDropDown handleSelect={handleClick} />}
+            {!isDesktop && <MenuDropDown handleSelect={handleClick} user={user}/>}
             <Typography className={classes.title}>
               <Link
                 color="inherit"

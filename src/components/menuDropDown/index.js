@@ -50,7 +50,7 @@ const StyledMenuItem = withStyles((theme) => ({
     "&:focus": {
       backgroundColor: theme.palette.primary.main,
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white,
+        color: theme.palette.common.black,
       },
     },
     width: "-webkit-fill-available",
@@ -60,7 +60,7 @@ const StyledMenuItem = withStyles((theme) => ({
 
 //component
 const MenuDropDown = (props) => {
-  const {handleSelect, history} = props
+  const {user, handleSelect, history} = props
   const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
 
@@ -77,9 +77,7 @@ const MenuDropDown = (props) => {
     { title: "Sign In", action: handleSelect("signIn") },
     {
       title: "Write a Review",
-      action: () => {
-        history.push("/writeareview");
-      },
+      action: user ? handleSelect("reviewForm") : handleSelect("dialog")
     },
     {
       title: "Blog",
