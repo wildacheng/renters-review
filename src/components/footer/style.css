@@ -1,3 +1,30 @@
+h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  letter-spacing: 1px;
+  line-height: 1.7;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: bolder;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.menu-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Nunito Sans',sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.7rem;
+}
+
+.link-hover:hover {
+  color: #83A5CA;
+  text-decoration-color: #83A5CA;
+}
+
 #footer {
   width: 100%;
   background-color: whitesmoke;
@@ -17,20 +44,6 @@
 }
 
 
-.menu-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Nunito Sans',sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.7rem;
-}
-
-.link-hover:hover {
-  color: #83A5CA;
-  text-decoration-color: #83A5CA;
-}
 
 #social-media {
   padding-top: 40px;
@@ -39,15 +52,4 @@
   justify-content: center;
 }
 
-h3 {
-  margin-top: 30px;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  letter-spacing: 1px;
-  line-height: 1.7;
-  font-family: "Barlow Semi Condensed", sans-serif;
-  font-weight: 400;
-  font-weight: bolder;
-  font-size: 14px;
-  text-transform: uppercase;
-}
+

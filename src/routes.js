@@ -2,7 +2,7 @@ import React from "react";
 // import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
-import { Blog, HomePage, GoogleMap, ReviewForm } from "./components";
+import { Blog, HomePage, GoogleMap, Reviews, ReviewForm } from "./components";
 
 class Routes extends React.Component {
   render() {
@@ -10,7 +10,7 @@ class Routes extends React.Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/reviews" component={GoogleMap} />
+        <Route exact path="/reviews" component={Reviews} />
         <Route exact path="/writeareview" component={ReviewForm} />
         <Route exact path="/blog" component={Blog} />
       </Switch>

@@ -14,7 +14,6 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-// import {logout} from '../store'
 
 //styling for ClassName
 const useStyles = makeStyles((theme) => ({
