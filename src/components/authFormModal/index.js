@@ -58,7 +58,7 @@ function AuthFormModal(props) {
     setFormData(updateFormData);
 
     try {
-      const herokuEndPoint = "http://gentle-depths-93598.herokuapp.com/api/";
+      const herokuEndPoint = "https://gentle-depths-93598.herokuapp.com/api/";
 
       if (isRegister) {
         const res = await fetch(`${herokuEndPoint}register`, {
