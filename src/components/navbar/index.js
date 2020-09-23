@@ -1,8 +1,11 @@
 import React from "react";
+// import axios from "axios"
 import { Link as RouterLink, withRouter } from "react-router-dom";
 import MenuDropDown from "../menuDropDown";
 import AuthFormModal from "../authFormModal";
 import DialogModal from "../dialogModal";
+import { GlobalContext } from "../../globalContext";
+import {useStyles} from "./utils"
 
 //material.ui
 import {
@@ -11,42 +14,13 @@ import {
   AppBar,
   Toolbar,
   Divider,
-  makeStyles,
   Typography,
 } from "@material-ui/core";
 
-//styling for ClassName
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    width: "100%",
-  },
-  title: {
-    flexGrow: 1,
-    textAlign: "left",
-    fontSize: "23px",
-    fontWeight: "bolder",
-    letterSpacing: ".5px"
-  },
-  hover: {
-    cursor: "pointer",
-    "&:hover": {
-      "text-decoration": "underline",
-      "text-decoration-color": "white",
-    },
-  },
-  divider: {
-    height: 28,
-    width: 2,
-    margin: 4,
-    backgroundColor: "#A9A9A9",
-  },
-}));
-//
 
 const Navbar = (props) => {
-  const {history} = props
-  const [user, setUser] = React.useState(true);
+  const { user } = React.useContext(GlobalContext);
+  const { history } = props;
   const [isDesktop, setDesktop] = React.useState(window.innerWidth > 700);
   const [isRegister, setIsRegister] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -65,18 +39,22 @@ const Navbar = (props) => {
   });
 
   //onClick for register/sign in modal
-  const handleClick = (action) => () => {
-    if (action === "dialog") {
-      setOpenDialog(true);
-    } else if (action === "reviewForm") {
-        history.push("/writeareview")
-    } else if (action === "register") {
-      setIsRegister(true);
-      setOpen(true);
-    } else if (action === "signIn") {
-      setIsRegister(false);
-      setOpen(true);
-    }
+  const handleWriteReview = () => {
+    history.push("/writeareview");
+  };
+
+  const handleDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleRegister = () => {
+    setIsRegister(true);
+    setOpen(true);
+  };
+
+  const handleSignIn = () => {
+    setIsRegister(false);
+    setOpen(true);
   };
 
   const handleClose = () => {
@@ -90,7 +68,15 @@ const Navbar = (props) => {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            {!isDesktop && <MenuDropDown handleSelect={handleClick} user={user}/>}
+            {!isDesktop && (
+              <MenuDropDown
+                handleWriteReview={handleWriteReview}
+                handleDialog={handleDialog}
+                handleRegister={handleRegister}
+                handleSignIn={handleSignIn}
+                user={user}
+              />
+            )}
             <Typography className={classes.title}>
               <Link
                 color="inherit"
@@ -109,9 +95,7 @@ const Navbar = (props) => {
                   fontSize="h6.fontSize"
                   fontFamily="Times New Roman,serif"
                   className={classes.hover}
-                  onClick={
-                    user ? handleClick("reviewForm") : handleClick("dialog")
-                  }
+                  onClick={user ? handleWriteReview : handleDialog}
                 >
                   Write a Review
                 </Box>
@@ -133,7 +117,7 @@ const Navbar = (props) => {
                   fontSize="h6.fontSize"
                   fontFamily="Times New Roman,serif"
                   className={classes.hover}
-                  onClick={handleClick("register")}
+                  onClick={handleRegister}
                 >
                   Register
                 </Box>
@@ -143,7 +127,7 @@ const Navbar = (props) => {
                   fontSize="h6.fontSize"
                   fontFamily="Times New Roman,serif"
                   className={classes.hover}
-                  onClick={handleClick("signIn")}
+                  onClick={handleSignIn}
                 >
                   Sign In
                 </Box>

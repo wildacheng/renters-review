@@ -1,5 +1,24 @@
 import { makeStyles } from "@material-ui/core";
 
+/* table of contents
+
+  1. useStyles
+
+  2. initialFormData
+
+  3. registerForm
+
+  4. signInForm
+
+  5. getModalStyle
+
+  6. register
+
+  7. signIn
+
+*/
+
+//makeStyles
 export const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
@@ -33,7 +52,28 @@ export const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const RegisterForm = [
+//formData format
+
+export const initialFormData = {
+  firstName: {
+    value: "",
+    error: false,
+  },
+  lastName: {
+    value: "",
+    error: false,
+  },
+  email: {
+    value: "",
+    error: false,
+  },
+  password: {
+    value: "",
+    error: false,
+  },
+};
+
+export const registerForm = [
   {
     label: "First Name",
     name: "firstName",
@@ -48,9 +88,32 @@ export const RegisterForm = [
   },
 ];
 
-export const SignInForm = [
+export const signInForm = [
   {
     label: "Email",
     name: "email",
   },
 ];
+
+//position of the modal
+export const getModalStyle = () => ({
+  color: "#000000",
+  top: "50%",
+  left: "50%",
+  transform: `translate(-50%, -50%)`,
+  borderRadius: "5px",
+});
+
+
+//backend API payload
+export const register = (formData) => ({
+  firstName: formData.firstName.value,
+  lastName: formData.lastName.value,
+  email: formData.email.value,
+  password: formData.password.value,
+});
+
+export const signIn = (formData) => ({
+  email: formData.email.value,
+  password: formData.password.value,
+});

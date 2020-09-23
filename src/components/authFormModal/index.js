@@ -1,5 +1,5 @@
 import React from "react";
-
+import axios from "axios";
 import {
   Modal,
   Divider,
@@ -13,42 +13,25 @@ import {
   TextField,
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { useStyles, RegisterForm, SignInForm } from "./utils";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {
+  useStyles,
+  initialFormData,
+  registerForm,
+  signInForm,
+  getModalStyle,
+  register,
+  signIn,
+} from "./utils";
+import { GlobalContext } from "../../globalContext";
 import "./style.css";
 
-//position of the modal
-function getModalStyle() {
-  return {
-    color: "#000000",
-    top: "50%",
-    left: "50%",
-    transform: `translate(-50%, -50%)`,
-    borderRadius: "5px",
-  };
-}
+toast.configure();
 
 function AuthFormModal(props) {
   const { open, handleClose, isRegister } = props;
-
-  const initialFormData = {
-    firstName: {
-      value: "",
-      error: false,
-    },
-    lastName: {
-      value: "",
-      error: false,
-    },
-    email: {
-      value: "",
-      error: false,
-    },
-    password: {
-      value: "",
-      error: false,
-    },
-  };
-
+  const { user, setUser } = React.useContext(GlobalContext);
   const [formData, setFormData] = React.useState(initialFormData);
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -64,7 +47,7 @@ function AuthFormModal(props) {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     let updateFormData = { ...formData };
@@ -73,6 +56,39 @@ function AuthFormModal(props) {
     });
 
     setFormData(updateFormData);
+
+    try {
+      const herokuEndPoint = "http://gentle-depths-93598.herokuapp.com/api/";
+
+      if (isRegister) {
+        const res = await fetch(`${herokuEndPoint}register`, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(register(formData)),
+        });
+        const payload = await res.json()
+        console.log(payload, 'wAT')
+      } else {
+        const res = await fetch(`${herokuEndPoint}login`, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(signIn(formData)),
+        });
+        const payload = await res.json()
+        console.log(payload, 'wAT')
+        setUser(res);
+      }
+    } catch (error) {
+      isRegister
+        ? console.log(error, "Unable to register new user")
+        : console.log(error, "Unable to retrieve user");
+    }
   };
 
   const resetFormData = () => {
@@ -97,7 +113,9 @@ function AuthFormModal(props) {
           label={value.label}
           name={value.name}
           error={formData[value.name].error}
-          helperText={formData[value.name].error ? "This field is required" : ""}
+          helperText={
+            formData[value.name].error ? "This field is required" : ""
+          }
           variant="outlined"
           fullWidth={true}
         />
@@ -164,7 +182,7 @@ function AuthFormModal(props) {
         <div className="title">Create your Account</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <form onSubmit={handleSubmit}>
-          {RegisterForm.map((value) => inputForm(value))}
+          {registerForm.map((value) => inputForm(value))}
           {passwordFormControl()}
           {buttonControl(isRegister)}
         </form>
@@ -176,7 +194,7 @@ function AuthFormModal(props) {
         <div className="title">My Account</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <form onSubmit={handleSubmit}>
-          {SignInForm.map((value) => inputForm(value))}
+          {signInForm.map((value) => inputForm(value))}
           {passwordFormControl()}
           {buttonControl()}
         </form>
@@ -186,6 +204,7 @@ function AuthFormModal(props) {
 
   return (
     <div>
+      <ToastContainer />
       <Modal open={open} onClose={resetFormData}>
         {body}
       </Modal>

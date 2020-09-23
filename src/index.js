@@ -1,17 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./themeUtils";
 import "./index.css";
-import App from "./App"
+import App from "./App";
+import { GlobalContextProvider } from "./globalContext";
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-      <Router>
+    <Router>
+      <GlobalContextProvider>
         <App />
-      </Router>
+      </GlobalContextProvider>
+    </Router>
   </ThemeProvider>,
   document.getElementById("root")
 );

@@ -1,25 +1,24 @@
-import React from 'react'
+import React from "react";
 
 const defaultGlobalContextValue = {
   user: null,
-  setUser: () => {}
-}
+  setUser: () => {},
+};
 
-const GlobalContext = React.createContext(defaultGlobalContextValue)
+//set up context
+export const GlobalContext = React.createContext(defaultGlobalContextValue);
 
-const GlobalContextProvider = (props) => {
-  const { children } = props
-  const [user, setUser] = React.useState('')
+
+export const GlobalContextProvider = (props) => {
+  const { children } = props;
+  const [user, setUser] = React.useState("");
 
   const value = {
     user,
-    setUser
-  }
+    setUser,
+  };
   return (
-    <GlobalContext.Provider value={value}>
-      {children}
-    </GlobalContext.Provider>
-  )
-}
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
+  );
+};
 
-export default GlobalContextProvider
