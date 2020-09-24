@@ -34,20 +34,8 @@ const Navbar = (props) => {
   });
 
   //onClick for register/sign in modal
-  const handleHomeLink = () => {
-    history.push("/");
-  };
-
-  const handleWriteReview = () => {
-    history.push("/writeareview");
-  };
-
-  const handleBlog = () => {
-    history.push("/blog");
-  };
-
-  const handleMyReviews = () => {
-    history.push("/myreviews");
+  const handleNav = (nav) => () => {
+    history.push(nav);
   };
 
   const handleDialog = () => {
@@ -98,9 +86,7 @@ const Navbar = (props) => {
           <Toolbar>
             {!isDesktop && (
               <MenuDropDown
-                handleWriteReview={handleWriteReview}
-                handleMyReviews={handleMyReviews}
-                handleBlog={handleBlog}
+                handleNav={handleNav}
                 handleDialog={handleDialog}
                 handleRegister={handleRegister}
                 handleSignIn={handleSignIn}
@@ -109,7 +95,7 @@ const Navbar = (props) => {
               />
             )}
             <Typography className={classes.title}>
-              <Box mx={0} onClick={handleHomeLink}>
+              <Box mx={0} onClick={handleNav("/")}>
                 Renter's Review
               </Box>
             </Typography>
@@ -118,11 +104,15 @@ const Navbar = (props) => {
                 <Box
                   mx={1}
                   className={classes.hover}
-                  onClick={user ? handleWriteReview : handleDialog}
+                  onClick={user ? handleNav("/writeareview") : handleDialog}
                 >
                   Write a Review
                 </Box>
-                <Box mx={2} className={classes.hover} onClick={handleBlog}>
+                <Box
+                  mx={2}
+                  className={classes.hover}
+                  onClick={handleNav("/blog")}
+                >
                   Blog
                 </Box>
                 <Divider className={classes.divider} orientation="vertical" />
@@ -131,7 +121,7 @@ const Navbar = (props) => {
                     <Box
                       mx={2}
                       className={classes.hover}
-                      onClick={handleMyReviews}
+                      onClick={handleNav("/myreviews")}
                     >
                       My Reviews
                     </Box>

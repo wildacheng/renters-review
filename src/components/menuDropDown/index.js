@@ -6,9 +6,7 @@ import { useStyles, StyledMenu, StyledMenuItem } from "./utils";
 
 const MenuDropDown = (props) => {
   const {
-    handleWriteReview,
-    handleMyReviews,
-    handleBlog,
+    handleNav,
     handleDialog,
     handleRegister,
     handleSignIn,
@@ -30,15 +28,15 @@ const MenuDropDown = (props) => {
     ? [
         {
           title: "Blog",
-          action: handleBlog,
+          action: handleNav("/blog"),
         },
         {
           title: "Write a Review",
-          action: user ? handleWriteReview : handleDialog,
+          action: user ? handleNav("/writeareview") : handleDialog,
         },
         {
           title: "My Reviews",
-          action: handleMyReviews,
+          action: handleNav("/myreviews"),
         },
         {
           title: "Logout",
@@ -48,11 +46,11 @@ const MenuDropDown = (props) => {
     : [
         {
           title: "Write a Review",
-          action: user ? handleWriteReview : handleDialog,
+          action: user ? handleNav("/writeareview") : handleDialog,
         },
         {
           title: "Blog",
-          action: handleBlog,
+          action: handleNav("/blog"),
         },
         {
           title: "Register",
