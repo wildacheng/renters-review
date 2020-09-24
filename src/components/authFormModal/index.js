@@ -53,7 +53,7 @@ const AuthFormModal = (props) => {
   };
   const { open, openToast, handleClose, isRegister } = props;
   const defaultState = isRegister ? defaultRegisterState : defaultSignInState;
-  const { user, setUser } = React.useContext(GlobalContext);
+  const { setUser } = React.useContext(GlobalContext);
   const [formData, setFormData] = React.useState(defaultState);
   const [showPassword, setShowPassword] = React.useState(false);
   // getModalStyle is not a pure function, we roll the style only on the first render

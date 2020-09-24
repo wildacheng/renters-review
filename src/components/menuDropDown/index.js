@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 //material.ui
 import {
   Menu,
@@ -61,12 +60,13 @@ const StyledMenuItem = withStyles((theme) => ({
 //component
 const MenuDropDown = (props) => {
   const {
-    user,
     handleWriteReview,
+    handleBlog,
     handleDialog,
     handleRegister,
     handleSignIn,
-    history,
+    handleLogout,
+    user,
   } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
@@ -79,20 +79,30 @@ const MenuDropDown = (props) => {
     setAnchorEl(null);
   };
 
-  const menuOptions = [
-    { title: "Register", action: handleRegister },
-    { title: "Sign In", action: handleSignIn },
-    {
-      title: "Write a Review",
-      action: user ? handleWriteReview : handleDialog,
-    },
-    {
-      title: "Blog",
-      action: () => {
-        history.push("/blog");
-      },
-    },
-  ];
+  const menuOptions = user
+    ? [
+        {
+          title: "Write a Review",
+          action: user ? handleWriteReview : handleDialog,
+        },
+        {
+          title: "Blog",
+          action: handleBlog,
+        },
+        { title: "Logout", action: handleLogout },
+      ]
+    : [
+        {
+          title: "Write a Review",
+          action: user ? handleWriteReview : handleDialog,
+        },
+        {
+          title: "Blog",
+          action: handleBlog,
+        },
+        { title: "Register", action: handleRegister },
+        { title: "Sign In", action: handleSignIn },
+      ];
 
   return (
     <React.Fragment>
@@ -127,4 +137,4 @@ const MenuDropDown = (props) => {
   );
 };
 
-export default withRouter(MenuDropDown);
+export default MenuDropDown;

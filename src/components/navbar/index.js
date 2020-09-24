@@ -14,7 +14,7 @@ import { Box, AppBar, Toolbar, Divider, Typography } from "@material-ui/core";
 toast.configure();
 
 const Navbar = (props) => {
-  const { user } = React.useContext(GlobalContext);
+  const { user, setUser } = React.useContext(GlobalContext);
   const { history } = props;
   const [isDesktop, setDesktop] = React.useState(window.innerWidth > 700);
   const [isRegister, setIsRegister] = React.useState(false);
@@ -66,6 +66,10 @@ const Navbar = (props) => {
     setIsRegister(false);
   };
 
+  const handleLogout = () => {
+    setUser("");
+  };
+
   const handleToast = (status) => {
     if (status && isRegister) {
       toast("Success! Check email to activate your account.", {
@@ -91,9 +95,11 @@ const Navbar = (props) => {
             {!isDesktop && (
               <MenuDropDown
                 handleWriteReview={handleWriteReview}
+                handleBlog={handleBlog}
                 handleDialog={handleDialog}
                 handleRegister={handleRegister}
                 handleSignIn={handleSignIn}
+                handleLogout={handleLogout}
                 user={user}
               />
             )}
