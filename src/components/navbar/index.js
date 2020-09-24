@@ -1,22 +1,14 @@
 import React from "react";
 // import axios from "axios"
-import { Link as RouterLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import MenuDropDown from "../menuDropDown";
 import AuthFormModal from "../authFormModal";
 import DialogModal from "../dialogModal";
 import { GlobalContext } from "../../globalContext";
-import {useStyles} from "./utils"
+import { useStyles } from "./utils";
 
 //material.ui
-import {
-  Box,
-  Link,
-  AppBar,
-  Toolbar,
-  Divider,
-  Typography,
-} from "@material-ui/core";
-
+import { Box, AppBar, Toolbar, Divider, Typography } from "@material-ui/core";
 
 const Navbar = (props) => {
   const { user } = React.useContext(GlobalContext);
@@ -39,8 +31,16 @@ const Navbar = (props) => {
   });
 
   //onClick for register/sign in modal
+  const handleHomeLink = () => {
+    history.push("/");
+  };
+
   const handleWriteReview = () => {
     history.push("/writeareview");
+  };
+
+  const handleBlog = () => {
+    history.push("/blog");
   };
 
   const handleDialog = () => {
@@ -78,57 +78,27 @@ const Navbar = (props) => {
               />
             )}
             <Typography className={classes.title}>
-              <Link
-                color="inherit"
-                component={RouterLink}
-                to="/"
-                underline="none"
-              >
+              <Box mx={0} onClick={handleHomeLink}>
                 Renter's Review
-              </Link>
+              </Box>
             </Typography>
             {isDesktop && (
               <React.Fragment>
                 <Box
-                  component="span"
                   mx={1}
-                  fontSize="h6.fontSize"
-                  fontFamily="Times New Roman,serif"
                   className={classes.hover}
                   onClick={user ? handleWriteReview : handleDialog}
                 >
                   Write a Review
                 </Box>
-                <Box ml={2} mr={2}>
-                  <Link
-                    color="inherit"
-                    variant="h6"
-                    component={RouterLink}
-                    to="/blog"
-                  >
-                    Blog
-                  </Link>
+                <Box mx={2} className={classes.hover} onClick={handleBlog}>
+                  Blog
                 </Box>
                 <Divider className={classes.divider} orientation="vertical" />
-                <Box
-                  component="span"
-                  ml={2}
-                  mr={2}
-                  fontSize="h6.fontSize"
-                  fontFamily="Times New Roman,serif"
-                  className={classes.hover}
-                  onClick={handleRegister}
-                >
+                <Box mx={2} className={classes.hover} onClick={handleRegister}>
                   Register
                 </Box>
-                <Box
-                  component="span"
-                  mx={1}
-                  fontSize="h6.fontSize"
-                  fontFamily="Times New Roman,serif"
-                  className={classes.hover}
-                  onClick={handleSignIn}
-                >
+                <Box mx={1} className={classes.hover} onClick={handleSignIn}>
                   Sign In
                 </Box>
               </React.Fragment>
@@ -137,11 +107,13 @@ const Navbar = (props) => {
         </AppBar>
       </div>
       <DialogModal open={openDialog} onClose={handleClose} />
-      <AuthFormModal
-        open={open}
-        handleClose={handleClose}
-        isRegister={isRegister}
-      />
+      {open && (
+        <AuthFormModal
+          open={open}
+          handleClose={handleClose}
+          isRegister={isRegister}
+        />
+      )}
     </React.Fragment>
   );
 };

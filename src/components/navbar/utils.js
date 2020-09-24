@@ -11,12 +11,15 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "23px",
     fontWeight: "bolder",
     letterSpacing: ".5px",
+    cursor: "pointer",
   },
   hover: {
+    fontSize: "1.25rem",
+    fontFamily: "Times New Roman,serif",
     cursor: "pointer",
     "&:hover": {
       "text-decoration": "underline",
-      "text-decoration-color": "white",
+      "text-decoration-color": "black",
     },
   },
   divider: {

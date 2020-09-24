@@ -1,5 +1,9 @@
 import React from "react";
-import axios from "axios";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { GlobalContext } from "../../globalContext";
+import "./style.css";
 import {
   Modal,
   Divider,
@@ -12,29 +16,50 @@ import {
   IconButton,
   TextField,
 } from "@material-ui/core";
-import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   useStyles,
-  initialFormData,
   registerForm,
   signInForm,
   getModalStyle,
-  register,
-  signIn,
+  requestRegister,
 } from "./utils";
-import { GlobalContext } from "../../globalContext";
-import "./style.css";
 
 toast.configure();
 
 function AuthFormModal(props) {
+  const defaultRegisterState = {
+    firstName: {
+      value: "",
+      error: false,
+    },
+    lastName: {
+      value: "",
+      error: false,
+    },
+    email: {
+      value: "",
+      error: false,
+    },
+    password: {
+      value: "",
+      error: false,
+    },
+  };
+  const defaultSignInState = {
+    email: {
+      value: "",
+      error: false,
+    },
+    password: {
+      value: "",
+      error: false,
+    },
+  };
   const { open, handleClose, isRegister } = props;
+  const defaultState = isRegister ? defaultRegisterState : defaultSignInState;
   const { user, setUser } = React.useContext(GlobalContext);
-  const [formData, setFormData] = React.useState(initialFormData);
+  const [formData, setFormData] = React.useState(defaultState);
   const [showPassword, setShowPassword] = React.useState(false);
-
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const classes = useStyles();
@@ -43,56 +68,60 @@ function AuthFormModal(props) {
   const handleChange = (prop) => (event) => {
     setFormData({
       ...formData,
-      [prop]: { value: event.target.value, error: false },
+      [prop]: {
+        value: event.target.value,
+        error: prop === "password" ? event.target.value.length < 8 : false,
+      },
     });
+  };
+
+  const validateFormData = () => {
+    const copyFormData = { ...formData };
+    const status = [];
+    Object.entries(copyFormData).forEach(([key, value]) => {
+      key === "password"
+        ? (copyFormData[key].error = value.value.length < 8)
+        : (copyFormData[key].error = !value.value);
+      status.push(copyFormData[key].error);
+    });
+
+    setFormData(copyFormData);
+    return status.every((stat) => !stat);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let updateFormData = { ...formData };
-    Object.entries(formData).forEach(([key, value]) => {
-      updateFormData[key].error = !value.value;
-    });
+    const isValid = validateFormData();
 
-    setFormData(updateFormData);
-
-    try {
-      const herokuEndPoint = "https://gentle-depths-93598.herokuapp.com/api/";
-
+    if (isValid) {
+      const response = isRegister
+        ? await requestRegister(formData, true)
+        : await requestRegister(formData, false);
       if (isRegister) {
-        const res = await fetch(`${herokuEndPoint}register`, {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(register(formData)),
-        });
-        const payload = await res.json()
-        console.log(payload, 'wAT')
+        if (response.success) {
+          toast("Success! Check email to activate your account.", {
+            type: "info",
+          });
+        } else {
+          toast(`There's an account already with this email.`, {
+            type: "error",
+          });
+        }
       } else {
-        const res = await fetch(`${herokuEndPoint}login`, {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(signIn(formData)),
-        });
-        const payload = await res.json()
-        console.log(payload, 'wAT')
-        setUser(res);
+        if (response.success) {
+          toast(`Welcome ${response.data.firstName}`, { type: "info" });
+          setUser(response.data);
+        } else {
+          toast("Email or password is invalid.", { type: "error" });
+        }
       }
-    } catch (error) {
-      isRegister
-        ? console.log(error, "Unable to register new user")
-        : console.log(error, "Unable to retrieve user");
     }
+
   };
 
+  //have to manual put in initialFormData. doesn't work elsewise
   const resetFormData = () => {
-    setFormData(initialFormData);
     handleClose();
   };
 
@@ -102,6 +131,22 @@ function AuthFormModal(props) {
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const renderPasswordError = () => {
+    if (isRegister && formData.password.error) {
+      return (
+        <FormHelperText id="my-helper-text">
+          This field is required and minimum 8 characters.
+        </FormHelperText>
+      );
+    } else if (formData.password.error) {
+      return (
+        <FormHelperText id="my-helper-text">
+          This field is required.
+        </FormHelperText>
+      );
+    }
   };
 
   // helper callback functions
@@ -149,11 +194,7 @@ function AuthFormModal(props) {
         }
         labelWidth={70}
       />
-      {formData.password.error && (
-        <FormHelperText id="my-helper-text">
-          This field is required.
-        </FormHelperText>
-      )}
+      {renderPasswordError()}
     </FormControl>
   );
 

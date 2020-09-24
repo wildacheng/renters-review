@@ -1,20 +1,21 @@
 import { makeStyles } from "@material-ui/core";
+const HEROKU_API_ENDPOINT = "https://gentle-depths-93598.herokuapp.com/api/";
 
 /* table of contents
 
   1. useStyles
 
-  2. initialFormData
+  2. registerForm
 
-  3. registerForm
+  3. signInForm
 
-  4. signInForm
+  4. getModalStyle
 
-  5. getModalStyle
+  5. register
 
-  6. register
+  6. signIn
 
-  7. signIn
+  7. requestRegister
 
 */
 
@@ -54,25 +55,6 @@ export const useStyles = makeStyles((theme) => ({
 
 //formData format
 
-export const initialFormData = {
-  firstName: {
-    value: "",
-    error: false,
-  },
-  lastName: {
-    value: "",
-    error: false,
-  },
-  email: {
-    value: "",
-    error: false,
-  },
-  password: {
-    value: "",
-    error: false,
-  },
-};
-
 export const registerForm = [
   {
     label: "First Name",
@@ -104,8 +86,7 @@ export const getModalStyle = () => ({
   borderRadius: "5px",
 });
 
-
-//backend API payload
+//backend API payload with values only
 export const register = (formData) => ({
   firstName: formData.firstName.value,
   lastName: formData.lastName.value,
@@ -117,3 +98,21 @@ export const signIn = (formData) => ({
   email: formData.email.value,
   password: formData.password.value,
 });
+
+export const requestRegister = async (formData, isRegister) => {
+  const endpoint = isRegister ? "register" : "login";
+  const payload = isRegister ? register(formData) : signIn(formData);
+  try {
+    const res = await fetch(`${HEROKU_API_ENDPOINT}${endpoint}`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    return await res.json();
+  } catch (error) {
+    console.log(error, `Unable to ${endpoint}`);
+  }
+};
