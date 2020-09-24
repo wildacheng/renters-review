@@ -1,7 +1,5 @@
 import React from "react";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { GlobalContext } from "../../globalContext";
 import "./style.css";
 import {
@@ -24,9 +22,7 @@ import {
   requestRegister,
 } from "./utils";
 
-toast.configure();
-
-function AuthFormModal(props) {
+const AuthFormModal = (props) => {
   const defaultRegisterState = {
     firstName: {
       value: "",
@@ -55,7 +51,7 @@ function AuthFormModal(props) {
       error: false,
     },
   };
-  const { open, handleClose, isRegister } = props;
+  const { open, openToast, handleClose, isRegister } = props;
   const defaultState = isRegister ? defaultRegisterState : defaultSignInState;
   const { user, setUser } = React.useContext(GlobalContext);
   const [formData, setFormData] = React.useState(defaultState);
@@ -98,26 +94,15 @@ function AuthFormModal(props) {
       const response = isRegister
         ? await requestRegister(formData, true)
         : await requestRegister(formData, false);
-      if (isRegister) {
-        if (response.success) {
-          toast("Success! Check email to activate your account.", {
-            type: "info",
-          });
-        } else {
-          toast(`There's an account already with this email.`, {
-            type: "error",
-          });
-        }
-      } else {
-        if (response.success) {
-          toast(`Welcome ${response.data.firstName}`, { type: "info" });
-          setUser(response.data);
-        } else {
-          toast("Email or password is invalid.", { type: "error" });
-        }
-      }
-    }
 
+      response.success ? openToast(true) : openToast(false);
+
+      if (!isRegister) {
+        setUser(response.data);
+      }
+
+      resetFormData();
+    }
   };
 
   //have to manual put in initialFormData. doesn't work elsewise
@@ -245,12 +230,11 @@ function AuthFormModal(props) {
 
   return (
     <div>
-      <ToastContainer />
       <Modal open={open} onClose={resetFormData}>
         {body}
       </Modal>
     </div>
   );
-}
+};
 
 export default AuthFormModal;

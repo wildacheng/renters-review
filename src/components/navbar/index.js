@@ -1,5 +1,6 @@
 import React from "react";
-// import axios from "axios"
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { withRouter } from "react-router-dom";
 import MenuDropDown from "../menuDropDown";
 import AuthFormModal from "../authFormModal";
@@ -9,6 +10,8 @@ import { useStyles } from "./utils";
 
 //material.ui
 import { Box, AppBar, Toolbar, Divider, Typography } from "@material-ui/core";
+
+toast.configure();
 
 const Navbar = (props) => {
   const { user } = React.useContext(GlobalContext);
@@ -63,8 +66,25 @@ const Navbar = (props) => {
     setIsRegister(false);
   };
 
+  const handleToast = (status) => {
+    if (status && isRegister) {
+      toast("Success! Check email to activate your account.", {
+        type: "info",
+      });
+    } else if (!status && isRegister) {
+      toast(`There's an account already with this email.`, {
+        type: "error",
+      });
+    } else if (status && !isRegister) {
+      toast(`Welcome back!`, { type: "info" });
+    } else if (!status && !isRegister) {
+      toast("Email or password is invalid.", { type: "error" });
+    }
+  };
+
   return (
     <React.Fragment>
+      <ToastContainer />
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
@@ -110,6 +130,7 @@ const Navbar = (props) => {
       {open && (
         <AuthFormModal
           open={open}
+          openToast={handleToast}
           handleClose={handleClose}
           isRegister={isRegister}
         />
