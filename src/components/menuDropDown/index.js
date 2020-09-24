@@ -1,66 +1,13 @@
 import React from "react";
 //material.ui
-import {
-  Menu,
-  MenuItem,
-  withStyles,
-  makeStyles,
-  IconButton,
-  ListItemText,
-  Divider,
-} from "@material-ui/core";
+import { IconButton, ListItemText, Divider } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import { useStyles, StyledMenu, StyledMenuItem } from "./utils";
 
-//styling for ClassName
-const useStyles = makeStyles((theme) => ({
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  divider: {
-    width: "100%",
-    orientation: "horizontal",
-  },
-}));
-//
-
-//menu drop down
-const StyledMenu = withStyles({
-  paper: {
-    border: "1px solid #d3d4d5",
-  },
-})((props) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center",
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center",
-    }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    "&:focus": {
-      backgroundColor: theme.palette.primary.main,
-      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.black,
-      },
-    },
-    width: "-webkit-fill-available",
-  },
-}))(MenuItem);
-//
-
-//component
 const MenuDropDown = (props) => {
   const {
     handleWriteReview,
+    handleMyReviews,
     handleBlog,
     handleDialog,
     handleRegister,
@@ -82,14 +29,21 @@ const MenuDropDown = (props) => {
   const menuOptions = user
     ? [
         {
+          title: "Blog",
+          action: handleBlog,
+        },
+        {
           title: "Write a Review",
           action: user ? handleWriteReview : handleDialog,
         },
         {
-          title: "Blog",
-          action: handleBlog,
+          title: "My Reviews",
+          action: handleMyReviews,
         },
-        { title: "Logout", action: handleLogout },
+        {
+          title: "Logout",
+          action: handleLogout,
+        },
       ]
     : [
         {
@@ -100,8 +54,14 @@ const MenuDropDown = (props) => {
           title: "Blog",
           action: handleBlog,
         },
-        { title: "Register", action: handleRegister },
-        { title: "Sign In", action: handleSignIn },
+        {
+          title: "Register",
+          action: handleRegister,
+        },
+        {
+          title: "Sign In",
+          action: handleSignIn,
+        },
       ];
 
   return (

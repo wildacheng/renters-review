@@ -10,6 +10,14 @@ export const GlobalContext = React.createContext(defaultGlobalContextValue);
 
 
 export const GlobalContextProvider = (props) => {
+  // React.useEffect( ,[]) -> checks to see
+  // if (cookie) {
+  //   fetch from local storage
+  // } else {
+  //   do nothing
+  // }
+
+
   const { children } = props;
   const [user, setUser] = React.useState("");
 

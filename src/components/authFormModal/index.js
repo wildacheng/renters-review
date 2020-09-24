@@ -23,36 +23,36 @@ import {
 } from "./utils";
 
 const AuthFormModal = (props) => {
-  const defaultRegisterState = {
-    firstName: {
-      value: "",
-      error: false,
-    },
-    lastName: {
-      value: "",
-      error: false,
-    },
-    email: {
-      value: "",
-      error: false,
-    },
-    password: {
-      value: "",
-      error: false,
-    },
-  };
-  const defaultSignInState = {
-    email: {
-      value: "",
-      error: false,
-    },
-    password: {
-      value: "",
-      error: false,
-    },
-  };
   const { open, openToast, handleClose, isRegister } = props;
-  const defaultState = isRegister ? defaultRegisterState : defaultSignInState;
+  const defaultState = isRegister
+    ? {
+        firstName: {
+          value: "",
+          error: false,
+        },
+        lastName: {
+          value: "",
+          error: false,
+        },
+        email: {
+          value: "",
+          error: false,
+        },
+        password: {
+          value: "",
+          error: false,
+        },
+      }
+    : {
+        email: {
+          value: "",
+          error: false,
+        },
+        password: {
+          value: "",
+          error: false,
+        },
+      };
   const { setUser } = React.useContext(GlobalContext);
   const [formData, setFormData] = React.useState(defaultState);
   const [showPassword, setShowPassword] = React.useState(false);
@@ -96,6 +96,8 @@ const AuthFormModal = (props) => {
         : await requestRegister(formData, false);
 
       response.success ? openToast(true) : openToast(false);
+
+      //Store the cookie from the response onto the local storage
 
       if (!isRegister) {
         setUser(response.data);

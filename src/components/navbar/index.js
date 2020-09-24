@@ -14,12 +14,12 @@ import { Box, AppBar, Toolbar, Divider, Typography } from "@material-ui/core";
 toast.configure();
 
 const Navbar = (props) => {
-  const { user, setUser } = React.useContext(GlobalContext);
   const { history } = props;
-  const [isDesktop, setDesktop] = React.useState(window.innerWidth > 700);
+  const { user, setUser } = React.useContext(GlobalContext);
   const [isRegister, setIsRegister] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [openDialog, setOpenDialog] = React.useState(false);
+  const [isDesktop, setDesktop] = React.useState(window.innerWidth > 700);
 
   const classes = useStyles();
 
@@ -44,6 +44,10 @@ const Navbar = (props) => {
 
   const handleBlog = () => {
     history.push("/blog");
+  };
+
+  const handleMyReviews = () => {
+    history.push("/myreviews");
   };
 
   const handleDialog = () => {
@@ -95,6 +99,7 @@ const Navbar = (props) => {
             {!isDesktop && (
               <MenuDropDown
                 handleWriteReview={handleWriteReview}
+                handleMyReviews={handleMyReviews}
                 handleBlog={handleBlog}
                 handleDialog={handleDialog}
                 handleRegister={handleRegister}
@@ -121,12 +126,41 @@ const Navbar = (props) => {
                   Blog
                 </Box>
                 <Divider className={classes.divider} orientation="vertical" />
-                <Box mx={2} className={classes.hover} onClick={handleRegister}>
-                  Register
-                </Box>
-                <Box mx={1} className={classes.hover} onClick={handleSignIn}>
-                  Sign In
-                </Box>
+                {user ? (
+                  <React.Fragment>
+                    <Box
+                      mx={2}
+                      className={classes.hover}
+                      onClick={handleMyReviews}
+                    >
+                      My Reviews
+                    </Box>
+                    <Box
+                      mx={1}
+                      className={classes.hover}
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </Box>
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    <Box
+                      mx={2}
+                      className={classes.hover}
+                      onClick={handleRegister}
+                    >
+                      Register
+                    </Box>
+                    <Box
+                      mx={1}
+                      className={classes.hover}
+                      onClick={handleSignIn}
+                    >
+                      Sign In
+                    </Box>
+                  </React.Fragment>
+                )}
               </React.Fragment>
             )}
           </Toolbar>
