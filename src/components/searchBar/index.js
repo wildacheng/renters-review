@@ -11,7 +11,7 @@ import PlacesAutocomplete, {
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import { IconButton, InputBase } from "@material-ui/core";
-import { useStyles } from "./utils";
+import { useStyles, activeStyle } from "./utils";
 
 const SearchBar = ({ history, placeholder }) => {
   const [address, setAddress] = React.useState("");
@@ -19,13 +19,13 @@ const SearchBar = ({ history, placeholder }) => {
     lat: null,
     lng: null,
   });
-  const [selected, setSelected] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(true);
 
   const classes = useStyles();
 
   const handleChange = (address) => {
-    setSelected(false);
     setAddress(address);
+    setDisabled(true);
   };
 
   const handleSelect = async (address) => {
@@ -34,14 +34,13 @@ const SearchBar = ({ history, placeholder }) => {
       const latLng = await getLatLng(results[0]);
       setAddress(address);
       setCoordinates(latLng);
-      setSelected(true);
+      setDisabled(false);
     } catch (error) {
       console.log("Error", error);
     }
   };
 
   const handleClick = () => {
-    // require the term to be length of at least 5 to pass
     history.push({
       pathname: "/reviews",
       state: {
@@ -79,24 +78,9 @@ const SearchBar = ({ history, placeholder }) => {
                   (suggestion) => suggestion.types[0] === "street_address"
                 )
                 .map((suggestion, index) => {
-                  console.log(suggestion, "Adress");
                   const style = suggestion.active
-                    ? {
-                        backgroundColor: "#455a64",
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        lineHeight: "2.5",
-                        borderBottom: "1px solid grey",
-                      }
-                    : {
-                        backgroundColor: "#ffffff",
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        lineHeight: "2.5",
-                        borderBottom: "1px solid grey",
-                      };
+                    ? activeStyle("#83A5CA")
+                    : activeStyle("#ffffff");
 
                   return (
                     <div
@@ -114,9 +98,9 @@ const SearchBar = ({ history, placeholder }) => {
       </PlacesAutocomplete>
       <div>
         <IconButton
-          //since onkeydown/press conflicts with the street view library getInputProps method- change icon color instead
-          className={selected ? classes.redButton : classes.blkButton}
+          disabled={disabled}
           onClick={handleClick}
+          color="inherit"
           type="submit"
           aria-label="search"
         >

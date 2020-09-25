@@ -1,6 +1,5 @@
 import { makeStyles, fade } from "@material-ui/core";
 
-
 export const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -21,10 +20,13 @@ export const useStyles = makeStyles((theme) => ({
     flex: 1,
     fontSize: "large",
   },
-  blkButton: {
-    color: "black",
-  },
-  redButton: {
-    color: "red",
-  },
 }));
+
+export const activeStyle = (color) => ({
+  backgroundColor: color,
+  cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  lineHeight: "2.5",
+  borderBottom: "1px solid grey",
+});
