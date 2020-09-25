@@ -11,16 +11,20 @@ import {
   Select,
 } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
-import { useStyles, initialFormData, labels, form, menuItems } from "./utils";
+import { GlobalContext } from "../../globalContext";
 import SearchBar from "../searchBar";
+import GoogleMap from "../googleMap"
 import Footer from "../footer";
+import { useStyles, initialFormData, labels, form, menuItems } from "./utils";
 import "./style.css";
 
 const ReviewForm = () => {
-  const [user, setUser] = React.useState(true);
-  const [select, setSelect] = React.useState({
-    isTrue: false,
-    value: "location",
+  const { user } = React.useContext(GlobalContext);
+  const [address, setAddress] = React.useState("");
+  const [selected, setSelected] = React.useState(false);
+  const [coordinates, setCoordinates] = React.useState({
+    lat: null,
+    lng: null,
   });
   const [formData, setformData] = React.useState(initialFormData);
   const [value, setValue] = React.useState(3);
@@ -46,12 +50,14 @@ const ReviewForm = () => {
     setformData(updateFormData);
   };
 
-  console.log(select.isTrue, "IM VALUE");
+  const handleClick = () => {
+    setSelected(true);
+  };
 
   return (
     //Shows if user didn't select an address
     <Grid container className={classes.grid} justify="center">
-      {user && !select.isTrue ? (
+      {user && !selected ? (
         <div className="reviewBackgroundImage">
           <div className="searchContainer">
             <div className={classes.titleContainer}>
@@ -62,7 +68,14 @@ const ReviewForm = () => {
             </div>
             <Grid container className={classes.searchGrid}>
               <Grid item xs={7} sm={8} md={12} lg={12}>
-                <SearchBar placeholder="Enter a full address"/>
+                <SearchBar
+                  address={address}
+                  setAddress={setAddress}
+                  coordinates={coordinates}
+                  setCoordinates={setCoordinates}
+                  handleClick={handleClick}
+                  placeholder="Enter a full address"
+                />
               </Grid>
             </Grid>
           </div>
@@ -72,6 +85,7 @@ const ReviewForm = () => {
         <Grid container className={classes.grid} justify="center">
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <div className={classes.titleContainer}>Write a review for</div>
+            <div>{address}</div>
           </Grid>
           <Grid container justify="center">
             <Grid item xs={6} sm={12} md={12} lg={12}>

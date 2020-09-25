@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import SearchBar from "../searchBar";
 import BlogCarousel from "../blogCarousel";
 import Footer from "../footer";
@@ -8,8 +9,13 @@ import "./style.css";
 //material.ui
 import { Grid } from "@material-ui/core";
 
-const HomePage = () => {
+const HomePage = ({history}) => {
   const [isDesktop, setDesktop] = React.useState(window.innerWidth > 650);
+  const [address, setAddress] = React.useState("");
+  const [coordinates, setCoordinates] = React.useState({
+    lat: null,
+    lng: null,
+  });
 
   const classes = useStyles();
 
@@ -21,6 +27,16 @@ const HomePage = () => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
+
+  const handleClick = () => {
+    history.push({
+      pathname: "/reviews",
+      state: {
+        lat: coordinates.lat,
+        lng: coordinates.lng,
+      },
+    });
+  };
 
   return (
     <React.Fragment>
@@ -34,7 +50,13 @@ const HomePage = () => {
               </div>
               <Grid container className={classes.searchGrid}>
                 <Grid item xs={7} sm={8} md={12} lg={12}>
-                  <SearchBar  placeholder="Enter an address to search reviews"/>
+                  <SearchBar
+                  address={address}
+                  setAddress={setAddress}
+                  coordinates={coordinates}
+                  setCoordinates={setCoordinates}
+                  handleClick={handleClick}
+                  placeholder="Enter an address to search reviews" />
                 </Grid>
               </Grid>
             </div>
@@ -47,4 +69,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default withRouter(HomePage);

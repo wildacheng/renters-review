@@ -1,24 +1,21 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-
-//react google places autocomplete
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
-
-//material.ui
 import SearchIcon from "@material-ui/icons/Search";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import { IconButton, InputBase } from "@material-ui/core";
 import { useStyles, activeStyle } from "./utils";
 
-const SearchBar = ({ history, placeholder }) => {
-  const [address, setAddress] = React.useState("");
-  const [coordinates, setCoordinates] = React.useState({
-    lat: null,
-    lng: null,
-  });
+const SearchBar = (props) => {
+  const {
+    address,
+    setAddress,
+    setCoordinates,
+    handleClick,
+    placeholder,
+  } = props;
   const [disabled, setDisabled] = React.useState(true);
 
   const classes = useStyles();
@@ -38,16 +35,6 @@ const SearchBar = ({ history, placeholder }) => {
     } catch (error) {
       console.log("Error", error);
     }
-  };
-
-  const handleClick = () => {
-    history.push({
-      pathname: "/reviews",
-      state: {
-        lat: coordinates.lat,
-        lng: coordinates.lng,
-      },
-    });
   };
 
   const searchOptions = {
@@ -111,4 +98,4 @@ const SearchBar = ({ history, placeholder }) => {
   );
 };
 
-export default withRouter(SearchBar);
+export default SearchBar;
