@@ -34,7 +34,7 @@ const HomePage = () => {
               </div>
               <Grid container className={classes.searchGrid}>
                 <Grid item xs={7} sm={8} md={12} lg={12}>
-                  <SearchBar />
+                  <SearchBar  placeholder="Enter an address to search reviews"/>
                 </Grid>
               </Grid>
             </div>

@@ -10,6 +10,7 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     fontSize: "23px",
     fontWeight: "bolder",
+    fontFamily: "Times New Roman,serif",
     letterSpacing: ".5px",
     cursor: "pointer",
   },

@@ -9,7 +9,7 @@ import { GlobalContext } from "../../globalContext";
 import { useStyles } from "./utils";
 
 //material.ui
-import { Box, AppBar, Toolbar, Divider, Typography } from "@material-ui/core";
+import { Box, AppBar, Toolbar, Divider } from "@material-ui/core";
 
 toast.configure();
 
@@ -94,11 +94,9 @@ const Navbar = (props) => {
                 user={user}
               />
             )}
-            <Typography className={classes.title}>
-              <Box mx={0} onClick={handleNav("/")}>
-                Renter's Review
-              </Box>
-            </Typography>
+            <Box mx={0} className={classes.title} onClick={handleNav("/")}>
+              Renter's Review
+            </Box>
             {isDesktop && (
               <React.Fragment>
                 <Box

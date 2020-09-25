@@ -13,7 +13,7 @@ import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import { IconButton, InputBase } from "@material-ui/core";
 import { useStyles } from "./utils";
 
-const SearchBar = ({ history }) => {
+const SearchBar = ({ history, placeholder }) => {
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     lat: null,
@@ -41,6 +41,7 @@ const SearchBar = ({ history }) => {
   };
 
   const handleClick = () => {
+    // require the term to be length of at least 5 to pass
     history.push({
       pathname: "/reviews",
       state: {
@@ -50,50 +51,63 @@ const SearchBar = ({ history }) => {
     });
   };
 
+  const searchOptions = {
+    types: ["address"],
+  };
+
   return (
     <div className={classes.container}>
       <PlacesAutocomplete
         value={address}
         onChange={handleChange}
         onSelect={handleSelect}
+        searchOptions={searchOptions}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className={classes.search}>
             <InputBase
               className={classes.input}
               onChange={handleChange}
-              placeholder="Enter a full address"
+              placeholder={placeholder}
               fontFamily="Century Gothic Std"
               {...getInputProps()}
             />
             <div>
               {loading ? <div>Loading...</div> : null}
-              {suggestions.map((suggestion) => {
-                const style = suggestion.active
-                  ? {
-                      backgroundColor: "#455a64",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      lineHeight: "2.5",
-                      borderBottom: "1px solid grey",
-                    }
-                  : {
-                      backgroundColor: "#ffffff",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      lineHeight: "2.5",
-                      borderBottom: "1px solid grey",
-                    };
+              {suggestions
+                .filter(
+                  (suggestion) => suggestion.types[0] === "street_address"
+                )
+                .map((suggestion, index) => {
+                  console.log(suggestion, "Adress");
+                  const style = suggestion.active
+                    ? {
+                        backgroundColor: "#455a64",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        lineHeight: "2.5",
+                        borderBottom: "1px solid grey",
+                      }
+                    : {
+                        backgroundColor: "#ffffff",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        lineHeight: "2.5",
+                        borderBottom: "1px solid grey",
+                      };
 
-                return (
-                  <div {...getSuggestionItemProps(suggestion, { style })}>
-                    <LocationOnOutlinedIcon />
-                    {suggestion.description}
-                  </div>
-                );
-              })}
+                  return (
+                    <div
+                      key={index}
+                      {...getSuggestionItemProps(suggestion, { style })}
+                    >
+                      <LocationOnOutlinedIcon />
+                      {suggestion.description}
+                    </div>
+                  );
+                })}
             </div>
           </div>
         )}
