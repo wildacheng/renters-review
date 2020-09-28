@@ -27,7 +27,7 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 3, 2),
+    padding: "40px",
     outline: 0,
   },
   textField: {
@@ -42,14 +42,23 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
+  closeIcon: {
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    color: "rgba(0, 0, 0, 0.54)"
+  },
   button: {
-    fontFamily: "Barlow Semi Condensed,sans-serif",
-    fontWeight: 800,
-    letterSpacing: "1px",
+    height: "50px",
+    width: "300px",
+    textTransform: "none",
+    fontFamily: "Montserrat, sans-serif",
+    fontWeight: 500,
+    fontSize: "1.2rem",
+    lineHeight: 1.5,
     color: "white",
     backgroundColor: "red",
-    width: "200px",
-    borderRadius: "50px",
+    borderRadius: "3px",
   },
 }));
 
@@ -80,6 +89,7 @@ export const signInForm = [
 //position of the modal
 export const getModalStyle = () => ({
   color: "#000000",
+  width: "300px",
   top: "50%",
   left: "50%",
   transform: `translate(-50%, -50%)`,

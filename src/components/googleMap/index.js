@@ -1,11 +1,10 @@
 import React from "react";
 import ReactStreetview from "react-streetview";
 
-const GoogleMap = (props) => {
-
+const GoogleMap = ({ lat, lng }) => {
   // see https://developers.google.com/maps/documentation/javascript/3.exp/reference#StreetViewPanoramaOptions
   const streetViewPanoramaOptions = {
-    position: { lat: props.location.state.lat, lng: props.location.state.lng },
+    position: { lat: lat, lng: lng },
     pov: { heading: 100, pitch: 0 },
     zoom: 1,
   };
@@ -13,14 +12,12 @@ const GoogleMap = (props) => {
   return (
     <div
       style={{
-        width: "800px",
-        height: "450px",
+        width: "600px",
+        height: "400px",
         backgroundColor: "#eeeeee",
       }}
     >
-      <ReactStreetview
-        streetViewPanoramaOptions={streetViewPanoramaOptions}
-      />
+      <ReactStreetview streetViewPanoramaOptions={streetViewPanoramaOptions} />
     </div>
   );
 };

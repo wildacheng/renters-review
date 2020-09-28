@@ -39,10 +39,6 @@ export const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(2),
       width: "50%",
     },
-    "& .MuiFormLabel-root": {
-      fontSize: "1.1rem",
-      fontWeight: "550",
-    },
   },
   formGrid: {
     marginBottom: "50px",

@@ -1,5 +1,6 @@
 import React from "react";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
+import CloseIcon from '@material-ui/icons/Close';
 import { GlobalContext } from "../../globalContext";
 import "./style.css";
 import {
@@ -186,7 +187,7 @@ const AuthFormModal = (props) => {
   );
 
   const buttonControl = (value) => {
-    const buttonName = value === isRegister ? "Sign Up" : "Sign In";
+    const buttonName = value === isRegister ? "Register" : "Sign In";
 
     return (
       <div className={classes.buttonField}>
@@ -207,7 +208,11 @@ const AuthFormModal = (props) => {
   if (isRegister) {
     body = (
       <div style={modalStyle} className={classes.paper}>
-        <div className="title">Create your Account</div>
+        <div>
+        <CloseIcon className={classes.closeIcon} />
+
+        </div>
+        <div className="title">Register</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <form onSubmit={handleSubmit}>
           {registerForm.map((value) => inputForm(value))}
@@ -219,7 +224,7 @@ const AuthFormModal = (props) => {
   } else {
     body = (
       <div style={modalStyle} className={classes.paper}>
-        <div className="title">My Account</div>
+        <div className="title">Sign In</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <form onSubmit={handleSubmit}>
           {signInForm.map((value) => inputForm(value))}
