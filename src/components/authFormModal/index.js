@@ -1,6 +1,6 @@
 import React from "react";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from "@material-ui/icons/Close";
 import { GlobalContext } from "../../globalContext";
 import "./style.css";
 import {
@@ -24,7 +24,7 @@ import {
 } from "./utils";
 
 const AuthFormModal = (props) => {
-  const { open, openToast, handleClose, isRegister } = props;
+  const { open, openToast, handleClose, handleSwitch, isRegister } = props;
   const defaultState = isRegister
     ? {
         firstName: {
@@ -208,10 +208,7 @@ const AuthFormModal = (props) => {
   if (isRegister) {
     body = (
       <div style={modalStyle} className={classes.paper}>
-        <div>
-        <CloseIcon className={classes.closeIcon} />
-
-        </div>
+        <CloseIcon className={classes.closeIcon} onClick={handleClose} />
         <div className="title">Register</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <form onSubmit={handleSubmit}>
@@ -219,11 +216,18 @@ const AuthFormModal = (props) => {
           {passwordFormControl()}
           {buttonControl(isRegister)}
         </form>
+        <div className={classes.switchForm}>
+          <div className={classes.switchTitle}>Already have an account?</div>
+          <div onClick={handleSwitch(!isRegister)} className={classes.switchLink}>
+            Sign In
+          </div>
+        </div>
       </div>
     );
   } else {
     body = (
       <div style={modalStyle} className={classes.paper}>
+        <CloseIcon className={classes.closeIcon} onClick={handleClose} />
         <div className="title">Sign In</div>
         <Divider className={classes.divider} orientation="horizontal" />
         <form onSubmit={handleSubmit}>
@@ -231,6 +235,12 @@ const AuthFormModal = (props) => {
           {passwordFormControl()}
           {buttonControl()}
         </form>
+        <div className={classes.switchForm}>
+          <div className={classes.switchTitle}>Don't have an account yet?</div>
+          <div onClick={handleSwitch(!isRegister)} className={classes.switchLink}>
+            Register
+          </div>
+        </div>
       </div>
     );
   }

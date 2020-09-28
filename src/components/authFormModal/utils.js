@@ -46,7 +46,8 @@ export const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: "10px",
     right: "10px",
-    color: "rgba(0, 0, 0, 0.54)"
+    color: "rgba(0, 0, 0, 0.54)",
+    cursor: "pointer"
   },
   button: {
     height: "50px",
@@ -59,11 +60,25 @@ export const useStyles = makeStyles((theme) => ({
     color: "white",
     backgroundColor: "red",
     borderRadius: "3px",
+    marginBottom: "16px",
   },
+  switchForm: {
+    display: "flex",
+    justifyContent: "center",
+    fontFamily: "Montserrat, sans-serif",
+    lineHeight: "1.5"
+  },
+  switchTitle: {
+    color: "rgba(0, 0, 0, 0.54)",
+    marginRight: "10px"
+  },
+  switchLink: {
+    textDecoration: "underline",
+    cursor: "pointer"
+  }
 }));
 
 //formData format
-
 export const registerForm = [
   {
     label: "First Name",

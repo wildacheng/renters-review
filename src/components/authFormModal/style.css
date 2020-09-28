@@ -1,22 +1,20 @@
 .MuiFormLabel-root {
   color: rgba(0, 0, 0, 0.54) !important;
-  padding: 0;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 0.6875rem !important;
+  font-size: 0.7rem !important;
   font-family: Montserrat, sans-serif !important;
 }
 
 .MuiInputBase-root {
-  font-size: 0.8rem;
-  font-family: Montserrat, sans-serif;
-  letter-spacing: 1px;
+  font-family: Montserrat, sans-serif !important;
+  letter-spacing: 0.5px;
 }
 
 /* title font for mobile screen */
 .title {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   font-family: Montserrat, sans-serif;
   font-weight: bold;
   text-transform: uppercase;

@@ -60,7 +60,14 @@ const Navbar = (props) => {
 
   const handleLogout = () => {
     setUser("");
+    history.push("/")
   };
+
+  const handleSwitch = (isRegister) => () => {
+    console.log(isRegister, 'A')
+    setIsRegister(isRegister)
+    setOpen(true)
+  }
 
   const handleToast = (status) => {
     if (status && isRegister) {
@@ -160,6 +167,7 @@ const Navbar = (props) => {
           open={open}
           openToast={handleToast}
           handleClose={handleClose}
+          handleSwitch={handleSwitch}
           isRegister={isRegister}
         />
       )}
