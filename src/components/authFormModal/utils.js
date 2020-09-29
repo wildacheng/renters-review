@@ -47,7 +47,7 @@ export const useStyles = makeStyles((theme) => ({
     top: "10px",
     right: "10px",
     color: "rgba(0, 0, 0, 0.54)",
-    cursor: "pointer"
+    cursor: "pointer",
   },
   button: {
     height: "50px",
@@ -58,7 +58,7 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "1.2rem",
     lineHeight: 1.5,
     color: "white",
-    backgroundColor: "red",
+    backgroundColor: "#ff5d4e",
     borderRadius: "3px",
     marginBottom: "16px",
   },
@@ -66,16 +66,16 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     fontFamily: "Montserrat, sans-serif",
-    lineHeight: "1.5"
+    lineHeight: "1.5",
   },
   switchTitle: {
     color: "rgba(0, 0, 0, 0.54)",
-    marginRight: "10px"
+    marginRight: "10px",
   },
   switchLink: {
     textDecoration: "underline",
-    cursor: "pointer"
-  }
+    cursor: "pointer",
+  },
 }));
 
 //formData format

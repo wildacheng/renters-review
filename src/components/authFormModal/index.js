@@ -25,49 +25,56 @@ import {
 
 const AuthFormModal = (props) => {
   const { open, openToast, handleClose, handleSwitch, isRegister } = props;
-  const defaultState = isRegister
-    ? {
-        firstName: {
-          value: "",
-          error: false,
-        },
-        lastName: {
-          value: "",
-          error: false,
-        },
-        email: {
-          value: "",
-          error: false,
-        },
-        password: {
-          value: "",
-          error: false,
-        },
-      }
-    : {
-        email: {
-          value: "",
-          error: false,
-        },
-        password: {
-          value: "",
-          error: false,
-        },
-      };
+  const defaultState = (isRegister) => {
+    let state = isRegister
+      ? {
+          firstName: {
+            value: "",
+            error: false,
+          },
+          lastName: {
+            value: "",
+            error: false,
+          },
+          email: {
+            value: "",
+            error: false,
+          },
+          password: {
+            value: "",
+            error: false,
+          },
+        }
+      : {
+          email: {
+            value: "",
+            error: false,
+          },
+          password: {
+            value: "",
+            error: false,
+          },
+        };
+
+    return state;
+  };
   const { setUser } = React.useContext(GlobalContext);
-  const [formData, setFormData] = React.useState(defaultState);
+  const [formData, setFormData] = React.useState(defaultState(isRegister));
   const [showPassword, setShowPassword] = React.useState(false);
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const classes = useStyles();
 
   //onClick handlers
-  const handleChange = (prop) => (event) => {
+  const handleChange = (event) => {
+    const inputName = event.target.name;
+    const inputValue = event.target.value;
+
     setFormData({
       ...formData,
-      [prop]: {
-        value: event.target.value,
-        error: prop === "password" ? event.target.value.length < 8 : false,
+      [inputName]: {
+        value: inputValue,
+        error: inputName === "password" ? inputValue.length < 8 : false,
       },
     });
   };
@@ -97,8 +104,6 @@ const AuthFormModal = (props) => {
         : await requestRegister(formData, false);
 
       response.success ? openToast(true) : openToast(false);
-
-      //Store the cookie from the response onto the local storage
 
       if (!isRegister) {
         setUser(response.data);
@@ -142,9 +147,10 @@ const AuthFormModal = (props) => {
     return (
       <div className={classes.textField} key={value.label}>
         <TextField
-          onChange={handleChange(value.name)}
+          onChange={handleChange}
           label={value.label}
           name={value.name}
+          value={formData[value.name].value}
           error={formData[value.name].error}
           helperText={
             formData[value.name].error ? "This field is required" : ""
@@ -166,8 +172,9 @@ const AuthFormModal = (props) => {
       <OutlinedInput
         id="outlined-adornment-password"
         type={showPassword ? "text" : "password"}
+        name="password"
         value={formData.password.value}
-        onChange={handleChange("password")}
+        onChange={handleChange}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
@@ -203,6 +210,11 @@ const AuthFormModal = (props) => {
     );
   };
 
+  const switchAuthForm = () => {
+    setFormData(defaultState(!isRegister));
+    handleSwitch();
+  };
+
   // conditional rendering
   let body;
   if (isRegister) {
@@ -218,7 +230,7 @@ const AuthFormModal = (props) => {
         </form>
         <div className={classes.switchForm}>
           <div className={classes.switchTitle}>Already have an account?</div>
-          <div onClick={handleSwitch(!isRegister)} className={classes.switchLink}>
+          <div onClick={switchAuthForm} className={classes.switchLink}>
             Sign In
           </div>
         </div>
@@ -237,7 +249,7 @@ const AuthFormModal = (props) => {
         </form>
         <div className={classes.switchForm}>
           <div className={classes.switchTitle}>Don't have an account yet?</div>
-          <div onClick={handleSwitch(!isRegister)} className={classes.switchLink}>
+          <div onClick={switchAuthForm} className={classes.switchLink}>
             Register
           </div>
         </div>

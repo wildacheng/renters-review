@@ -20,7 +20,7 @@ export const GlobalContextProvider = (props) => {
       credentials: "include",
     });
     const payload = await res.json();
-    console.log(payload, "PAYLOAD")
+    console.log(payload, "PAYLOAD");
     if (payload.success) {
       setUser(payload.data);
     }
