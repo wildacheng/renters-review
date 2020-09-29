@@ -13,14 +13,16 @@ export const useStyles = makeStyles((theme) => ({
     fontFamily: "Times New Roman,serif",
     letterSpacing: ".5px",
     cursor: "pointer",
+    "&:hover": {
+      color: "#83A5CA",
+    },
   },
   hover: {
     fontSize: "1.25rem",
     fontFamily: "Times New Roman,serif",
     cursor: "pointer",
     "&:hover": {
-      "text-decoration": "underline",
-      "text-decoration-color": "black",
+      color: "#83A5CA",
     },
   },
   divider: {

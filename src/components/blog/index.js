@@ -17,8 +17,8 @@ import { Articles } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    padding: theme.spacing(2),
-    margin: theme.spacing(6),
+    padding: theme.spacing(5),
+    margin: theme.spacing(5),
     textAlign: "center",
   },
 }));

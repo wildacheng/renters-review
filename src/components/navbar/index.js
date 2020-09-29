@@ -7,6 +7,7 @@ import AuthFormModal from "../authFormModal";
 import DialogModal from "../dialogModal";
 import { GlobalContext } from "../../globalContext";
 import { useStyles } from "./utils";
+import "./style.css"
 
 //material.ui
 import { Box, AppBar, Toolbar, Divider } from "@material-ui/core";
@@ -60,14 +61,14 @@ const Navbar = (props) => {
 
   const handleLogout = () => {
     setUser("");
-    history.push("/")
+    history.push("/");
   };
 
   const handleSwitch = (isRegister) => () => {
-    console.log(isRegister, 'A')
-    setIsRegister(isRegister)
-    setOpen(true)
-  }
+    console.log(isRegister, "A");
+    setIsRegister(isRegister);
+    setOpen(true);
+  };
 
   const handleToast = (status) => {
     if (status && isRegister) {
