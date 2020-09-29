@@ -35,9 +35,10 @@
 
 #titleContainer {
   color: #ffffff;
-  font-family: Century Gothic Std;
-  font-weight: 600;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
   font-size: xx-large;
+  line-height: 1.5;
   text-shadow: 4px 4px 4px #000000;
   margin-bottom: 20px;
 }

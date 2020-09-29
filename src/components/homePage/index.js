@@ -45,8 +45,8 @@ const HomePage = ({history}) => {
           <div className="backgroundImage">
             <div className="searchContainer">
               <div id="titleContainer">
-                <div>Real reviews to help you</div>
-                <div>find the perfect home.</div>
+                <div>Find your next home.</div>
+                <div style={{fontSize: "22px", fontWeight: "800", color:"white", lineHeight: "1.875", textShadow: "4px 4px 15px #000000"}}>Real people. Real reviews </div>
               </div>
               <Grid container className={classes.searchGrid}>
                 <Grid item xs={7} sm={8} md={12} lg={12}>

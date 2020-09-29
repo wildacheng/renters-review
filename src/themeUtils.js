@@ -10,7 +10,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: "Times New Roman,serif",
+    fontFamily: "Montserrat, sans-serif",
   },
 });
 

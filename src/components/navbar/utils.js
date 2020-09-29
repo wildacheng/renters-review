@@ -8,18 +8,19 @@ export const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     textAlign: "left",
-    fontSize: "23px",
+    fontSize: "20px",
     fontWeight: "bolder",
-    fontFamily: "Times New Roman,serif",
+    fontFamily: "Montserrat, sans-serif",
     letterSpacing: ".5px",
     cursor: "pointer",
     "&:hover": {
       color: "#83A5CA",
     },
   },
-  hover: {
-    fontSize: "1.25rem",
-    fontFamily: "Times New Roman,serif",
+  nav: {
+    fontSize: "17px",
+    fontFamily: "Montserrat, sans-serif",
+    color: "rgba(0, 0, 0, 0.6)",
     cursor: "pointer",
     "&:hover": {
       color: "#83A5CA",

@@ -106,15 +106,15 @@ const Navbar = (props) => {
             {isDesktop && (
               <React.Fragment>
                 <Box
-                  mx={1}
-                  className={classes.hover}
+                  mx={2}
+                  className={classes.nav}
                   onClick={user ? handleNav("/writeareview") : handleDialog}
                 >
                   Write a Review
                 </Box>
                 <Box
                   mx={2}
-                  className={classes.hover}
+                  className={classes.nav}
                   onClick={handleNav("/blog")}
                 >
                   Blog
@@ -124,14 +124,14 @@ const Navbar = (props) => {
                   <React.Fragment>
                     <Box
                       mx={2}
-                      className={classes.hover}
+                      className={classes.nav}
                       onClick={handleNav("/myreviews")}
                     >
                       My Reviews
                     </Box>
                     <Box
                       mx={1}
-                      className={classes.hover}
+                      className={classes.nav}
                       onClick={handleLogout}
                     >
                       Logout
@@ -141,14 +141,14 @@ const Navbar = (props) => {
                   <React.Fragment>
                     <Box
                       mx={2}
-                      className={classes.hover}
+                      className={classes.nav}
                       onClick={handleRegister}
                     >
                       Register
                     </Box>
                     <Box
-                      mx={1}
-                      className={classes.hover}
+                      mx={2}
+                      className={classes.nav}
                       onClick={handleSignIn}
                     >
                       Sign In
