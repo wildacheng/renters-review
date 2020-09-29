@@ -1,7 +1,7 @@
 /* backgroundImage starts from mobile size first */
 
 .reviewBackgroundImage {
-  background-image: url("../../img/review_background.jpg");
+  background-image: url("../../img/mobile_reviewForm.jpg");
   background-size: cover;
   height: 100%;
   width: 100%;
