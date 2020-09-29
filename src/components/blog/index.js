@@ -81,12 +81,12 @@ const Blog = () => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
+              <Button size="small" color="inherit">
                 Share
               </Button>
               <Button
                 size="small"
-                color="primary"
+                color="inherit"
                 onClick={handleClick(article.URL)}
               >
                 Learn More

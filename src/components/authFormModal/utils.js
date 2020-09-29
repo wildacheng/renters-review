@@ -131,6 +131,7 @@ export const requestRegister = async (formData, isRegister) => {
     const res = await fetch(`${HEROKU_API_ENDPOINT}${endpoint}`, {
       method: "POST",
       mode: "cors",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
