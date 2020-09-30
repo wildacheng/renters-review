@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(5),
     margin: theme.spacing(5),
     textAlign: "center",
+    boxShadow: "0px 2px 20px rgba(150,150,150,0.2)"
+  },
+  title: {
+    fontSize: "1.3rem",
+    fontWeight: "700",
+    lineHeight: "3",
   },
 }));
 
@@ -58,7 +64,7 @@ const Blog = () => {
           md={6}
           lg={6}
           xl={3}
-          style={{ maxWidth: "700px" }}
+          style={{ maxWidth: "650px" }}
         >
           <Card className={classes.card}>
             <CardActionArea>
@@ -72,7 +78,9 @@ const Blog = () => {
                 onClick={handleClick(article.URL)}
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography
+                  className={classes.title}
+                >
                   {article.title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">

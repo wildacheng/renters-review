@@ -16,7 +16,7 @@ export const Articles = [
   {
     image:
       "https://specials-images.forbesimg.com/imageserve/1182533976/960x0.jpg?fit=scale",
-    title: "How COVID-19 is Affecting New York Rent Prices",
+    title: "How COVID-19 is Affecting NY Rent Prices",
     summary: `Rent prices are falling in much of New York City as residents continue to grapple with the COVID-19 pandemic.`,
     URL:
       "https://www.forbes.com/sites/noahkirsch/2020/07/09/heres-how-covid-19-is-affecting-new-york-rent-prices/#4e7c69902620",
