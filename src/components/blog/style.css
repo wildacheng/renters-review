@@ -1,3 +1,7 @@
 .MuiTypography-body2 {
   height: 100px;
 }
+
+.MuiCardContent-root {
+  height: 190px;
+}

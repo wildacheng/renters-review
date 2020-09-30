@@ -17,16 +17,17 @@ import { Articles } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
   card: {
+    height: "550px",
     padding: theme.spacing(5),
     margin: theme.spacing(5),
     textAlign: "center",
-    boxShadow: "0px 2px 20px rgba(150,150,150,0.2)"
+    boxShadow: "0px 2px 20px rgba(150,150,150,0.2)",
   },
   title: {
     fontSize: "1.3rem",
     fontWeight: "700",
-    lineHeight: "3",
-    color: "#32373c"
+    marginBottom: "5%",
+    color: "#32373c",
   },
 }));
 
@@ -61,7 +62,7 @@ const Blog = () => {
         <Grid
           item
           xs={12}
-          sm={6}
+          sm={12}
           md={6}
           lg={6}
           xl={3}
@@ -79,9 +80,7 @@ const Blog = () => {
                 onClick={handleClick(article.URL)}
               />
               <CardContent>
-                <Typography
-                  className={classes.title}
-                >
+                <Typography className={classes.title}>
                   {article.title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
