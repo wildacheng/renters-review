@@ -46,7 +46,7 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: "50px",
   },
   connectionControl: {
-    minWidth: "150px",
+    minWidth: "200px",
     "& .MuiFormLabel-root": {
       fontSize: "1.2rem",
       fontWeight: "500",

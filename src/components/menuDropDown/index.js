@@ -66,7 +66,6 @@ const MenuDropDown = (props) => {
     <React.Fragment>
       <IconButton
         edge="start"
-        className={classes.menuButton}
         color="inherit"
         aria-label="menu"
         onClick={handleClick}

@@ -90,6 +90,9 @@ const Navbar = (props) => {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
+            <Box mx={0} className={classes.title} onClick={handleNav("/")}>
+              Renter's Review
+            </Box>
             {!isDesktop && (
               <MenuDropDown
                 handleNav={handleNav}
@@ -100,9 +103,6 @@ const Navbar = (props) => {
                 user={user}
               />
             )}
-            <Box mx={0} className={classes.title} onClick={handleNav("/")}>
-              Renter's Review
-            </Box>
             {isDesktop && (
               <React.Fragment>
                 <Box

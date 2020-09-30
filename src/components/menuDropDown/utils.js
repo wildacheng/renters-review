@@ -2,9 +2,6 @@ import React from "react";
 import { Menu, MenuItem, withStyles, makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   divider: {
     width: "100%",
     orientation: "horizontal",
