@@ -5,3 +5,10 @@
 .MuiCardContent-root {
   height: 190px;
 }
+
+@media only screen and (max-width: 500px) {
+  .MuiTypography-body2 {
+    height: 100px;
+    overflow: hidden;
+  }
+}

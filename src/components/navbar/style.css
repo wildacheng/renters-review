@@ -3,5 +3,33 @@
 }
 
 .MuiToolbar-root {
-  padding: 0.5rem 2rem
+  padding: 0.5rem 2rem;
+}
+
+#navLogo {
+  flex-grow: 1;
+  color: #32373c;
+  text-align: left;
+  font-size: 15px;
+  font-weight: bolder;
+  font-family: Montserrat, sans-serif;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+#navLogo:hover {
+  color: #83a5ca;
+}
+
+@media only screen and (min-width: 500px) {
+  #navLogo {
+    flex-grow: 1;
+    color: #32373c;
+    text-align: left;
+    font-size: 19px;
+    font-weight: bolder;
+    font-family: Montserrat, sans-serif;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+  }
 }

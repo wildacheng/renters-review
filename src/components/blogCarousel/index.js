@@ -1,8 +1,7 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import autoBind from "auto-bind";
-import "./style.css";
 import { items } from "./utils";
+import "./style.css";
 
 import {
   Card,
@@ -83,7 +82,7 @@ class BlogCarousel extends React.Component {
 
   render() {
     return (
-      <div style={{ padding: "15px" }}>
+      <div>
         <Carousel
           className="Example"
           autoPlay={this.state.autoPlay}

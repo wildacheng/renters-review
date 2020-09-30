@@ -42,20 +42,39 @@
 #titleContainer {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
-  font-size: xx-large;
+  font-size: 30px;
   line-height: 1.5;
   margin-bottom: 20px;
 }
 
 #subTitle {
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.875;
 }
 
+/* title font for medium screen */
+@media only screen and (min-width: 700px) {
+  #titleContainer {
+    font-size:  38px;
+    font-weight: 700;
+  }
+
+  #subTitle {
+    font-size: large;
+    font-weight: 600;
+  }
+}
+
 /* title font for regular screen */
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1000px) {
   #titleContainer {
     font-size: xxx-large;
+    font-weight: 700;
+  }
+
+  #subTitle {
+    font-size: x-large;
+    font-weight: 600;
   }
 }

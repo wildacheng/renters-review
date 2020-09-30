@@ -53,7 +53,7 @@ const Blog = () => {
     <Grid container justify="center">
       {isDesktop && (
         <Grid item xs={12}>
-          <div style={{ marginTop: "50px" }}>
+          <div>
             <BlogCarousel />
           </div>
         </Grid>

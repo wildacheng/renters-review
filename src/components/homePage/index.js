@@ -9,7 +9,7 @@ import "./style.css";
 //material.ui
 import { Grid } from "@material-ui/core";
 
-const HomePage = ({history}) => {
+const HomePage = ({ history }) => {
   const [isDesktop, setDesktop] = React.useState(window.innerWidth > 650);
   const [address, setAddress] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
@@ -49,21 +49,26 @@ const HomePage = ({history}) => {
                 <div id="subTitle">Real people. Real reviews. </div>
               </div>
               <Grid container className={classes.searchGrid}>
-                <Grid item xs={7} sm={8} md={12} lg={12}>
+                <Grid item xs={7} sm={9} md={12} lg={12}>
                   <SearchBar
-                  address={address}
-                  setAddress={setAddress}
-                  coordinates={coordinates}
-                  setCoordinates={setCoordinates}
-                  handleClick={handleClick}
-                  placeholder="Enter an address to search reviews" />
+                    address={address}
+                    setAddress={setAddress}
+                    coordinates={coordinates}
+                    setCoordinates={setCoordinates}
+                    handleClick={handleClick}
+                    placeholder="Enter an address to search reviews"
+                  />
                 </Grid>
               </Grid>
             </div>
           </div>
         </Grid>
       </Grid>
-      {isDesktop && <BlogCarousel />}
+      {isDesktop && (
+        <div style={{ marginTop: "20px" }}>
+          <BlogCarousel />
+        </div>
+      )}
       <Footer />
     </React.Fragment>
   );

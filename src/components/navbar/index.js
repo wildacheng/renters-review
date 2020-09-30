@@ -90,7 +90,7 @@ const Navbar = (props) => {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <Box mx={0} className={classes.title} onClick={handleNav("/")}>
+            <Box id="navLogo" onClick={handleNav("/")}>
               Renter's Review
             </Box>
             {!isDesktop && (
@@ -147,7 +147,7 @@ const Navbar = (props) => {
                       Register
                     </Box>
                     <Box
-                      mx={2}
+                      ml={2}
                       className={classes.nav}
                       onClick={handleSignIn}
                     >
