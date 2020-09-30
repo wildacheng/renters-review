@@ -55,7 +55,7 @@ export const useStyles = makeStyles((theme) => ({
     textTransform: "none",
     fontFamily: "Montserrat, sans-serif",
     fontWeight: 500,
-    fontSize: "1.2rem",
+    fontSize: "1.125rem",
     lineHeight: 1.5,
     color: "white",
     backgroundColor: "#ff5d4e",
