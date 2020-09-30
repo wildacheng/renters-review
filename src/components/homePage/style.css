@@ -5,6 +5,12 @@
   align-items: center;
 }
 
+#titleContainer,
+#subTitle {
+  color: #ffffff;
+  text-shadow: 4px 4px 15px #000000;
+}
+
 /* backgroundImage starts from mobile size first */
 
 .backgroundImage {
@@ -34,13 +40,17 @@
 }
 
 #titleContainer {
-  color: #ffffff;
   font-family: Montserrat, sans-serif;
   font-weight: 500;
   font-size: xx-large;
   line-height: 1.5;
-  text-shadow: 4px 4px 4px #000000;
   margin-bottom: 20px;
+}
+
+#subTitle {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.875;
 }
 
 /* title font for regular screen */
