@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 //styling for ClassName (icons)
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   hover: {
     "&:hover": {
       color: "#83A5CA",
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: "20%",
     paddingRight: "20%",
   },
-}));
+});
 
 const Footer = () => {
   const classes = useStyles();

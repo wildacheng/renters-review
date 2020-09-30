@@ -1,11 +1,3 @@
-h2 {
-  font-family: "Barlow Semi Condensed", sans-serif;
-  font-weight: 400;
-  font-size: 1.5rem;
-  line-height: 3rem;
-  margin: 0;
-}
-
 .Banner {
   height: 400px;
   position: relative;
@@ -28,8 +20,8 @@ h2 {
   opacity: 0.6;
   width: 100%;
   height: 10%;
-  font-size: 25px;
-  font-weight: 200;
+  font-size: 20px;
+  font-weight: 400;
   transition: 300ms;
   cursor: pointer;
 }
@@ -52,17 +44,18 @@ h2 {
 }
 .Banner .Content {
   color: white;
-  background-color: #83A5CA;
+  background-color: #83a5ca;
   height: 100%;
   padding: 30px;
   transition: 300ms;
 }
 .Banner .Content .Title {
-  font-size: 40px;
-  font-weight: 500;
+  font-size: 1.5625rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 .Banner .Content .Caption {
   margin-top: 10px;
-  font-size: 21px;
+  font-size: 20px;
+  font-weight: 200;
 }
-

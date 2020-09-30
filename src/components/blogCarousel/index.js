@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import autoBind from "auto-bind";
 import "./style.css";
-import { items } from './utils'
+import { items } from "./utils";
 
 import {
   Card,
@@ -12,10 +12,9 @@ import {
   Grid,
 } from "@material-ui/core";
 
-
 function Banner(props) {
   const handleClick = (pageUrl) => () => {
-    window.open(pageUrl, 'blank')
+    window.open(pageUrl, "blank");
   };
 
   if (props.newProp) console.log(props.newProp);
@@ -41,7 +40,12 @@ function Banner(props) {
 
     const media = (
       <Grid item xs={12 / totalItems} key={item.Name}>
-        <CardMedia className="Media" image={item.Image} title={item.Name} onClick={handleClick(item.URL)}>
+        <CardMedia
+          className="Media"
+          image={item.Image}
+          title={item.Name}
+          onClick={handleClick(item.URL)}
+        >
           <Typography className="MediaCaption">{item.Name}</Typography>
         </CardMedia>
       </Grid>
@@ -67,27 +71,19 @@ function Banner(props) {
   );
 }
 
-
 class BlogCarousel extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      autoPlay: true,
-      timer: 500,
-      animation: "fade",
-      indicators: true,
-      timeout: 500,
-      navButtonsAlwaysVisible: false,
-    };
-
-    autoBind(this);
-  }
+  state = {
+    autoPlay: true,
+    timer: 500,
+    animation: "fade",
+    indicators: true,
+    timeout: 500,
+    navButtonsAlwaysVisible: false,
+  };
 
   render() {
     return (
-      <div style={{ padding: "15px", fontFamily: "xBarlow Semi Condensed"}} >
-
+      <div style={{ padding: "15px" }}>
         <Carousel
           className="Example"
           autoPlay={this.state.autoPlay}

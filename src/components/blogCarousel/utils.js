@@ -18,7 +18,7 @@ export const items = [
     ],
   },
   {
-    Name: "Cleaning and Maintenance",
+    Name: "Home Maintenance",
     Caption: "Tips to make your home look like new!",
     contentPosition: "middle",
     Items: [
