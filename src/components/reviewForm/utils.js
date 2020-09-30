@@ -16,9 +16,11 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     height: "150px",
+    color: "#32373c",
     fontWeight: "600",
     fontSize: "xx-large",
-    fontFamily: "Century Gothic Std",
+    fontFamily: "Montserrat, sans-serif",
+    lineHeight: "1.5"
   },
   subTitle: {
     fontSize: "large",
@@ -29,7 +31,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    fontFamily: "Century Gothic Std",
+    fontFamily: "Montserrat, sans-serif",
   },
   formInput: {
     display: "flex",
@@ -58,7 +60,7 @@ export const useStyles = makeStyles((theme) => ({
     letterSpacing: "1px",
     borderRadius: "50px",
     backgroundColor: "red",
-    fontFamily: "Barlow Semi Condensed,sans-serif",
+    fontFamily: "Montserrat, sans-serif",
   },
 }));
 

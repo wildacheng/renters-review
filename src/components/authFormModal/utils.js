@@ -75,6 +75,7 @@ export const useStyles = makeStyles((theme) => ({
   switchLink: {
     textDecoration: "underline",
     cursor: "pointer",
+    color: "#32373c",
   },
 }));
 

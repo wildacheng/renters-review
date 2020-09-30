@@ -7,6 +7,7 @@ export const useStyles = makeStyles({
   },
   title: {
     flexGrow: 1,
+    color: "#32373c",
     textAlign: "left",
     fontSize: "20px",
     fontWeight: "bolder",

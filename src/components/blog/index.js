@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.3rem",
     fontWeight: "700",
     lineHeight: "3",
+    color: "#32373c"
   },
 }));
 

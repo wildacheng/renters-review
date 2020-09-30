@@ -10,7 +10,7 @@ const DialogModal = (props) => {
 
   return (
     <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Please register / sign in to write a review!</DialogTitle>
+      <DialogTitle>Please register or sign in to write a review!</DialogTitle>
       <DialogActions>
         <Button onClick={handleClose}>Close</Button>
       </DialogActions>
