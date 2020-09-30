@@ -170,10 +170,12 @@ const ReviewForm = () => {
                 </form>
               </Grid>
             </Grid>
+            <div>
+              <GoogleMap lat={coordinates.lat} lng={coordinates.lng} />
+            </div>
           </Grid>
         )}
       </Grid>
-      <GoogleMap lat={coordinates.lat} lng={coordinates.lng} />
       <Footer />
     </React.Fragment>
   );

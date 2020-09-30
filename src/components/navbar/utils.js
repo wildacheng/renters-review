@@ -9,7 +9,7 @@ export const useStyles = makeStyles({
     flexGrow: 1,
     color: "#32373c",
     textAlign: "left",
-    fontSize: "20px",
+    fontSize: "19px",
     fontWeight: "bolder",
     fontFamily: "Montserrat, sans-serif",
     letterSpacing: ".5px",
