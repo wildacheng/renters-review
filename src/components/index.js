@@ -5,10 +5,10 @@
  */
 export {default as Navbar} from './navbar'
 export {default as HomePage} from './homePage'
-export {default as GoogleMap} from './googleMap'
+export {default as Map} from './map'
 export {default as Blog} from './blog'
 export {default as Reviews} from './reviews'
 export {default as MyReviews} from './myReviews'
+export {default as SearchForm} from './searchForm'
 export {default as ReviewForm} from './reviewForm'
-// export {default as UserHome} from './user-home'
-// export {Login, Signup} from './auth-form'
+

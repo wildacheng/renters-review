@@ -105,7 +105,7 @@ export const signInForm = [
 //position of the modal
 export const getModalStyle = () => ({
   color: "#000000",
-  width: "300px",
+  // width: "70%",
   top: "50%",
   left: "50%",
   transform: `translate(-50%, -50%)`,

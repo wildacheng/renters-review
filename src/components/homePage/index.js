@@ -32,6 +32,7 @@ const HomePage = ({ history }) => {
     history.push({
       pathname: "/reviews",
       state: {
+        address: address,
         lat: coordinates.lat,
         lng: coordinates.lng,
       },

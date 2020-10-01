@@ -108,7 +108,7 @@ const Navbar = (props) => {
                 <Box
                   mx={2}
                   className={classes.nav}
-                  onClick={user ? handleNav("/writeareview") : handleDialog}
+                  onClick={user ? handleNav("/searchform") : handleDialog}
                 >
                   Write a Review
                 </Box>
@@ -129,11 +129,7 @@ const Navbar = (props) => {
                     >
                       My Reviews
                     </Box>
-                    <Box
-                      mx={1}
-                      className={classes.nav}
-                      onClick={handleLogout}
-                    >
+                    <Box mx={1} className={classes.nav} onClick={handleLogout}>
                       Logout
                     </Box>
                   </React.Fragment>
@@ -146,11 +142,7 @@ const Navbar = (props) => {
                     >
                       Register
                     </Box>
-                    <Box
-                      ml={2}
-                      className={classes.nav}
-                      onClick={handleSignIn}
-                    >
+                    <Box ml={2} className={classes.nav} onClick={handleSignIn}>
                       Sign In
                     </Box>
                   </React.Fragment>
