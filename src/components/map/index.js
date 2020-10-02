@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 import "./style.css";
 
 const Map = (props) => {
@@ -20,7 +20,6 @@ const Map = (props) => {
 
   return (
     <div className="google-map">
-
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API }}
         defaultCenter={location}

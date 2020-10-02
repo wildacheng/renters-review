@@ -51,86 +51,84 @@ const ReviewForm = (props) => {
   return (
     <React.Fragment>
       <div className={classes.grid}>
-
-      <div className={classes.map}>
+        <div className={classes.map}>
           <Map address={address} lat={lat} lng={lng} />
         </div>
 
         <div className={classes.formGrid}>
-        <div className={classes.form}>
-          <div className={classes.titleContainer}>
-            <div>Write a review for</div>
-            <div className={classes.subTitle}>{address}</div>
-          </div>
-          <div className={classes.rating}>
-            <Rating
-              name="hover-feedback"
-              value={value}
-              precision={1}
-              size="large"
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
-              onChangeActive={(event, newHover) => {
-                setHover(newHover);
-              }}
-            />
-            {value !== null && (
-              <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
-            )}
-          </div>
-          <form onSubmit={handleSubmit} className={classes.formInput}>
-            {form.map((value) => (
-              <TextField
-                key={value.label}
-                label={value.label}
-                onChange={handleChange(value.name)}
-                name={value.name}
-                error={formData[value.name].error}
-                helperText={
-                  formData[value.name].error ? "This field is required" : ""
-                }
-                multiline
-                rows={value.rows}
-                variant="outlined"
-                fullWidth={true}
+          <div className={classes.form}>
+            <div className={classes.titleContainer}>
+              <div>Write a review for</div>
+              <div className={classes.subTitle}>{address}</div>
+            </div>
+            <div className={classes.rating}>
+              <Rating
+                name="hover-feedback"
+                value={value}
+                precision={1}
+                size="large"
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+                onChangeActive={(event, newHover) => {
+                  setHover(newHover);
+                }}
               />
-            ))}
-            <FormControl
-              error={formData.connection.error}
-              className={classes.connectionControl}
-            >
-              <InputLabel>I am a...</InputLabel>
-              <Select
-                value={formData.connection.value}
-                onChange={handleChange("connection")}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                {menuItems.map((item) => (
-                  <MenuItem key={item.value} value={item.value}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-              </Select>
-              {formData.connection.error && (
-                <FormHelperText>This field is required.</FormHelperText>
+              {value !== null && (
+                <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>
               )}
-            </FormControl>
-            <Button
-              type="submit"
-              variant="contained"
-              size="large"
-              className={classes.button}
-              onClick={handleClick}
-            >
-              Submit
-            </Button>
-          </form>
+            </div>
+            <form onSubmit={handleSubmit} className={classes.formInput}>
+              {form.map((value) => (
+                <TextField
+                  key={value.label}
+                  label={value.label}
+                  onChange={handleChange(value.name)}
+                  name={value.name}
+                  error={formData[value.name].error}
+                  helperText={
+                    formData[value.name].error ? "This field is required" : ""
+                  }
+                  multiline
+                  rows={value.rows}
+                  variant="outlined"
+                  fullWidth={true}
+                />
+              ))}
+              <FormControl
+                error={formData.connection.error}
+                className={classes.connectionControl}
+              >
+                <InputLabel>I am a...</InputLabel>
+                <Select
+                  value={formData.connection.value}
+                  onChange={handleChange("connection")}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  {menuItems.map((item) => (
+                    <MenuItem key={item.value} value={item.value}>
+                      {item.name}
+                    </MenuItem>
+                  ))}
+                </Select>
+                {formData.connection.error && (
+                  <FormHelperText>This field is required.</FormHelperText>
+                )}
+              </FormControl>
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                className={classes.button}
+                onClick={handleClick}
+              >
+                Submit
+              </Button>
+            </form>
           </div>
-          </div>
-
+        </div>
       </div>
       <Footer />
     </React.Fragment>

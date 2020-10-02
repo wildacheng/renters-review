@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
     height: "100%",
-    alignItems: "center"
+    alignItems: "center",
   },
   form: {
     width: "500px",
@@ -29,7 +29,7 @@ export const useStyles = makeStyles((theme) => ({
     border: "1px solid lightgrey",
     borderRadius: "20px",
     backgroundColor: "white",
-    boxShadow: "0px 2px 20px rgba(150,150,150,0.2)"
+    boxShadow: "0px 2px 20px rgba(150,150,150,0.2)",
   },
   titleContainer: {
     display: "flex",
@@ -65,7 +65,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   connectionControl: {
-    minWidth: "200px",
+    minWidth: "50%",
     "& .MuiFormLabel-root": {
       fontSize: "1.2rem",
       fontWeight: "500",
@@ -73,11 +73,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   button: {
     color: "white",
-    width: "200px",
+    width: "50%",
     marginTop: "30px",
     fontWeight: 800,
     letterSpacing: "1px",
-    borderRadius: "50px",
+    borderRadius: "3px",
     backgroundColor: "red",
     fontFamily: "Montserrat, sans-serif",
   },
