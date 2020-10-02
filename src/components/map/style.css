@@ -1,7 +1,5 @@
-
-
 .google-map {
-  width: 50%;
+  /* width: 50%; */
   height: 60vh;
 }
 
@@ -17,7 +15,8 @@
 
 @media screen and (min-width: 799px) {
   .google-map {
-    height: 80vh;
+    height: 400px;
+    width: 500px;
   }
 
   .map-h2 {
@@ -28,5 +27,4 @@
   .pin {
     width: 15vw;
   }
-
 }

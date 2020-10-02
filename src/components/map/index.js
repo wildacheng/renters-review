@@ -1,7 +1,7 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
-import "./style.css"
+import "./style.css";
 
 const Map = (props) => {
   const { address, lat, lng } = props;
@@ -11,18 +11,12 @@ const Map = (props) => {
     lng: lng,
   };
 
-  console.log(location, "IM LOCATION")
-  console.log(lat, "IM LAT")
-  console.log(lng, "IM LNG")
-  console.log(address, "IM ADDRESS")
-
-
   const LocationPin = ({ text }) => (
     <div className="pin">
-      <LocationOnOutlinedIcon fontSize="large"/>
+      <LocationOnOutlinedIcon fontSize="large" />
       <p className="pin-text">{text}</p>
     </div>
-  )
+  );
 
   return (
     <div className="google-map">
