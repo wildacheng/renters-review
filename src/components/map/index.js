@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import "./style.css";
 
 const Map = (props) => {
@@ -13,17 +13,18 @@ const Map = (props) => {
 
   const LocationPin = ({ text }) => (
     <div className="pin">
-      <LocationOnOutlinedIcon fontSize="large" />
+      <LocationOnIcon fontSize="large" />
       <p className="pin-text">{text}</p>
     </div>
   );
 
   return (
     <div className="google-map">
+
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API }}
         defaultCenter={location}
-        defaultZoom={17}
+        defaultZoom={15}
       >
         <LocationPin
           lat={location.lat}

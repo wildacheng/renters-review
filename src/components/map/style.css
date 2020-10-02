@@ -3,6 +3,21 @@
   height: 60vh;
 }
 
+.google-map div {
+  border-radius: 20px !important;
+}
+
+@media screen and (min-width: 799px) {
+  .google-map {
+    height: 95%;
+    width: 60%;
+  }
+
+  .pin {
+    width: 15vw;
+  }
+}
+
 .pin {
   display: flex;
   align-items: center;
@@ -10,21 +25,10 @@
 }
 
 .pin-text {
+  font-family: Montserrat, sans-serif;
   font-size: 1.3em;
 }
 
-@media screen and (min-width: 799px) {
-  .google-map {
-    height: 400px;
-    width: 500px;
-  }
-
-  .map-h2 {
-    font-size: 1.3rem;
-    font-weight: 400;
-  }
-
-  .pin {
-    width: 15vw;
-  }
+.map {
+  border-radius: 20px;
 }

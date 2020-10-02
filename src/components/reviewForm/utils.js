@@ -2,15 +2,41 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   grid: {
+    width: "100%",
+    height: "100%",
+    position: "sticky",
+  },
+  map: {
     display: "flex",
+    alignItems: "center",
+    position: "absolute",
+    left: "30%",
+    width: "100%",
+    height: "100%",
+  },
+  formGrid: {
+    display: "flex",
+    width: "100%",
+    height: "100%",
     alignItems: "center"
+  },
+  form: {
+    width: "500px",
+    height: "700px",
+    zIndex: "1",
+    left: "10%",
+    position: "absolute",
+    border: "1px solid lightgrey",
+    borderRadius: "20px",
+    backgroundColor: "white",
+    boxShadow: "0px 2px 20px rgba(150,150,150,0.2)"
   },
   titleContainer: {
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
     alignItems: "center",
-    height: "150px",
+    height: "100px",
     color: "#32373c",
     fontWeight: "600",
     fontSize: "xx-large",
@@ -18,7 +44,7 @@ export const useStyles = makeStyles((theme) => ({
     lineHeight: "1.5",
   },
   subTitle: {
-    fontSize: "large",
+    fontSize: "medium",
   },
   rating: {
     height: "100px",
@@ -32,13 +58,11 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginBottom: "40px",
     "& .MuiTextField-root": {
       margin: theme.spacing(2),
       width: "50%",
     },
-  },
-  formGrid: {
-    marginBottom: "50px",
   },
   connectionControl: {
     minWidth: "200px",

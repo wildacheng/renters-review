@@ -50,12 +50,18 @@ const ReviewForm = (props) => {
 
   return (
     <React.Fragment>
-      <div className={classes.titleContainer}>
-        <div>Write a review for</div>
-        <div className={classes.subTitle}>{address}</div>
-      </div>
       <div className={classes.grid}>
-        <div style={{ width: "50%", marginBottom: "100px" }}>
+
+      <div className={classes.map}>
+          <Map address={address} lat={lat} lng={lng} />
+        </div>
+
+        <div className={classes.formGrid}>
+        <div className={classes.form}>
+          <div className={classes.titleContainer}>
+            <div>Write a review for</div>
+            <div className={classes.subTitle}>{address}</div>
+          </div>
           <div className={classes.rating}>
             <Rating
               name="hover-feedback"
@@ -122,10 +128,9 @@ const ReviewForm = (props) => {
               Submit
             </Button>
           </form>
-        </div>
-        <div style={{ width: "50%" }}>
-          <Map address={address} lat={lat} lng={lng} />
-        </div>
+          </div>
+          </div>
+
       </div>
       <Footer />
     </React.Fragment>
