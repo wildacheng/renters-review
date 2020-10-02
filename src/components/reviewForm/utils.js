@@ -38,13 +38,15 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     height: "100px",
     color: "#32373c",
-    fontWeight: "600",
+    fontWeight: "500",
     fontSize: "xx-large",
     fontFamily: "Montserrat, sans-serif",
+    letterSpacing: "1px",
     lineHeight: "1.5",
   },
   subTitle: {
     fontSize: "medium",
+    textTransform: "uppercase"
   },
   rating: {
     height: "100px",
@@ -52,6 +54,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
+    color: "rgba(0, 0, 0, 0.54)",
     fontFamily: "Montserrat, sans-serif",
   },
   formInput: {
@@ -78,7 +81,7 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: 800,
     letterSpacing: "1px",
     borderRadius: "3px",
-    backgroundColor: "red",
+    backgroundColor: "#ff5d4e",
     fontFamily: "Montserrat, sans-serif",
   },
 }));

@@ -4,7 +4,7 @@
 }
 
 .google-map div {
-  border-radius: 20px !important;
+  border-radius: 20px;
 }
 
 @media screen and (min-width: 799px) {
@@ -22,11 +22,17 @@
   display: flex;
   align-items: center;
   width: 180px;
+  color: #ff5d4e;
 }
 
 .pin-text {
   font-family: Montserrat, sans-serif;
-  font-size: 1.3em;
+  font-size: 1.1em;
+  padding: 5px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
 }
 
 .map {

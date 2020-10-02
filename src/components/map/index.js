@@ -13,7 +13,7 @@ const Map = (props) => {
 
   const LocationPin = ({ text }) => (
     <div className="pin">
-      <LocationOnIcon fontSize="large" />
+      <LocationOnIcon fontSize="large" color={"#ff5d4e"}/>
       <p className="pin-text">{text}</p>
     </div>
   );

@@ -81,10 +81,11 @@ const ReviewForm = (props) => {
             <form onSubmit={handleSubmit} className={classes.formInput}>
               {form.map((value) => (
                 <TextField
+                  onChange={handleChange(value.name)}
                   key={value.label}
                   label={value.label}
-                  onChange={handleChange(value.name)}
                   name={value.name}
+                  value={formData[value.name].value}
                   error={formData[value.name].error}
                   helperText={
                     formData[value.name].error ? "This field is required" : ""
