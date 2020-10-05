@@ -42,7 +42,7 @@
 #titleContainer {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 1.5;
   margin-bottom: 20px;
 }
@@ -57,12 +57,10 @@
 @media only screen and (min-width: 700px) {
   #titleContainer {
     font-size:  38px;
-    font-weight: 700;
   }
 
   #subTitle {
     font-size: large;
-    font-weight: 600;
   }
 }
 
@@ -70,11 +68,9 @@
 @media only screen and (min-width: 1000px) {
   #titleContainer {
     font-size: xxx-large;
-    font-weight: 700;
   }
 
   #subTitle {
     font-size: x-large;
-    font-weight: 600;
   }
 }
