@@ -117,15 +117,20 @@ export const form = [
   {
     label: "Title",
     name: "title",
+    multi: false,
+    rows: 0
   },
   {
     label: "Review",
     name: "review",
+    multi: true,
     rows: 5,
   },
   {
     label: "Name",
     name: "name",
+    multi: false,
+    rows: 0
   },
 ];
 

@@ -90,7 +90,7 @@ const ReviewForm = (props) => {
                   helperText={
                     formData[value.name].error ? "This field is required" : ""
                   }
-                  multiline
+                  multiline={value.multi}
                   rows={value.rows}
                   variant="outlined"
                   fullWidth={true}
