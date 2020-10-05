@@ -8,6 +8,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import { IconButton, InputBase } from "@material-ui/core";
 import { useStyles, activeStyle } from "./utils";
+import "./style.css"
 
 const SearchBar = (props) => {
   const {
@@ -64,7 +65,6 @@ const SearchBar = (props) => {
                 className={classes.input}
                 onChange={handleChange}
                 placeholder={placeholder}
-                fontFamily="Century Gothic Std"
                 {...getInputProps()}
               />
               <div>

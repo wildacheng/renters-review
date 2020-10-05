@@ -6,11 +6,6 @@
   font-family: Montserrat, sans-serif !important;
 }
 
-.MuiInputBase-root {
-  font-family: Montserrat, sans-serif !important;
-  letter-spacing: 0.5px;
-}
-
 /* title font for mobile screen */
 .title {
   display: flex;

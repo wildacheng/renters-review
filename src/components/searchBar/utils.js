@@ -19,6 +19,9 @@ export const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(2),
     flex: 1,
     fontSize: "large",
+    [theme.breakpoints.down('xs')]: {
+      fontSize: "small"
+    },
   },
 }));
 

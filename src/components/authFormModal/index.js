@@ -168,7 +168,7 @@ const AuthFormModal = (props) => {
       className={classes.textField}
       variant="outlined"
     >
-      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <InputLabel>Password</InputLabel>
       <OutlinedInput
         id="outlined-adornment-password"
         type={showPassword ? "text" : "password"}
