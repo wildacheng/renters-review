@@ -4,6 +4,8 @@ export const useStyles = makeStyles((theme) => ({
   grid: {
     width: "100%",
     height: "100%",
+    minWidth: "1000px",
+    minHeight: "800px",
     position: "sticky",
   },
   map: {

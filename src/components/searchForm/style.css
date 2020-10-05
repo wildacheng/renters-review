@@ -18,3 +18,43 @@
     background-image: url("../../img/review_background.jpg");
   }
 }
+
+#searchFormTitleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #32373c;
+  height: 150px;
+}
+
+#searchFormSubtitle {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.875;
+}
+
+@media only screen and (min-width: 700px) {
+  #searchFormTitleContainer {
+    font-size:  28px;
+  }
+
+  #searchFormSubtitle {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  #searchFormTitleContainer {
+    font-size: 31px;
+  }
+
+  #searchFormSubtitle {
+    font-size: 19px;
+  }
+}
+

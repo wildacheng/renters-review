@@ -1,5 +1,4 @@
 import React from "react";
-//material.ui
 import { IconButton, ListItemText, Divider } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useStyles, StyledMenu, StyledMenuItem } from "./utils";
@@ -32,7 +31,7 @@ const MenuDropDown = (props) => {
         },
         {
           title: "Write a Review",
-          action: user ? handleNav("/writeareview") : handleDialog,
+          action: user ? handleNav("/searchform") : handleDialog,
         },
         {
           title: "My Reviews",
@@ -46,7 +45,7 @@ const MenuDropDown = (props) => {
     : [
         {
           title: "Write a Review",
-          action: user ? handleNav("/writeareview") : handleDialog,
+          action: user ? handleNav("/searchform") : handleDialog,
         },
         {
           title: "Blog",

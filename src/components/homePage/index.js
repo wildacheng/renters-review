@@ -50,7 +50,7 @@ const HomePage = ({ history }) => {
                 <div id="subTitle">Real people. Real reviews. </div>
               </div>
               <Grid container className={classes.searchGrid}>
-                <Grid item xs={7} sm={9} md={12} lg={12}>
+                <Grid item xs={7} sm={10} md={12} lg={12}>
                   <SearchBar
                     address={address}
                     setAddress={setAddress}

@@ -31,14 +31,14 @@ const SearchForm = ({ history }) => {
       <Grid container className={classes.grid} justify="center">
         <div className="reviewBackgroundImage">
           <div className="searchContainer">
-            <div className={classes.titleContainer}>
+            <div id="searchFormTitleContainer">
               <div>Begin your review</div>
-              <div className={classes.subTitle}>
+              <div id="searchFormSubtitle">
                 Search for an address and share your experience
               </div>
             </div>
             <Grid container className={classes.searchGrid}>
-              <Grid item xs={7} sm={8} md={12} lg={12}>
+              <Grid item xs={7} sm={10} md={12} lg={12}>
                 <SearchBar
                   address={address}
                   setAddress={setAddress}

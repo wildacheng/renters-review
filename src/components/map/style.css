@@ -1,21 +1,10 @@
 .google-map {
-  /* width: 50%; */
-  height: 60vh;
+  width: 60%;
+  height: 95%;
 }
 
 .google-map div {
   border-radius: 20px;
-}
-
-@media screen and (min-width: 799px) {
-  .google-map {
-    height: 95%;
-    width: 60%;
-  }
-
-  .pin {
-    width: 15vw;
-  }
 }
 
 .pin {
