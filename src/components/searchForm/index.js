@@ -45,7 +45,7 @@ const SearchForm = ({ history }) => {
                   coordinates={coordinates}
                   setCoordinates={setCoordinates}
                   handleClick={handleClick}
-                  placeholder="Enter a full address"
+                  placeholder="Enter a full address to review"
                 />
               </Grid>
             </Grid>

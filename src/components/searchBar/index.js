@@ -81,9 +81,10 @@ const SearchBar = (props) => {
                     return (
                       <div
                         key={index}
+                        className={classes.suggestionList}
                         {...getSuggestionItemProps(suggestion, { style })}
                       >
-                        <LocationOnOutlinedIcon />
+                        <LocationOnOutlinedIcon className={classes.locationIcon} />
                         {suggestion.description}
                       </div>
                     );

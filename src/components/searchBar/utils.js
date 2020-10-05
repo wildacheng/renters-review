@@ -23,6 +23,16 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "small"
     },
   },
+  locationIcon: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: "small"
+    }
+  },
+  suggestionList: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: "x-small"
+    }
+  }
 }));
 
 export const activeStyle = (color) => ({
