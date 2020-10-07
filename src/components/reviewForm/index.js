@@ -51,9 +51,6 @@ const ReviewForm = (props) => {
   return (
     <React.Fragment>
       <div className={classes.grid}>
-        <div className={classes.map}>
-          <Map address={address} lat={lat} lng={lng} />
-        </div>
 
         <div className={classes.formGrid}>
           <div className={classes.form}>
@@ -129,6 +126,10 @@ const ReviewForm = (props) => {
               </Button>
             </form>
           </div>
+        </div>
+
+        <div className={classes.map}>
+          <Map address={address} lat={lat} lng={lng} />
         </div>
       </div>
       <Footer />

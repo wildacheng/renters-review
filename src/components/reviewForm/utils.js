@@ -8,19 +8,21 @@ export const useStyles = makeStyles((theme) => ({
     minHeight: "800px",
     position: "sticky",
   },
-  map: {
+  formGrid: {
     display: "flex",
     alignItems: "center",
     position: "absolute",
-    left: "30%",
+    // left: "30%",
     width: "100%",
     height: "100%",
   },
-  formGrid: {
+  map: {
     display: "flex",
     width: "100%",
     height: "100%",
+    left: "30%",
     alignItems: "center",
+    position: "absolute",
   },
   form: {
     width: "500px",

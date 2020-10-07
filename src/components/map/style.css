@@ -7,6 +7,16 @@
   border-radius: 20px;
 }
 
+/* google map starts from mobile size first */
+/* @media only screen and (max-width: 1000px) */
+
+@media only screen and (min-width: 1000px) {
+  .google-map {
+    width: 60%;
+    height: 95%;
+  }
+}
+
 .pin {
   display: flex;
   align-items: center;
@@ -22,8 +32,4 @@
   background-color: white;
   border-radius: 10px;
   color: black;
-}
-
-.map {
-  border-radius: 20px;
 }
