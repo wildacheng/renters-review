@@ -25,10 +25,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "500px",
-    height: "700px",
+    height: "690px",
     zIndex: "1",
     left: "10%",
     position: "absolute",
+    paddingTop: "10px",
     border: "1px solid lightgrey",
     borderRadius: "20px",
     backgroundColor: "white",
@@ -38,18 +39,19 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
-    alignItems: "center",
+    textAlign: "center",
     height: "100px",
     color: "#32373c",
-    fontWeight: "500",
-    fontSize: "xx-large",
+    fontSize: "1.7rem",
     fontFamily: "Montserrat, sans-serif",
     letterSpacing: "1px",
     lineHeight: "1.5",
+    paddingRight: "50px",
+    paddingLeft: "50px",
   },
   subTitle: {
-    fontSize: "medium",
-    textTransform: "uppercase"
+    fontSize: ".9rem",
+    textTransform: "uppercase",
   },
   rating: {
     height: "100px",
@@ -64,7 +66,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginBottom: "40px",
+    // marginBottom: "40px",
     "& .MuiTextField-root": {
       margin: theme.spacing(2),
       width: "50%",
@@ -121,7 +123,7 @@ export const form = [
     label: "Title",
     name: "title",
     multi: false,
-    rows: 0
+    rows: 0,
   },
   {
     label: "Review",
@@ -133,7 +135,7 @@ export const form = [
     label: "Name",
     name: "name",
     multi: false,
-    rows: 0
+    rows: 0,
   },
 ];
 
