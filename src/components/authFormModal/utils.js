@@ -126,7 +126,7 @@ export const signIn = (formData) => ({
 });
 
 export const requestRegister = async (formData, isRegister) => {
-  const endpoint = isRegister ? "register" : "login";
+  const endpoint = isRegister ? "register" : "signIn";
   const payload = isRegister ? register(formData) : signIn(formData);
   try {
     const res = await fetch(`${HEROKU_API_ENDPOINT}${endpoint}`, {

@@ -12,7 +12,6 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     position: "absolute",
-    // left: "30%",
     width: "100%",
     height: "100%",
   },
