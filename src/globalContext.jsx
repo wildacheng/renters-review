@@ -29,10 +29,13 @@ export const GlobalContextProvider = (props) => {
 
   const { children } = props;
   const [user, setUser] = React.useState("");
+  const [isDesktop, setIsDesktop] = React.useState(window.innerWidth > 760);
 
   const value = {
     user,
     setUser,
+    isDesktop,
+    setIsDesktop
   };
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>

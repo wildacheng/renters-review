@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import BlogCarousel from "../blogCarousel";
 import Footer from "../footer";
+import { GlobalContext } from "../../globalContext";
 import { Articles } from "./utils";
 
 const useStyles = makeStyles((theme) => ({
@@ -32,12 +33,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Blog = () => {
-  const [isDesktop, setDesktop] = React.useState(window.innerWidth > 650);
+  const { isDesktop, setIsDesktop } = React.useContext(GlobalContext);
 
   const classes = useStyles();
 
   const updateMedia = () => {
-    setDesktop(window.innerWidth > 650);
+    setIsDesktop(window.innerWidth > 760);
   };
 
   React.useEffect(() => {
