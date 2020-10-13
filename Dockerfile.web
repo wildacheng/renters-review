@@ -11,9 +11,9 @@ RUN go build
 FROM node:alpine AS node_builder
 COPY --from=builder . .
 WORKDIR /app/client
-COPY ./renters-review/package.json ./
+COPY ./client/package.json ./
 RUN npm install
-COPY ./renters-review/ .
+COPY ./client/ .
 RUN npm run build
 
 # copy the build assets to a minimal
