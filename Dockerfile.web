@@ -1,0 +1,26 @@
+# build the Go API
+FROM golang:latest AS builder
+WORKDIR /app
+COPY ./server/go.mod .
+COPY ./server/go.sum .
+RUN go mod download
+COPY ./server .
+RUN go build
+
+# build the React App
+FROM node:alpine AS node_builder
+COPY --from=builder . .
+WORKDIR /app/client
+COPY ./renters-review/package.json ./
+RUN npm install
+COPY ./renters-review/ .
+RUN npm run build
+
+# copy the build assets to a minimal
+# alpine image
+FROM golang:latest
+COPY --from=builder /app .
+COPY --from=node_builder /app/client/build ./web
+RUN ls
+CMD ["./apt-server"]
+
