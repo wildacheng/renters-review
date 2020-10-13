@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-const HEROKU_API_ENDPOINT = "https://gentle-depths-93598.herokuapp.com/api/";
+const HEROKU_API_ENDPOINT = "/api/";
 
 /* table of contents
 

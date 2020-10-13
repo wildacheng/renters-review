@@ -1,6 +1,6 @@
 import React from "react";
 
-const HEROKU_API_ENDPOINT = "https://gentle-depths-93598.herokuapp.com/api/";
+const HEROKU_API_ENDPOINT = "/api/";
 
 const defaultGlobalContextValue = {
   user: null,
