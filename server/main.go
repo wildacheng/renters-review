@@ -53,7 +53,7 @@ func main() {
 		log.Print(".env file missing")
 	}
 	postgresInfo := getDBConnectionInfo()
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=enable",
 		postgresInfo.host, postgresInfo.port, postgresInfo.user, postgresInfo.password, postgresInfo.name)
 
 	services, err := models.NewServices(psqlInfo)
